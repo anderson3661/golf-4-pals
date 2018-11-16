@@ -1,0 +1,1828 @@
+<DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Golf</title>
+	<!--<link rel="stylesheet" type="text/css" href="css_layout1.css" />-->
+
+	<script language="JavaScript" src="rounds.js"></script>
+	<script language="JavaScript" src="coursemasters.js"></script>
+
+	<script LANGUAGE="JavaScript" type="text/javascript">
+	var roundsCurrentSeason = 6;
+	var currentSeason = "2010";
+
+	// gSlideshowInterval - determines how often the slide show is refreshed (time given in seconds).
+	gSlideshowInterval = 2;
+
+	// gNumberOfImages - the total number of images available for display. This is used both to set up the image array and to manage the actual slideshow.
+	gNumberOfImages = 12;
+
+	// gImages - An array that holds the URLs identifying the images to be shown in the slide show. 
+	gImages = new Array(gNumberOfImages);
+
+	// Fill in the array to give the URLs for the images that you want to use.
+	gImages[0] = "images/davethumb2.jpg";
+	gImages[1] = "images/jackthumb.jpg";
+	gImages[2] = "images/martinthumb.jpg";
+	gImages[3] = "images/stevethumb.jpg";
+	gImages[4] = "images/davethumb.jpg";
+	gImages[5] = "images/jackthumb2.jpg";
+	gImages[6] = "images/martinthumb2.jpg";
+	gImages[7] = "images/stevethumb2.jpg";
+	gImages[8] = "images/davethumb4.jpg";
+	gImages[9] = "images/jackthumb4.jpg";
+	gImages[10] = "images/martinthumb4.jpg";
+	gImages[11] = "images/stevethumb4.jpg";
+
+
+
+	// canManipulateImages - check if the browser we're using can do clever stuff with document images.
+	function canManipulateImages() {
+	if (document.images)
+		return true;
+		else
+		return false;
+	}
+
+	// loadSlide Load a given image into place by substituting its URL for the URL currently loaded by the <IMG> object called 'slide'.
+	function loadSlide(imageURL) {
+	if (gImageCapableBrowser) {
+		document.slide.src = imageURL;
+		return false;
+		}
+		else {
+			return true;
+		} 
+	}
+
+	// nextSlide Update the counter that shows which slide is being displayed, and load it into place. The modulo (%) is there to ensure that we roll over when we reach the end of the slideshow.
+	function nextSlide() {
+		gCurrentImage = (gCurrentImage + 1) % gNumberOfImages;
+		loadSlide(gImages[gCurrentImage]);
+	}
+
+	// gImageCapableBrowser - is this browser hip to images? Set up a global variable so that we don't have to keep calling a function (useful if the function becomes costly to compute).
+	gImageCapableBrowser = canManipulateImages();
+
+	// gCurrentImage - a variable used to keep track of the image currently being displayed to the user.
+	gCurrentImage = 0;
+
+	// Set up the timer. This will call the 'nextSlide()' function repeatedly at the specified interval (and will continue to do so until the page is unloaded).
+	setInterval("nextSlide()",gSlideshowInterval * 1000);
+
+		function OOMByYear(year) {
+			if (year == currentSeason) {numPixels = 200 + roundsCurrentSeason * 20} else {numPixels = 610};
+DispWin = window.open("OOM.htm?year=" + year, "NewWin","toolbar=no,status=no,top=75,left=50,width=950,height=" + numPixels);
+		}
+
+		function DisplayFootball(whichDoc) {
+			DispWin = window.open(whichDoc, "NewWin","toolbar=no,status=no,width=900,height=400");
+		}
+
+		function DisplayFinances(year) {
+			if (year == currentSeason) {numPixels = 170 + roundsCurrentSeason * 20} else {numPixels = 610};
+			DispWin = window.open("Finances.htm?year=" + year, "NewWin","toolbar=no,status=no,top=200,left=50,width=900,height=" + numPixels)
+		}
+
+		function FinancesByYear(form) {
+			var itm = form.selectyear[form.selectyear.selectedIndex].value;
+			if (itm == "blank") {return};
+			var whichDoc = "Finances.htm?year=" + itm;
+			DispWin = window.open(whichDoc, "NewWin","toolbar=no,status=no,top=100,left=50,width=900,height=550");
+			//form.selectyear[form.selectyear.selectedIndex].value = "blank";
+			//window.reload;
+		}
+
+		function ScoreByCourse(form) {
+			var itm = form.selectcourse[form.selectcourse.selectedIndex].value;
+			if (itm == "blank") {return};
+			var whichDoc = "ScoreByCourse.htm?course=" + itm;
+			form.selectcourse[form.selectcourse.selectedIndex].value = "blank";
+			DispWin = window.open(whichDoc, "NewWin","toolbar=no,status=no,width=900,height=600");
+		}
+
+		function HoleStatsByYear(form) {
+			var itm = form.selectyear[form.selectyear.selectedIndex].value;
+			if (itm == "blank") {return};
+			var whichDoc = "HoleStats.htm?year=" + itm + "&season=" + currentSeason + "&rounds=" + roundsCurrentSeason;
+			if (itm == currentSeason) {numPixels = 200 + roundsCurrentSeason * 20} else {numPixels = 610};
+			DispWin = window.open(whichDoc, "NewWin","toolbar=no,status=no,width=1000,height=" + numPixels);
+		}
+
+		function NTPStatsByYear(form) {
+			var itm = form.selectyear[form.selectyear.selectedIndex].value;
+			if (itm == "blank") {return};
+			var whichDoc = "NTPs.htm?year=" + itm + "&season=" + currentSeason + "&rounds=" + roundsCurrentSeason;
+			if (itm == currentSeason) {numPixels = 180 + roundsCurrentSeason * 20} else {numPixels = 610};
+			DispWin = window.open(whichDoc, "NewWin","toolbar=no,status=no,width=500,height==" + numPixels);
+		}
+
+		function PageError() {
+			alert("Page not yet defined");
+		}
+
+		function Round(datePlayed, course, major) {
+			this.datePlayed = datePlayed;
+			this.course = course;
+			this.major = major;
+		}
+
+		function PlayerScores(handicap, stablefordpoints, hole1, hole2, hole3, hole4, hole5, hole6, hole7, hole8, hole9,
+			hole10, hole11, hole12, hole13, hole14, hole15, hole16, hole17, hole18) {
+			this.handicap = handicap;
+			this.stablefordpoints = stablefordpoints;
+			this.scoreByHole = new Array(hole1, hole2, hole3, hole4, hole5, hole6, hole7, hole8, hole9,
+			hole10, hole11, hole12, hole13, hole14, hole15, hole16, hole17, hole18);
+		}
+
+		function GolfRound(datePlayed, course, pointsDave, pointsJack,
+			pointsMartin, pointsSteve, hcDave, hcJack, hcMartin, hcSteve, major) {
+			this.datePlayed = datePlayed;
+			this.course = course;
+			this.pointsDave = pointsDave;
+			this.pointsJack = pointsJack;
+			this.pointsMartin = pointsMartin;
+			this.pointsSteve = pointsSteve;
+			this.hcDave = hcDave;
+			this.hcJack = hcJack;
+			this.hcMartin = hcMartin;
+			this.hcSteve = hcSteve;
+			this.major = major;
+		}
+
+		function arrayunique(a) {
+			var elementFound="";
+			tmp = new Array(0);
+			for (i=0; i<a.length; i++) {
+				elementFound = "False";
+				for (j=0; j<tmp.length+1; j++) {
+					if(a[i] == tmp[j]) {
+						elementFound = "True";
+					}
+				}
+				if (elementFound == "False") {
+					tmp.length += 1;
+					tmp[tmp.length-1] = a[i];
+				}
+			}
+			return tmp;
+		}
+
+
+	</script>
+
+	<style type="text/css">
+
+		body	{background-color: white;
+			margin-top: 1px;}
+
+		table.oomCurrent {	width: 150px;
+				background-color: #CCFF99;
+				border-color: gray;
+				border-style: solid;
+				border-weight: 0;
+				border-width: thin;
+				text-indent: 7px;
+				font-size: 0.9em;
+				color: black;}
+
+		table.oom {	width: 150px;
+				background-color: #CCCCCC;
+				border-color: gray;
+				border-style: solid;
+				border-weight: 0;
+				border-width: thin;
+				text-indent: 7px;
+				font-size: 0.9em;
+				color: black;
+				margin-top: 7px;}
+
+		tr.oomHeader	{text-align: center;
+				text-indent: 0px;
+				font-size: 1.0em}
+
+		tr.oomDetails	{text-align: center;
+				text-indent: 0px;
+				font-size: 0.8em}
+
+		td.oomPoints	{text-align: right;
+				padding-right: 25px;}
+
+		tr.oomFooter	{text-align: center;}
+
+		tr.oomOther	{text-align: center;}
+
+		h.News		{padding-left: 5px;
+				padding-right: 5px;
+				padding-top: 5px;
+				padding-bottom: 5px;}
+
+		p.News		{text-indent: 0px;}
+
+		tr.NewsHeader	{color: white;
+				text-indent: 0px;
+				background-color: navy;}
+
+		tr.Updates	{background-color: #FFFF99;}
+
+		td.NewsItemHead	{color: black;
+				font-weight: bold;
+				text-align: center;
+				font-size: 2.0em;}
+
+		td.NewsItemHeadOld	{color: black;
+				text-indent: 0px;
+				font-weight: bold;
+				text-align: left;
+				font-size: 1.2em;}
+
+		table.Latest	{background-color: #CCCCCC;
+				border-color: gray;
+				border-style: solid;
+				border-weight: 0;
+				border-width: thin;
+				text-indent: 7px;
+				font-size: 0.9em;
+				color: black;
+				width: 100%;}
+
+		th.Latest	{text-align: center;
+				text-indent: 0px;
+				font-size: 1.0em}
+
+		table.Previous	{background-color: #CCCCCC;
+				border-color: gray;
+				border-style: solid;
+				border-weight: 0;
+				border-width: thin;
+				text-indent: 7px;
+				font-size: 0.9em;
+				color: black;
+				width: 100%;}
+
+		th.Previous	{text-align: center;
+				text-indent: 0px;
+				font-size: 1.0em}
+
+		table.fixtures {	background-color: #CCCCCC;
+				width: 150px;
+				border-color: gray;
+				border-style: solid;
+				border-width: thin;
+				border-weight: 50;
+				padding-left: 5px;
+				padding-right: 5px;
+				text-align: center;
+				color: black;}
+
+		th.NextRound	{font-size: 1.0em;}
+
+		td.NextRound	{font-size: 0.8em;}
+
+		tr.financesHeader	{text-align: center;
+				text-indent: 0px;
+				font-size: 1.0em}
+
+		tr.financesH2	{text-align: center;
+				text-indent: 0px;
+				font-weight: normal;
+				font-size: 0.8em}
+
+		table.players {	background-color: #CCCCCC;
+				width: 150px;
+				border-color: gray;
+				border-style: solid;
+				border-width: thin;
+				border-weight: 50;
+				padding-left: 5px;
+				padding-right: 5px;
+				text-align: center;
+				color: black;
+				margin-top: 7px;}
+
+		th.players	{font-size: 0.8em;
+				text-align: center;
+				color: black;
+				font-weight: bold;}
+
+		td.playersText	{width: 70%;
+				height: 20px;
+				padding: 0px;
+				text-align: left;}
+
+		td.playersEmail	{width: 70%;
+				height: 20px;
+				padding: 0px;
+				font-size: 0.7em;
+				text-align: right}
+
+		td.playersEmailAll	{width: 70%;
+				height: 20px;
+				padding: 0px;
+				font-size: 0.9em;
+				text-align: center}
+				
+		td.playersImg	{width: 30%;
+				text-align: center;}
+
+		td.playersImg2	{width: 30%;
+				text-align: center;}
+
+		img.Players	{width: 50px;
+				height: 50px;}
+
+		img.Players2{width: 50px;
+				height: 50px;
+				float: left;}
+
+		td.BannerImg {text-align: center;}
+
+		img.bobhope	{margin-left: 50px;}
+
+		a:link	{color: rgb(0%,0%,100%);}
+		a:visted	{color: rgb(0%,0%,100%);}
+		a:active	{color: rgb(0%,0%,100%);}
+		a:hover		{color: rgb(100%,0%,0%);}
+		//a:active	{color: red;}
+		//a:visted	{color: #0000ff}
+		//a:active	{color: rgb(0,255,0)}
+		//a:hover	{color: rgb(100%,0%,0%)}
+
+		td.copyright	{font-size: .75em;
+				text-align: center;
+				color: navy;}
+
+		table.situ {width: 150px;
+				background-color: #ff9999;
+				border-color: black;
+				border-style: solid;
+				border-weight: 2;
+				border-width: thin;
+				text-indent: 3px;
+				font-size: 0.9em;
+				color: black;
+				margin-top: 7px;}
+
+		tr.situHeader	{text-align: center;
+				background-color: #ff3300;
+				text-indent: 0px;
+				font-size: 1.0em}
+
+		tr.situDetails	{text-align: center;
+				text-indent: 0px;
+				font-size: 0.8em}
+
+		img.test	{position: absolute;
+				top: 100px;
+				left: 100px;
+				width: 100px;}
+
+		}
+
+	</style>
+</head>
+
+<body>
+
+
+<table width=100% border="0" cellpadding="5" cellspacing="0" bgcolor="#ffffff">
+
+
+	<!-- **** HEADER ***-->
+	<thead>
+		<tr>
+			<td colspan="2"><img alt="Banner" src="golfbanner.jpg" height="60" width="100%"/></td>
+			<td class="BannerImg"><img name="slide" src="images\davethumb2.jpg" height="60" width="50%"/></td>
+		</tr>
+	</thead>
+
+
+	<!-- **** FOOTER ***-->
+	<tfoot>
+		<tr>
+			<td class="copyright" colspan="3">Web Design by Martin Anderson &nbsp; &nbsp; &copy; Copyright 2007. &nbsp; &nbsp; All rights reserved.</td>
+		</tr>
+
+		<tr>
+		<td><IMG SRC="http://freespace.virgin.net/cgi-bin/counter.cgi? uname=martin.anderson030661"></td>
+		</tr>
+	</tfoot>
+
+
+	<!-- **** BODY ***-->
+	<tbody>
+	<tr>
+
+	<td valign="top" align="center" bgcolor="#eeeeee" width="150">
+
+	<table width="100%" class="oomCurrent">
+		<tr class="oomHeader">
+			<th colspan="2">2010 Order of Merit</th>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">Leader Dave</td>
+		</tr>
+		<tr class="oomFooter">
+			<td colspan="2"><img class="players" src="images\davethumb4.jpg"></td>
+		</tr>
+		<tr class="oomDetails">
+			<td colspan="2">at 6th November 2010<br>after 6 of 20 rounds</br></td>
+		</tr>
+		<tr>
+			<td>Dave</td>
+			<td class="oomPoints">33</td>
+		</tr>
+		<tr>
+			<td>Steve</td>
+			<td class="oomPoints">24</td>
+		</tr>
+		<tr>
+			<td>Martin</td>
+			<td class="oomPoints">21</td>
+		</tr>
+		<tr>
+			<td>Jack</td>
+			<td class="oomPoints">19</td>
+		</tr>
+		<tr class="oomFooter">
+			<td colspan="2"><a href="" onClick="OOMByYear('2010');">Full Details</a></td>
+		</tr>
+	</table>
+
+	<table width="100%" class="oom">
+		<tr class="oomHeader">
+			<th>2007 Order of Merit</th>
+		</tr>
+		<tr class="oomOther">
+			<td class="playersImg2"><img class="players2" src="images\jackthumb4.jpg">Winners Jack & Steve<br \><br \><a href="" onClick="OOMByYear('2007');">Final Scores</a></td>
+		</tr>
+
+	</table>
+
+
+	<table width="100%" class="oom">
+		<tr class="oomHeader">
+			<th>2006 Order of Merit</th>
+		</tr>
+		<tr class="oomOther">
+			<td class="playersImg2"><img class="players2" src="images\jackthumb4.jpg">Winner Jack<br \><br \><a href="" onClick="OOMByYear('2006');">Final Scores</a></td>
+		</tr>
+
+	</table>
+
+	<table width="100%" class="oom">
+		<tr class="oomHeader">
+			<th>2005 Order of Merit</th>
+		</tr>
+		<tr class="oomOther">
+			<td class="playersImg2"><img class="players2" src="images\stevethumb4.jpg">Winner Steve<br \><br \><a href="" onClick="OOMByYear('2005');">Final Scores</a></td>
+		</tr>
+
+	</table>
+
+	<table width="100%" class="oom">
+		<tr class="oomHeader">
+			<th>2004 Order of Merit</th>
+		</tr>
+		<tr class="oomOther">
+			<td class="playersImg2"><img class="players2" src="images\stevethumb4.jpg">Winner Steve<br \><br \><a href="" onClick="OOMByYear('2004');">Final Scores</a></td>
+		</tr>
+	</table>
+
+<!--
+	<table width="100%" class="oom" style="margin-bottom: 7px;">
+		<tr class="oomHeader">
+			<th colspan="2">Football Competition</th>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">Winner Dave</td>
+		</tr>
+		<tr class="oomFooter">
+			<td colspan="2"><img class="players" src="images\davethumb2.jpg">&nbsp;&nbsp;<img class="players" src="images\soccer_ball.gif" width="50" height="50"></td>
+		</tr>
+		<tr>
+			<td>Dave</td>
+			<td>41</td>
+		</tr>
+		<tr>
+			<td>Steve</td>
+			<td>44</td>
+		</tr>
+		<tr>
+			<td>Martin</td>
+			<td>61</td>
+		</tr>
+		<tr>
+			<td>Jack</td>
+			<td>64</td>
+		</tr>
+		<tr class="oomFooter">
+			<td colspan="2"><a href="" onClick="DisplayFootball('Football.html');">Final Table 2006/07</a></td>
+		</tr>
+
+	</table>
+-->
+
+</td>
+
+<td valign="top" cellpadding="5" cellspacing="10">
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>24th October 2009</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Sensational Finale sees Fergus and Pearce Joint Winners</td>
+		</tr>
+
+		<tr>
+		<td>
+<!--		<img align="right" src="images\jackthumb3.jpg" width="100" height="100">-->
+
+<p class="News">Congratulations are in order to <span style="color: navy;"><strong>Jack Fergus</strong></span> and <span style="color: navy;"><strong>Steve Pearce</strong></span> after an amazing last Major at a very wet Goodwood.  A brilliant round by Fergus, scoring 37 points, allowed saw to score enough OOM points to tie with long time OOM leader Pearce.<p>
+
+<p class="News">The Order of Merit rules state that in the event of a tie the number of individual victories is taken into account, but with 8 each the two players cannot be separated and therefore they finish joint winners !!!<p>
+
+<p class="News">Full details to follow.<p>
+
+<!--
+<p class="News">The player's second visit to Bognor Regis saw a hot sunny day, apart from a rainy first 10 minutes, but the day got off to a bad start when the club-shop pro would not allow Dave Bishop and Anderson to play with pockets on the sides of their shorts.  Bishop decided to spash out on some shorts, and then very kindly lent his waterproof trousers to Anderson.<p>
+
+<p class="News">Incredibly it was Fergus's 9th consecutive victory at Chichester Tower/Bognor Regis, stretching over a 5 year period.  This time a steady round of only 31 points was enough to secure another victory.<p>
+
+<p class="News">Finishing in 2nd place was <span style="color: navy;"><strong>Martin Anderson</strong></span>, just 1 point ahead of Dave Bishop and 2 ahead of Steve Pearce.  After a poor start of 3 blobs in the first 6 holes, 2nd place was a good result for Anderson and kept his dreams of a first Order of Merit victory just about alive.<p>
+
+<p class="News">In 3rd place finished <span style="color: navy;"><strong>Dave Bishop</strong></span>.  Fresh from scoring 39 points and winning Slinfold with the Exiles, a lot was expected of Bishop, but again he failed to deliver.  Two nearest the pins were the highlights of his round.<p>
+
+<p class="News">Finishing in last place was <span style="color: navy;"><strong>Martin Anderson</strong></span> after a desparately disappointing round; the highlight being an excellent birdie 3 on the 16th.<p>
+-->
+
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>22nd August 2009</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Fergus's Fourth sets up Grand Finale</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\jackthumb3.jpg" width="100" height="100">
+
+<p class="News">It was no surprise that a return to his favourite neck of the woods saw <span style="color: navy;"><strong>Jack Fergus's</strong></span> 4th consecutive Order of Merit victory,  which sets up an intriguing last round in the extended 2007 Order of Merit.  The last round will see long time leader Steve Pearce only 8 points ahead of Fergus, his massive lead having been reduced by 17 points in the last 5 rounds.  Martin Anderson also goes into the last round, a major, 11 points behind Pearce which at least gives him the chance of a miraculous victory.<p>
+
+<p class="News">The player's second visit to Bognor Regis saw a hot sunny day, apart from a rainy first 10 minutes, but the day got off to a bad start when the club-shop pro would not allow Dave Bishop and Anderson to play with pockets on the sides of their shorts.  Bishop decided to spash out on some shorts, and then very kindly lent his waterproof trousers to Anderson.<p>
+
+<p class="News">Incredibly it was Fergus's 9th consecutive victory at Chichester Tower/Bognor Regis, stretching over a 5 year period.  This time a steady round of only 31 points was enough to secure another victory.<p>
+
+<p class="News">Finishing in 2nd place was <span style="color: navy;"><strong>Martin Anderson</strong></span>, just 1 point ahead of Dave Bishop and 2 ahead of Steve Pearce.  After a poor start of 3 blobs in the first 6 holes, 2nd place was a good result for Anderson and kept his dreams of a first Order of Merit victory just about alive.<p>
+
+<p class="News">In 3rd place finished <span style="color: navy;"><strong>Dave Bishop</strong></span>.  Fresh from scoring 39 points and winning Slinfold with the Exiles, a lot was expected of Bishop, but again he failed to deliver.  Two nearest the pins were the highlights of his round.<p>
+
+<p class="News">Finishing in last place was Order of Merit leader <span style="color: navy;"><strong>Steve Pearce</strong></span> who again had a disappointing round.  After 8 victories in the first 14 rounds, Pearce hasn't now won in 5 which has put a bit of a dampener on his likely 3rd Order of Merit success.<p>
+
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>12th June 2009</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Fergus continues hot trot at the Dyke</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\jackthumb2.jpg" width="100" height="100">
+
+<p class="News"><span style="color: navy;"><strong>Jack Fergus</strong></span> continued his excellent recent form with a 3rd consecutive victory at the Dyke, a course he has previously played poorly at.  A 3.30pm Friday evening round was played in warm dry conditions, and was really a story of 2 separate contests; between Fergus and Martin Anderson for the winner; and between Dave Bishop and Steve Pearce for 3rd.  The main contest was again decided at the 18th, with both players standing level on the tee.  However, a wayward tee shot from Anderson resulted in his first and only blob, and a steady 5 from Fergus was enough to win.  The decisive factor for Fergus were his 6 pars, 3 more than any other player.<p>
+
+<p class="News">As already mentioned, in 2nd place, finishing 2 points behind Fergus was <span style="color: navy;"><strong>Martin Anderson</strong></span>.  Again Anderson was let down by poor driving, and he also didn't manage to hole any putts between 6 to 12 feet, of which he had many.<p>
+
+<p class="News">In joint 3rd place, a long way behind, finished <span style="color: navy;"><strong>Dave Bishop</strong></span> and <span style="color: navy;"><strong>Steve Pearce</strong></span>.  Both players struggled throughout the round; Bishop's 2 nearest-the-pins being the only highlight.  Pearce's lead in the race for the Order of Merit was dramatically cut from 19 to 13 points, but with only 2 rounds left he he is going to need to have 2 more disasters to lose his hold on the crown; probably an unrealistic prospect.<p>
+
+<p class="News">An interesting statistic from this season (albeit played over 3 years !) is that there have been only 5 rounds where more than 36 stableford points have been scored; and all of those have been at Rookwood.  Perhaps a review of player's handicaps is required before next season!<p>
+
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>6th June 2009</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">King of West Sussex Wins Bognor Major</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\jackthumb4.jpg" width="100" height="100">
+
+<p class="News">Another incredibly close contest saw <span style="color: navy;"><strong>Jack Fergus</strong></span> win for the 2nd successive round and his first major of the season, breaking Martin Anderson's run of 3 majors.  The irony of Bognor being the closest course to Fergus's favourite, Chichester Tower, was not lost on the players.  It was the first visit to Bognor, and the tight parkland course was enjoyed by all players.  The weather was dry and warm enough, although not as hot as recently.  The contest was pretty close throughout albeit not high-scoring, and again all 4 players were in contention standing on the 18th tee, but in the end 9 points on holes 11-13 were just enough to secure victory for Fergus.<p>
+
+<p class="News">In 2nd place, finishing just a point behind Fergus and virtually sealing his 3rd Order of Merit was <span style="color: navy;"><strong>Steve Pearce</strong></span>.  Statistically speaking it was a very quiet round from Pearce, with unusally only 2 pars and no nearest-the-pins, but with only 2 blobs it was just enough to secure the runners-up spot, although Pearce won't be happy in not breaking his run of, now, 11 rounds since his last Major victory.<p>
+
+<p class="News">In joint 3rd place, only a point behind Pearce and 2 behind Fergus finished <span style="color: navy;"><strong>Dave Bishop</strong></span> and <span style="color: navy;"><strong>Martin Anderson</strong></span>.  The highlights of Bishop's round were an excellent birdie on the par 4 17th and a nearest the pin on the 5th; for Anderson he was again let down by some erratic driving and this time several 3 putts on very slick greens.  For Bishop winning has become a real struggle with no major wins in the last 7 and only 1 win in the last 20 order of merit rounds.<p>
+
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>16th May 2009</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Fergus's Invincibility Continues at Chichester</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\jackthumb3.jpg" width="100" height="100">
+
+<p class="News">After an enthralling finish <span style="color: navy;"><strong>Jack Fergus</strong></span> secured a quite incredible 7th consecutive victory on the Chichester Tower course on a particularly windy but fortunately dry day.  With Fergus and Steve Pearce level on the 18th tee, and with Martin Anderson only 2 points behind, a solid par was enough for Fergus to secure victory on the course he loves, thanks to a bogey from Pearce and despite a quite brilliant birdie from Anderson.  It also broke the recent domination by Pearce and Anderson and ended Fergus's barren spell of 12 rounds without a victory.<p>
+
+<p class="News">In joint 2nd place finished <span style="color: navy;"><strong>Steve Pearce</strong></span> and Martin Anderson.  Victory for Pearce appeared on the cards throughout the round and an excellent birdie 3 on the 186 yard 14th seemed to have secured it.  However a disappointing return of only 4 points in the last 4 holes (compared to 9 points from Fergus) let in Fergus.  Two nearest the pins continued Pearce's magnificent season on the par 3's and he now has 22, already breaking the record.  Pearce also maintained his 16 point lead in the race for the Order of Merit title with only 4 rounds to play.<p>
+
+<p class="News">As already mentioned joint runner-up was <span style="color: navy;"><strong>Martin Anderson</strong></span>, who was again let down by some very erratic driving.  The aforementioned birdie on the last (his 2nd successive round with a birdie on the last) left Anderson feeling more upbeat than he probably deserved to feel.  However, it moved Anderson into 2nd place in the Order of Merit, the position he has finished in all of the previous Order of Merits.<p>
+
+<p class="News">Bringing up the rear after a poor back 9 was <span style="color: navy;"><strong>Dave Bishop</strong></span>.  In contention after the front nine, 3 blobs on the back 9 left Bishop trailing the others by some margin.  It is now 13 rounds since Bishop's last victory.<p>
+
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>1st May 2009</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Anderson Jets in to take Chartham Major</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\martinthumb3.jpg" width="100" height="100">
+
+<p class="News">Despite jetting in from Aberdeen only a few hours beforehand, <span style="color: navy;"><strong>Martin Anderson</strong></span> secured the 2nd Major of the season, and his 3rd consecutive Major, at a sunny Chartham Park.  Despite some very erratic driving, a par on the 1st and a brilliant birdie 4 on the 18th were enough for Anderson to emerge victorious.  In a dramatic climax, following a fantastic comeback by Dave Bishop on the back-nine, it was level pegging on the 18th tee, but a fantastic pin-high 150 yard 7-iron pitch to the 3 tier green followed by a 12 foot putt clinched it for Anderson.  It also meant Anderson and Pearce have between them won the last 12 rounds, something Bishop and Fergus urgently need to address.<p>
+
+<p class="News">As mentioned <span style="color: navy;"><strong>Dave Bishop</strong></span> secured 2nd place following an exceptional back nine. A par on the hardest hole (12th) was followed by a birdie 2 on the 13th enabling Bishop to eliminate Anderson's 6 point front-nine advantage, but a few missed short putts ultimately cost Bishop victory.<p>
+
+<p class="News">In 3rd place for the third successive round was <span style="color: navy;"><strong>Jack Fergus</strong></span> who was never really in contention following a poor start.  Interestingly, Fergus recorded 4 pars, the most on the day by any player, but 4 blobs on the front nine was Fergus's undoing.<p>
+
+<p class="News">An uncharacteristically poor round from <span style="color: navy;"><strong>Steve Pearce</strong></span>, following his excellent performance in the previous round, meant his lead at the top of the Order of Merit was cut by 9 points, although he still leads by a seemingly insurmountable 16 points.  Incredibly Pearce has not won a major since March 2005, a run of 10 majors.<p>
+
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>18th April 2009</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">'Par'fect Pearce's Rookwood Romp</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\stevethumb4.jpg" width="100" height="100">
+
+<p class="News">Fully equipped with new Dunlop clubs, a superlative round by <span style="color: navy;"><strong>Steve Pearce</strong></span> almost secured his 3rd Order of Merit title with 6 rounds still to play.  On the front nine, Pearce recorded 8 pars and a bogey (on the short 8th) and kept his excellent round going until the last few holes; however he still managed to get 12 pars in total, including pars on the first 7 holes; surely a record.  It was Pearce's 3rd successive Rookwood victory and his 2nd successive score of 40 points there.  The round was played in mostly sunny conditions, following a few unsettled days, and the previous Friday's (Good Friday) postponement following a washout.<p>
+
+<p class="News">In 2nd place with a good solid round was <span style="color: navy;"><strong>Dave Bishop</strong></span> with 34 points, although his round was rather overshadowed by Pearce's performance.  However, it was enough to move Bishop into 2nd place in the Order of Merit.  Bishop's round included 3 pars and 11 bogeys; thereby managing to limit the number of double-bogeys, and beat the others.<p>
+
+<p class="News">In 3rd place was <span style="color: navy;"><strong>Jack Fergus</strong></span> who recovered well from a poor start to score 31 points.  However, it was the reigning Order of Merit champion's 11th successive round without a victory, a far cry from those heady days in 2006.<p>
+
+<p class="News">Bringing up the rear was <span style="color: navy;"><strong>Martin Anderson</strong></span>, who also started very badly and managed to recover to a certain extent, but not enough to trouble the others.  Anderson and Fergus are now tying for 3rd place in the Order of Merit.<p>
+
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>31st January 2009</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Anderson's the man at Mannings</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\martinthumb4.jpg" width="100" height="100">
+
+<p class="News">The 13th round of the 2007! Order of Merit took place, 8 months after the previous round, at a boggy Mannings Heath, on a calm dry day on the Kingfisher course.  Amazingly it was in August 2004 that Mannings was last played (it seems like only a couple of years ago!).  The winner that day was Jack Fergus with 44 points playing off 22, but on this occasion <span style="color: navy;"><strong>Martin Anderson</strong></span> was victorious in a close run thing.  Anderson's 6 pars were just enough to ward off the others, and gave Anderson back to back victories and more importantly leapfrogged him into 2nd place in the Order of Merit.<p>
+
+<p class="News">Finishing in 2nd place was <span style="color: navy;"><strong>Steve Pearce</strong></span> who maintained his very healthy lead in the Order of Merit and who must be feeling very confident of sealing his 3rd Order of Merit title out of the 4 played.  The highlight of Pearce's round was a birdie at the par 4 7th.<p>
+
+<p class="News">In 3rd place was <span style="color: navy;"><strong>Dave Bishop</strong></span>, who after a very promising front nine with 18 points, rather let it slip with 2 blobs on the back nine, crucially driving out of bounds on the 18th.<p>
+
+<p class="News">Bringing up the rear was veteran <span style="color: navy;"><strong>Jack Fergus</strong></span> who with plenty of time now on his hands having recently taken retirement decided not to spend any of it on the driving range.  The result leaves Fergus and Bishop level-pegging in the race for 3rd place in the Order of Merit.<p>
+
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>24th May 2008</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Pearce & Bishop Suffer as Anderson Conquers Slinfold</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\martinthumb4.jpg" width="100" height="100">
+
+<p class="News">After a near 4 month absence, the 2007/2008 season resumed at a sunny but windy Slinfold.  After a bright start by Pearce, and despite pressure from Fergus until near the end, it was <span style="color: navy;"><strong>Martin Anderson's</strong></span> day, as in the end he comfortably secured his 3rd victory in the last 5 starts and edged ever closer to moving off the bottom of the order of merit table.  In the end it was down to the number of bogeys scored, and Anderson's 3 was comfortably less than the other players.  The highlight of the day was a wonderful birdie on the difficult 17th, after a solid drive and superb 2nd shot, leaving a 6 foot birdie putt.<p>
+
+<p class="News">In a tight finish for 2nd place, <span style="color: navy;"><strong>Jack Fergus</strong></span> edged out Steve Pearce by one point.  Fergus's round was inconsistent at best, the highlights being an excellent birdie on the par 4 13th, and a nearest the pin on the 11th.  However, whilst at times, Fergus's short game was on song, other parts of his game badly let him down.  Fergus's birdie also put him to the top of the most birdies in the season table.<p>
+
+<p class="News">Despite his worst points return of the season, it wasn't too bad a day for current order of merit leader <span style="color: navy;"><strong>Steve Pearce</strong></span> as he maintained his 16 point lead.  After starting brightly, Pearce never really mentally recovered from blobs at 6 and 7, which Pearce largely put down to pre-tournament gardening !<p>
+
+<p class="News">Again <span style="color: navy;"><strong>Dave Bishop</strong></span> will want to forget the round, as he recorded the season's lowest of 18 points, beating his own record he had set only 2 rounds before.  In a par-less round there were basically no highlights !<p>
+
+<p class="News">And so with 60% of the season gone, Pearce's position looks pretty formidable, with the others slugging it out for 2nd place.  However, with 3 majors still to play, and as Pearce hasn't won a major since 2004, all is still to play for.<p>
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>2nd February 2008</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Awesome Pearce Shines at Rookwood</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\stevethumb4.jpg" width="100" height="100">
+
+<p class="News">Playing off 14, <span style="color: navy;"><strong>Steve Pearce</strong></span> scored a superb 40 points to increase his lead at the top of the order of merit table.  Played in largely sunny conditions with one shower, it was Pearce's 7th victory in the 11 starts, but it was easily his best performance of the season.  Two excellent birdies at the par 4 3rd and par 3 8th were impressive, but to top that Pearce was nearest the pin on all 4 par 3s, a first for the competition, and a quite fantastic achievement.<p>
+
+<p class="News">In 2nd place, equalling his best return of the season (37 points also at Rookwood) was <span style="color: navy;"><strong>Martin Anderson</strong></span>.  Statistically it was Anderson's best return of the season with 9 pars.<p>
+
+<p class="News">In 3rd place by one point from Fergus was <span style="color: navy;"><strong>Dave Bishop</strong></span> with a very respectable 34 points.  The highlight of Bishop's round was an excellent birdie at the par 4 9th, after an excellent approach to the green.<p>
+
+<p class="News">Bringing up the rear was <span style="color: navy;"><strong>Jack Fergus</strong></span> despite scoring 33 points; a score that would have won other order of merit rounds.  After 4 pars in 6 holes around the turn, Fergus wasn't able to par any of the last 7 holes, which ultimately cost him.<p>
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>24th November 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Anderson Squeezes Out Fergus at Gatton</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\martinthumb4.jpg" width="100" height="100">
+
+<p class="News">A superb birdie 4 on the long par 5 17th was the deciding factor in a closely fought encounter at Gatton Manor.  Anderson hit 3 brilliant shots down the 524 yard hole and sunk a one foot putt for his birdie.  It was Anderson's 2nd win in the last 3 starts and although still languishing at the bottom of the OOM table at the half way stage, gives him hope for a continued recovery during the 2nd half of the season.  His score of 35 points was his best return since the opening round of the season.  The weather was largely dry and the course was damp, without being sodden after heavy rain during the week.<p>
+
+<p class="News">It was close throughout the round between Anderson, <span style="color: navy;"><strong>Jack Fergus</strong></span> and OOM leader Steve Pearce, with Fergus eventually clinching 2nd place.  It was also Fergus's best points score since May, with 5 pars and a good birdie on the par 5 5th.  It also enabled Fergus to tie for 2nd place with Dave Bishop in the overall order of merit.<p>
+
+<p class="News">Although finishing 3rd, OOM leader <span style="color: navy;"><strong>Steve Pearce</strong></span> increased his lead at the top of the table to 11 points.  Pearce was again at his steady best with only 1 bogey, and Pearce has now scored between 30 to 36 points in 9 of the 10 rounds this season.<p>
+
+<p class="News">As for <span style="color: navy;"><strong>Dave Bishop</strong></span> the less said the better.  Bishop's run of 6 successive 2nd places was brought to a crashing end after scoring the lowest points return of the season (19).  And this after a good birdie on the par 3 2nd !!<p>
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>3rd November 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Controversy Mars Pearce Victory</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\stevethumb4.jpg" width="100" height="100">
+
+<p class="News">After an absence of nearly 2 months, the Order of Merit resumed on a lovely warm, still November day at West Chiltington, with <span style="color: navy;"><strong>Steve Pearce</strong></span> winning to continue his quest for his 3rd Order of Merit title.<p>
+
+<p class="News">However the day was marred by some ugly events which has thrown the society into turmoil.  Firstly a spat between Pearce and <span style="color: navy;"><strong>Dave Bishop</strong></span> erupted on the 14th after Pearce played the wrong ball, after dubious information given by Bishop.<p>
+
+<p class="News">Then <span style="color: navy;"><strong>Jack Fergus</strong></span> was extremely annoyed on the 18th fairway after shanking his 4th shot seemingly out of bounds.  Fergus contested that it was out of bounds, and seemed annoyed by the other players reactions to his misfortune (or rather lack of ability).  Maybe cries of "You big Scottish shanker" made in the heat of battle were misinterpreted by Fergus!<p>
+
+<p class="News">However, the biggest controversy occured in the scoring tent after the game.  On checking the scores, chairman <span style="color: navy;"><strong>Martin Anderson</strong></span> has discovered what appears to be a discrepancy with Fergus's score which throws the whole result in doubt.  Anderson marked down 6 for 2 on the long 8th for Fergus, but this should be 6 for 1.  This means Fergus would tie with Anderson for last place.  Anderson requires confirmation of Fergus's score from Fergus and/or Pearce and Bishop.<p>
+
+<p class="News">In terms of the actual round, it was pretty close all the way round, with Pearce just edging it at the end.  A run of 3 pars on 15, 16 and 17 was enough to clinch it for Pearce; 2 nearest the pins were the icing on the cake.  It was Pearce's 6th win in 9 order of merit starts.  For the other 3 it all came down to the 18th with Bishop coming out on top to clinch, incredibly, his 6th successive 2nd place.</p>
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>1st September 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Allez-Allez Anderson &#192 Tilgate</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\martinthumb3.jpg" width="100" height="100">
+
+<p class="News">The first major of the season (only decided after the players had hit their first tee shots) witnessed a joyful return to winning ways for Geneva-based <span style="color: navy;"><strong>Martin Anderson</strong></span>, finally bringing to an end Steve Pearce's recent run of success.  Anderson won with only 30 points and highlighted that at this level it is just as important to keep the blobs off the card as it is to score impressively.  Anderson scored less pars (only 3) than all of the other players, but with only 2 blobs it was enough to end his recent drought.  However, Anderson's questionable tactic of turning up only 5 minutes before the round seemed to have an unsettling effect on the other players; as a result of which Anderson may face disciplinary action.<p>
+
+<p class="News"><span style="color: navy;"><strong>Dave Bishop</strong></span> made it 5 second places on the spin, snatching it from the others with a good par at the 18th.  An unspectacular round saw 4 pars, but 5 blobs were Bishop's downfall.  Nevertheless Bishop will be pleased with another 2nd place, especially with double position points, meaning he is now only 5 points away from Order of Merit leader Steve Pearce.  Bishop adopted an unusual tactic of hitting the ball just off the teeing area on several holes to leave him with long second shots, but he may need to reconsider this tactic if he wants to win the Order of Merit.</p>
+
+<p class="News">For in-form <span style="color: navy;"><strong>Steve Pearce</strong></span> it was a well below par performance.  Despite chipping in on the 9th for a birdie three, Pearce really struggled throughout the round, not helped by some uncharacteristically wayward driving.  Even the golfing gods tried to help Pearce by consistently 'throwing' the ball back on to the fairway after driving into the trees, but on the day it wasn't enough to save Pearce, who saw his lead at the top of the Order of Merit cut back by Bishop.</p>
+
+<p class="News">Bringing up the rear, fresh from a reported 2 over par back nine at Hill Barn only the week before, was 2006 champion <span style="color: navy;"><strong>Jack Fergus</strong></span>.  It was a day of sh*t or bust for Fergus, with 4 pars, a good birdie on the par 3 third and 2 nearest the pins being more than offset by 8 (eight) blobs.  Fergus will be especialy disappointed as he was lying in 2nd position on the 18th tee with a par giving him a chance of tying for first place with Anderson after Anderson's errant tee shot.  However a poor second shot following an excellent drive caused Fergus to blob the hole and this really opitimized his round; some wayward second shots after excellent tee shots ruining his scorecard.</p>
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>28th July 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Pearce Makes It 4 On The Spin !!</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\stevethumb4.jpg" width="100" height="100">
+
+<p class="News">After last season's woes, <span style="color: navy;"><strong>Steve Pearce</strong></span> continued his recent good run of success with another solid performance (36 points) and win on a nice day at Rookwood.  Incredibly all players more or less finished in the same positions for the 4th successive round.<p>
+
+<p class="News"><span style="color: navy;"><strong>Pearce</strong></span> started like a train with 5 pars and a birdie (also an NTP at the short 8th) to record a 2 over par front 9 scoring 23 points.  Only one par was recorded on the back 9, but all 4 players struggled on the back 9 and Pearce finished comfortably ahead.</p>
+
+<p class="News"><span style="color: navy;"><strong>Dave Bishop</strong></span> finished 2nd again with a steady 33 points, an improvement on his last 3 rounds, although with only 2 pars and 1 birdie (again at the short 8th).</p>
+
+<p class="News">2006 champion <span style="color: navy;"><strong>Jack Fergus</strong></span> also improved on his previous few rounds to score 30 points and secure 3rd place.  However, the consistent form of 2006 seems to have completely deserted Fergus, and he really needs to question his motivation and tackle the apparent complacency that has slipped into his game in order to return to winning ways.</p>
+
+<p class="News">As for <span style="color: navy;"><strong>Martin Anderson</strong></span> what can you say?  Another poor return of 26 points (despite back-to-back birdies on the 8th and 9th) means Anderson is in his worst run of form since the Order of Merit started in 2004.  Perhaps an extended period in Geneva will help sort out Anderson's mind ... and swing !!!</p>
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>7th July 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">3 on the Bounce for Pearce</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\stevethumb2.jpg" width="100" height="100">
+
+<p class="News">It was more of the same on Saturday as East Brighton was played for the first time.  It was another (third successive) comfortable victory for <span style="color: navy;"><strong>Steve Pearce</strong></span> and all players scored and finished as in the two previous rounds.  After persistant rain all week, the round was played in sunny conditions with a stiffish breeze making life difficult, particularly on the inwards (easy !!) nine.<p>
+
+<p class="News"><span style="color: navy;"><strong>Pearce</strong></span> again was the strongest player with 5 pars and a birdie (and nearest the pin) at the 2nd enough to always leave him comfortably ahead.  Pearce's return of 31 points meant he has scored between 30 and 34 points in all 6 of this season's rounds, a very creditable performance.</p>
+
+<p class="News">Thanks to a par at the 18th <span style="color: navy;"><strong>Jack Fergus</strong></span> managed to tie with <span style="color: navy;"><strong>Dave Bishop</strong></span>, although both only scored a disappointing 25 points.  It was the third disapponting round in a row for the misfiring Fergus, who had previously played so consistently well for the last 18 months. It was the third successive 2nd place for Bishop who, although has not been scoring well, has benefited from Fergus and Anderson's loss of form.</p>
+		
+<p class="News">For <span style="color: navy;"><strong>Martin Anderson</strong></span> it was another disastrous round, with his iron play and short game in ruins.</p>
+
+<p class="News">Pictured below are the lads at the half way house contemplating their sausage and bacon sandwiches with a lovely mug of tea, whilst looking at the fantastic view past the 9th green to Roedean school and St Dunstans.</p>
+
+<img align="left" src="images\EastBrightonLadsCut.jpg" width="370" height="300">
+<img align="right" src="images\9thEastBrighton2Cut.jpg" width="370" height="300">
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>23rd June 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Pearce goes top after Wildwood Win</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\stevethumb3.jpg" width="100" height="100">
+
+<p class="News">A second successive comfortable victory for <span style="color: navy;"><strong>Steve Pearce</strong></span> saw him move top of the Order of Merit at a showery Wildwood.  After intermittent showers for the first 5 holes, the heavens opened on the 6th tee resulting in the players having to shelter under trees for 30 minutes.  The rain clouds were replaced by blue skys and the rest of the round was completed in warm sunshine.<p>
+
+<p class="News">With all 4 players getting similar scores to last time out at the Dyke, <span style="color: navy;"><strong>Pearce</strong></span> was again steady, if unspectacular, with only one blob in the first 15 holes.  The highlight of the round was an excellent run of 5 pars in 6 holes from the 10th onwards on the difficult C course.  Pearce also recorded 2 nearest the pins, on the 11th and the tricky 15th.  With 3 wins in the 5 Order of Merit rounds played so far this season, Pearce is starting to regain the confidence that led him to Order of Merit titles in 2004 and 2005.</p>
+
+<p class="News">For the second round running <span style="color: navy;"><strong>Dave Bishop</strong></span> scored only 27 points but it was enough again to finish in 2nd place.  Bishop promised more after 6 pars in the first 11 holes, leaving him 3 points ahead of Pearce, but a disappointing return of only 4 points in the last 7 holes ultimately cost Bishop victory.  A nearest the pin at the 2nd left Bishop just one behind Pearce in the NTP competition.</p>
+		
+<p class="News">For 2006 Order of Merit winner <span style="color: navy;"><strong>Jack Fergus</strong></span> and also <span style="color: navy;"><strong>Martin Anderson</strong></span> it was another day to forget.  Fergus just managed to pip Anderson to 3rd place but it was scant consolation for another disappointing round.  Both players have really struggled in the last 2 rounds, and after being 1st and 2nd in the Order of Merit for the last 15 months both must be wondering what was gone wrong.</p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>31st May 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Steady Pearce Wins at the Dyke</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\stevethumb3.jpg" width="100" height="100">
+
+<p class="News">A thoroughly professional performance from <span style="color: navy;"><strong>Steve Pearce</strong></span>, reminiscent of his hey-day when winning the 2004 and 2005 Order of Merit, was the highlight of a twilight round at the Dyke.  Forecast heavy rain luckily never materialised and the round was played in remarkably good conditions with relatively little wind for the Dyke.  The round was started off the 10th because of time contraints.<p>
+
+<p class="News"><span style="color: navy;"><strong>Steve Pearce</strong></span> started the round playing well within himself and 19 points at the turn was a deserved return for some consistent golf.  The back nine was not quite as good, but victory was never really in doubt by the 12th, and 2 good nearest the pins at the 5th and 8th (i.e. 14th and 17th for the round) capped a solid performance.</p>
+
+<p class="News">Finishing in second place was <span style="color: navy;"><strong>Dave Bishop</strong></span> albeit with only 27 points.  The highlight of a mixed round was an excellent nearest the pin at the long 17th.</p>
+		
+<p class="News">It was a day to forget for current Order of Merit leader <span style="color: navy;"><strong>Jack Fergus</strong></span> and <span style="color: navy;"><strong>Martin Anderson</strong></span>.  Both players struggled to only score 21 points.  Ironically in 3 rounds at the Dyke Fergus's best return is only 24 points ... something to bear in mind for the future!!</p>
+
+<p class="News">N.B.  The Dyke has changed the stroke indexes since we last played; hence why it has been labelled Dyke2.</p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>27th May 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Joy for Bishop and Fergus at Cranleigh</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\jackthumb3.jpg" width="100" height="100">
+		<img align="right" src="images\davethumb3.jpg" width="100" height="100">
+
+<p class="News">A damp, still, grey day witnessed a classic battle between heavyweights <span style="color: navy;"><strong>Dave Bishop</strong></span> and current champion and Order of Merit leader <span style="color: navy;"><strong>Jack Fergus</strong></span>, finishing in a tie on 36 points.  It was also a day for the statisticians with 3 birdies and 5 nearest the pins.<p>
+
+<p class="News">A good performance by <span style="color: navy;"><strong>Dave Bishop</strong></span>, fresh from an Exiles Golf Society meeting at East Brighton, saw him record his first victory (albeit joint) of the season.  Two goods pars in the first 2 holes were followed by 2 blobs putting Bishop behind Fergus and Pearce at the turn.  However a great par at the stroke index 1 10th, followed by another par at the long par 3 11th after a fantastic tee shot, and then another 3 points at the stroke index 2 12th saw Bishop leapfrog into the lead and it was nip and tuck from then on with Fergus.  Tied going down the 18th both players had their chances but both made 6 to finish as joint winners.
+
+<p class="News"><span style="color: navy;"><strong>Jack Fergus</strong></span> continued his impressive start to the season to record his 3rd win in the 3 starts.  Incredibly it was Fergus's 9th victory in the last 13th Order of Merit rounds.  Fergus again played very steadily with only 1 blob, the highlight being a birdie on the long par 5 9th hole.  He also held his game together manfully after the onslaught by Bishop, where in previous seasons he probably would have folded.</p>
+		
+<p class="News">Finishing in third place was <span style="color: navy;"><strong>Steve Pearce</strong></span> after another promising but ultimately disappointing round.  Fresh from an 82 at Hill Barn in practice, Pearce hit the ground running with 3 successive pars followed by another at the 5th.  However, typical of his erratic form from last season, Pearce then only scored 10 points in the next 10 holes to put him out of contention.  A great birdie at the 16th (Pearce's first in 11 rounds) followed by par at the 17th gave Pearce some consolation, to finish with 32 points.  Unfortunately Pearce forgot his golf shoes and had to play in a borrowed pair that were a size to big, and this undoubtedly prayed on Pearce's mind during the round.</p>
+
+<p class="News">Bringing up the rear and leaving him bottom of the Order of Merit was <span style="color: navy;"><strong>Martin Anderson</strong></span>.  A trip to Brussels and an uncharacteristic late night the day before led to a lucklustre performance, with a birdie at the 15th and 2 excellent hot chocolates in the clubhouse the only highlights for Anderson.</p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Previous">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>14th May 2007</p>
+			</td>
+		</tr>
+
+		<tr class="Updates">
+		<td>
+		<p class="News">Congratulations go to Dave on winning the 2006/07 Football Competition.  A dramatic last day in the Premiership was not quite so dramatic in the competition as a win for Spurs and a draw for Everton secured the title for Dave.  Steve needed wins for Bolton and Reading and defeats for Spurs and Everton but it wasn't to be.  Dave probably deserves to win as he picked the Champions, had 4 teams in the top 9, and was only let down not surprisingly by the last pick in the competition which was Watford.  Well done Dave (on finally winning something !!!).<br \></p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>13th May 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Pearce breaks Jinx & Six of the Best for Fergus</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\jackthumb.jpg" width="100" height="100">
+		<img align="right" src="images\stevethumb.jpg" width="100" height="100">
+
+<p class="News">In extremely blustery conditions <span style="color: navy;"><strong>Steve Pearce</strong></span> finally broke an 18 round winless jinx by finishing joint winner with <span style="color: navy;"><strong>Jack Fergus</strong></span> who extended his incredible winning streak at Chichester to 6 after a stunning comeback.  After 4 topsy-turvy rounds all 4 players were amazingly separated at the end by only one point.<p>
+
+<p class="News">Heavy rain all week incredibly subsided on Saturday and the showers forecast didn't materialise, probably blown away by a very strong wind.  This made shot selection difficult and all of the players struggled at times.  The winning score was only 30 points at a normally high scoring course.<p>
+
+<p class="News">Playing off less that 20 for the first time since August 2005, defending champion and early Order of Merit leader <span style="color: navy;"><strong>Jack Fergus</strong></span> struggled early on and was well behind leaders <span style="color: navy;"><strong>Steve Pearce</strong></span> and Anderson after 13 holes.  However a great run of 3 successive pars at holes 14,15 and 16 coincided with poor play from Pearce and Anderson, and a great run of 3 pars in 4 holes by Bishop to leave only 2 points between all 4 going up the last with Fergus and Anderson tied for the lead.  A bogey at the 18th was enough for Fergus to tie with Pearce who parred the last.  Pearce had a steady, if unspectaclar round, but as he admitted afterwards jointly winning could be just what was required to turn round his recent patchy form.</p>
+		
+<p class="News">Finishing in joint third position on 29 points, only a point behind, were <span style="color: navy;"><strong>Dave Bishop</strong></span> and <span style="color: navy;"><strong>Martin Anderson</strong></span>.  After parring the first hole (with a nearest the pin) Bishop had an horrendous run of only 11 points in 12 holes to look well out of contention.  However, another nearest the pin at the 14th was the catalyst for a brilliant finish with 4 pars in the last 5 holes, scoring 15 points, more then he had scored in the previous 13 holes.  Anderson had an inconsistent round with only 1 blob but also only 3 pars; some good putting managing to rescue some points after some wayward driving.</p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>29th April 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Champion Fergus Steamrollers on at Rookwood</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\jackthumb.jpg" width="100" height="100">
+
+<p class="News">In glorious conditions <span style="color: navy;"><strong>Jack Fergus</strong></span> secured the perfect start to the 2007 campaign with victory at Rookwood.  On another hot sunny day the ground was hard and the greens not receptive, but all 4 players scored over 30 points to start the 2007 season in positive fashion.<p>
+
+<p class="News">After 7 weeks off to savour his 2006 triumph, Fergus showed no signs of early season rustiness, as in snap-happy mood and playing off only 20, he scored a brilliant 25 points on the front nine including a run of 4 pars and a birdie (par 3 8th) from the 5th to the 9th. Handicap preservation, tiredness or shock was in evidence on the back nine with only 13 points scored, but it was enough for an excellent return of 38 points, to win by 1 point and a great start.  There were also 2 NTPs at the 8th and 16th.  The only negative for Fergus was the post-round realisation that a handicap of 20 or over may not be seen again for the forseeable future.</p>
+		
+<p class="News">Perennial runner-up <span style="color: navy;"><strong>Martin Anderson</strong></span> started the season by finishing runner-up!  Nevertheless it was a pleasing start for Anderson who, playing off 15, shot 8 pars and only 1 blob for a round of 86 and a credible return of 37 points.</p> 
+
+<p class="News">Mirroring the final positions of the 2006 season, <span style="color: navy;"><strong>Dave Bishop</strong></span> pipped Steve Pearce to finish in 3rd position with 32 points.  Playing off 20, an inconsistent round witnessed a birdie (par 4 6th), an NTP (11th), 3 pars and 4 blobs.  However, Bishop will be pleased to have snatched 3rd place from Pearce, having started his round with only 6 points from the first 5 holes, putting him well behind the others.</p>
+
+<p class="News">Bringing up the rear again was a misfiring <span style="color: navy;"><strong>Steve Pearce</strong></span> who, playing off 15, started brightly with 19 points on the front nine, but blew up on the back nine and finished with only 5 points from the last 6 holes.  Recent regular midweek golf at Hill Barn with guru Kevin Black appeared to have offered Pearce a solution to his 2006 woes, but on this showing 2007 promises little better!</p>
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<!--
+	<table class="Previous">
+
+		<tr class="NewsHeader">
+			<td colspan="2">
+				<p><iframe src="IFrameTest.html" width="100%" height="100"></iframe></p>
+			</td>
+		</tr>
+
+	</table>
+
+	<br \>
+-->
+	<table class="Previous">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>23rd April 2007</p>
+			</td>
+		</tr>
+
+		<tr class="Updates">
+		<td>
+		<p class="News">Football Competition updated.  The lead changes hands again as Steve leads Dave by only 2.  Looks like it's going to go to the final weekend of the season.<br \></p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Previous">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>13th April 2007</p>
+			</td>
+		</tr>
+
+		<tr class="Updates">
+		<td>
+		<p class="News">Football Competition updated.<br \></p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>10th March 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Fergus Crowned 2006 Champion at Kent National</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\jackthumb.jpg" width="100" height="100">
+
+<p class="News"><span style="color: navy;"><strong> Jack Fergus</strong></span> achieved a life long ambition to win the Order of Merit title at the unexpectedly undulating Kent National, after an extremely long and tiring round lasting nearly 6 hours.  Fergus managed to fight off the challenge of <span style="color: navy;"><strong> Martin Anderson</strong></span> who, although winning on the day and depriving Fergus of the grand slam of Majors, could nevertheless not stop him winning the ultimate prize.<p>
+
+<p class="News">The final round, and major, of the season saw anticipated showers never materialise and so was played in largely sunny conditions, although a blustery wind and exceptionally wet conditions underfoot, made play slow and scoring difficult.  The 100-150 yard walk from green to tee on most holes (largely uphill and slippery), added to the difficulty.</p>
+		
+<p class="News">The battle for the Wooden Spoon witnessed a dramatic turnaround after <span style="color: navy;"><strong> Steve Pearce</strong></span>, who had led for most of the round, collapsed in the last 3 holes and was therefore unable to score enough points to overhaul the misfiring <span style="color: navy;"><strong>Dave Bishop</strong></span>, who had a nightmare of a round to record the lowest ever Stableford points total, beating by one Fergus's record of 13 at Rusper in 2004.  Bishop later commented that he was disappointed because he wanted to win something !!</p> 
+
+<p class="News">Pearce took the early lead although there was never much in it between him, Anderson and Fergus until the latter stages.  It was clear from very early on that Anderson, needing to score over 36 Stableford points to stand any chance of winning the overall Order of Merit, was never going to do that, and so with the pressure off Fergus the battle was really about who could win on the day.  Anderson just did enough to win with 6 pars, Fergus again played steadily, Pearce again promised more than he ultimately delivered, and Bishop just had one of those days.</p>
+
+<p class="News"><span style="color: navy;"><strong>Shot of the day</strong></span> was Pearce's tee shot at the par 3 seventeenth hole.  Although only 159 yards off the tee, a stiff breeze meant the hole played several clubs longer.  Pearce took a 5 wood and with a low draw finished only 20 yards from the pin.  On the day it was the only shot on any of the four par 3s that finished on the green.  It also saw Pearce top the nearest the pin table for the season.</p>
+
+<p class="News"><span style="color: navy;"><strong>Highlight of the day</strong></span> has to be Mr Bishop's remark about Shaun Wright-Phillips father which had everyone in stitches.  Thanks again to Mr Bishop for driving; it turned out to be quite a distance; still it was nice to see him driving straight !!  The course itself is definitely worth a revisit (especially at 2 for 1 prices), perhaps in better weather when the ball is running more.</p>
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>6th March 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Excitement Reaches Fever Pitch for Season Finale</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\jackthumb.jpg" width="75" height="75">
+		<img align="left" src="images\martinthumb.jpg" width="75" height="75">
+		<img align="right" src="images\stevethumb.jpg" width="75" height="75">
+		<img align="right" src="images\davethumb.jpg" width="75" height="75">
+
+		<p class="News">With only 3 days to go before the season reaches its climax at the 'unplayed' Kent National, the tension and emotions are sure to be increasing by the day.</p>
+
+		<p>The current weather forecast is for sunshine and showers, although the unpredictability of the weather could mean anything could happen.</p>
+
+<p class="News">Odds on favourite and Order of Merit leader <span style="color: navy;"><strong> Jack Fergus</strong></span> goes into the final major in impressive form.  Fergus has won all 3 majors to be played this season, has won 6 of the last 9 OOM events, and with an 8 point lead looks destined to win the prize he so greatly desires.  However, as much as anything Fergus will have to battle with his own temperament to triumph.</p>
+
+<p class="News">Standing in Fergus's way in second place is <span style="color: navy;"><strong> Martin Anderson</strong></span>.  Incredibly for the 3rd successive season Anderson goes into the final round in this position.  In 2004 he started 4 points behind, in 2005 it was 7 points and this season it is 8 points.  However, in 2004 and 2005 he was behind Steve Pearce; this season he stands a greater chance because Fergus is more susceptible to crack under intense pressure.  Anderson has to hope that he wins with a 36+ points score, and Fergus finishes 4th (or possibly 3rd) with a score under 30.</p>
+
+<p class="News">Fighting for the wooden spoon are <span style="color: navy;"><strong> Dave Bishop</strong></span> and <span style="color: navy;"><strong> Steve Pearce</strong></span>, with only 4 points separating them.  Wooden-spoonist in 2004, Bishop will be trying his hardest to stay in 3rd place, and with 5 OOM wins behind him this season, is favourite to do so.    Pearce will be wanting to forget his 'annus horribilus' by recapturing the form of old.  However, with only 1 win this season and without a major win in the last 7 majors its a big ask.</p>
+
+<p class="News">As a side issue the competition for most birdies and nearest the pins is still up for grabs.  Anderson currently has 9 birdies to Bishop's 8.  Incredibly Fergus only has 3 and all of those were in the same round (yes, at Chichester !!).  Pearce's record of 14 in 2005 looks like standing.  Nearest the Pin is much closer with Bishop and Pearce on 13, and Fergus on 12.  Again Pearce's record of 19 in 2005 stands no chance of being beaten.</p>
+
+<a href="http://www.kentnational.com/">Kent National Web Site</a>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Previous">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>5th March 2007</p>
+			</td>
+		</tr>
+
+		<tr class="Updates">
+		<td>
+		<p class="News">Football Competition updated.<br \>Statistics by Hole added (right-hand side).<br \>Nearest the Pin stats added (right-hand side).<br \></p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Previous">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>1st March 2007</p>
+			</td>
+		</tr>
+
+		<tr class="Updates">
+		<td>
+		<p class="News">Football Competition updated.<br \>Finance Details added (right-hand side)<br \>Scores by Course added (right-hand side).  Still working on this ... I realise the courses are duplicated !!!<br \>To date have had no applications for Fixtures Secretary so may have to stick with Mr Pearce !</p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>18th February 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Match Fixing Scandal Rocks Golf World</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\jackthumb2.jpg" width="100" height="100">
+		<img align="right" src="images\stevethumb2.jpg" width="100" height="100">
+
+		<p class="News">All hell broke loose at the weekend surrounding allegations of match fixing following Jack Fergus victory at Chichester for the 5th successive occasion.  Fixtures booking secretary Steve Pearce booked Chichester Tower late on Friday for the penultimate Order of Merit event; this was the 3rd time this venue had been chosen for the 2006 season and is renowned to be Fergus's favourite course.</p>
+
+<p class="News">Fergus is alleged to have pleaded with Pearce to play at Chichester, allegations which have been strenuously denied.  Despite last minute phone calls and text messages on Friday night between Chairman Martin Anderson and Pearce, the event still went ahead, but the repercussions will be felt throughout the Society, and golf in general.  The couple have also denied rumours that they are thinking of buying a flat together near Chichester.</p>
+
+<p class="News">Anderson commented "It's unfortunate to hear this sort of thing and I'm sure there's no truth in it.  I'm sure the fact that 1) the venue was arranged at the last minute, 2) Pearce and Fergus have known each other a long time, 3) Fergus drove, so there could be no last-minute change of venue and 4) the course was virtually inaccessible owing to roadworks, are all co-incidental".  Dave Bishop was unavailable for comment, although he was overheard to call Fergus a 'sweaty' something or other during Saturday's round.</p>
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Latest">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>18th February 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">King of Chichester on Brink of OOM Glory</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="left" src="images\jackthumb.jpg" width="125" height="125">
+
+		<p class="News">An unprecedented 5th successive victory at Chichester put <span style="color: navy;"><strong> Jack Fergus</strong></span> on the brink of winning his first Order of Merit after a hard-earned victory.  This was Fergus's 3rd win at Chichester this season following wins in 2005 and 2004.</p>
+
+		<p class="News">Conditions overhead were grey but very mild, although a lot of standing water on the course following heavy rain in the last couple of weeks, made scoring slightly more difficult than normal.  The majority of bunkers were almost completely filled with water.</p>
+
+		<p class="News">All 4 players had an inconsistent round, with Fergus eventually triumphing with only 31 points ... a very disappointing return from high-scoring Chichester.</p>
+
+		<p class="News"><span style="color: navy;"><strong>Fergus</strong></span> continued his impressive recent form, and secured his 6th win in the last 9 Order of Merit rounds.  A handicap cut of 2 to 20 looked too much in the early stages and Fergus struggled to only 3 points from the opening 4 holes.  Fergus then brilliantly turned his round around with 3 successive pars (scoring 10 points) to catch up early leader Steve Pearce.  Consistent golf from then on put Fergus steadily ahead before a late wobble with 3 successive blobs meant all was to play for down the 18th.  Fergus held his nerve and a par left him with a hard-earned, but crucial victory.</p>
+
+		<p class="News"><span style="color: navy;"><strong>Steve Pearce</strong></span> finished in 2nd place for the 3rd successive occasion, making it <strong>16</strong> events since his last Order of Merit win; a dismal statistic from the 2005 and 2004 champion.  Pearce looked destined to end his barren spell by parring 5 of the first 6 holes to put him 6 points ahead of the nearest challenger.  However, an errant tee shot on the 7th followed by an overly ambitious recovery shot led to Pearce's game collapsing and 13 points from the final 12 holes was scant reward for the early promise.</p>
+
+		<p class="News"><span style="color: navy;"><strong>Dave Bishop</strong></span> did well to recover from a poor front nine to finish in 3rd place but won't have been happy in only scoring 28 points.  Bishop's woes started on the first green, when after a good tee shot to hit the centre of the green for nearest the pin, he somehow managed to <strong>FIVE</strong> putt from only 20 yards.  Five other blobs were mixed with five pars and meant Bishop finished with the best back nine (16 points) to only just miss out on the top two places.</p>
+
+		<p class="News">Having led the Order of Merit for most of the season, <span style="color: navy;"><strong>Martin Anderson's</strong></span> season looks to be ending on a low, finishing last on the day and only scoring 27 points.  Steady, if unspectacular, golf meant Anderson was in a three way tie for the lead at the half way stage, but some poor driving and putting caused him to fade on the back nine.  The heady days of mid-summer practise now seem a long way off and Anderson needs a miracle to have any hopes of overtaking Fergus.</p>
+
+		<p class="News"><span style="color: navy;"><strong>Shot of the day</strong></span> was Pearce's tee shot at the par 3 third hole.  Starting the ball off just right of the pin, a bit of draw saw the ball head straight at the flag, pitching and stopping just a couple of feet to the left of and behind the pin.  Unfortunately Pearce missed a tricky downhill putt for a birdie.</p>
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Previous">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>10th February 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Forty for Fantastic Fergy at Glorious Goodwood</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\jackthumb.jpg" width="125" height="125">
+
+		<p class="News">An emotional last ever round at players favourite Goodwood witnessed some scintillating golf
+		from Jack Fergus, to see him leap-frog over long time leader Martin Anderson in the Order of Merit.</p>
+
+		<p class="News">The 3rd Major took place in damp conditions after heavy overnight and early
+		morning rain, although only the occasional shower dampened the day.  The round was originally booked for 			Tilgate, but was switched to Goodwood at the last minute after hearing that tee mats were in operation at 			Tilgate.</p>
+
+		<p class="News">Fergus played consistently well from start to finish, scoring an 87, with 43 Stableford
+		points, 7 pars and all 3 nearest the pins, and this after the Committee had generously increased his handicap
+		to 22 after a disappointing round a fortnight ago.  An interesting decision regarding Fergus's future
+		handicap awaits.</p>
+
+		<p class="News">Incredibly this was Fergus's 3rd Major win of the season, and with the Grand Slam and Order of 		Merit in sight, a nail-biting end to the season is in prospect.  However, how will Fergus cope with
+		the off the field pressures following the shocking revelations about wife Anne's preference for legendary 			deceased comedian Bob Hope in the bedroom ?</p>
+
+		<img class="bobhope" src="images\bobhope.jpg" width="100" height="100">
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<img src="images\jackthumb2.jpg" width="100" height="100">
+		<br \>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Bob Hope
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;No Hope
+
+		<p class="News">It was a disappointing day for Anderson, who was inconsistent in all aspects of his game,
+		in particular missing some short putts at crucial stages of the round.  Anderson's frustration turned to
+		anger on the 17th following Fergus's 3rd wayward tee shot in 4 holes, which finished so far off target that it  		left him on the wrong fairway, but with a good lie.</p>
+
+		<p class="News">Finishing in 2nd place on 34 points was Steve Pearce, who is beginning to show signs
+		of recapturing the consistency that made him Order of Merit winner for the past two seasons.  Crucially
+		he made up 6 points on Dave Bishop to trail by only 5 for the wooden spoon.  The extra point he gained
+		'for turning-up' following injury at West Chiltington in December may yet prove contentious.</p>
+
+		<p class="News">Bringing up the rear was a disappointed Bishop who, following par at the 6th and birdie at			 the 7th (the day's only birdie), faded badly on the back nine.</p>
+
+		<p class="News">Shot of the day has to go to Fergus's tee shot on the long par 3 11th.  After pulling 2 			points back on Fergus at the 10th, Anderson hit a brilliant tee shot on the 11th to within 12 feet.
+		However, under extreme pressure Fergus took wood off the tee and hit to within 6 feet.  Close runner-up
+		was Bishop's 20 yard chip in on the 7th for birdie.</p>
+
+		<img src="images\autumntree.jpg" width="200" height="200">
+
+		<br \>&nbsp; &nbsp; &nbsp; A final memory of Goodwood
+
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Previous">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>7th February 2007</p>
+			</td>
+		</tr>
+
+		<tr class="Updates">
+		<td>
+		<!--<marquee scrollamount="25" scrolldelay="250">System Updated</marquee>-->
+		<p class="News">The latest Football Competition table, and link to detailed table has been added.
+		See bottom left of screen.</p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Previous">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>27th January 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Bishop shines at Rookwood</td>
+		</tr>
+
+		<tr>
+		<td>
+		<img align="right" src="images\davethumb.jpg" width="125" height="125">
+
+		<p class="News">Fresh from 18 holes, only 24 hours earlier, at the Exiles Golf Society meeting at
+		Chichester, Dave Bishop secured victory with some steady golf including only 2 blobs.</p>
+
+		<p class="News">Conditions were perfect for the time of year, with warm sunshine, although underfoot
+		it was wet and extremely muddy in places resulting in some tricky conditions from just off the greens.</p>
+
+		<p class="News">At the business end of the Order of Merit, Martin Anderson gained an important 3 points on
+		Jack Fergus, thanks to Steve Pearce three putting from only 20 yards on the 18th to tie with Anderson.
+		Leader Anderson had an inconsistent round with 1 birdie, 7 pars, 2 nearest the pins and 4 blobs.
+		Fergus didn't seem to be able to cope with a handicap cut to 21 and was always just slightly behind
+		the leaders.
+		Pearce had a consistent round with only 1 blob, but he was badly let down by his putting, leaving
+		several putts well short.  As Pearce said walking off the 18th "My putting was awful today".</p>		
+
+		<p class="News">And so there are only 3 rounds left including 2 majors.  There are only 4 points between
+		Anderson and Fergus, with Bishop coming up the rails with a late charge, although surely he has too
+		much to do.  Twice champion Pearce is trailing in last place, although still capable of moving up
+		the leaderboard if he can repeat the form he showed recently at Hill Barn when shooting 76.</p>
+		</td>
+		</tr>
+
+	</table>
+
+	<br \>
+
+	<table class="Previous">
+
+		<tr class="NewsHeader">
+			<td>
+				<p>6th January 2007</p>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="NewsItemHead">Fergus triumphs at Goodwood</td>
+		</tr>
+
+		<tr>
+		<td>
+	
+		<img align="left" src="images\jackthumb.jpg" width="125" height="125">
+
+		<p class="News">Jack Fergus secured a reasonably comfortable victory in very wet conditions, and more
+		importantly moved within a point of Order of Merit leader Martin Anderson, who had a miserable
+		round.</p>
+
+		<p class="News">The start time was delayed by half an hour owing to heavy overnight and morning rain, but
+		relented just before the start and the players only experienced a couple of brief showers during
+		the round.</p>
+
+		<p class="News">Fergus was steady throughout the round, and only experienced a bit of pressure from Dave Bishop
+		during the back 9.  Bishop got the only birdie of the day at the par 4 6th by sinking a 30 yard putt.
+		Steve Pearce had a steady round, and was in contention, until the 13th when he hit his tee shot
+		into the trees and then lost his ball in heavy rough after the recovery shot.  3 blobs followed in
+		the next 4 holes.  Anderson had an awful round, shanking a few shots and ended up scoring 0 points
+		for the first time since the Order of Merit started in 2004.<p>
+
+		<p class="News">And so all is to play for, for both 1st and last places, with 4 rounds left.  Two of these are
+		majors and so there are a lot of points still up for grabs.</p>
+		</td>
+		</tr>
+
+	</table>
+
+</td>
+
+<td valign="top" align="center" bgcolor="#eeeeee" width="150">
+
+	<table class="fixtures">
+		<tr>
+			<th class="NextRound">Next Round</th>
+		</tr>
+
+		<tr>
+			<td class="NextRound">TBC</td>
+		</tr>
+
+	</table>
+
+	<table class="players">
+		<tr class="financesHeader">
+			<th>Finances</th>
+		</tr>
+
+		<tr class="financesH2">
+			<td>£0 at 14th Aug 2010</td>
+		</tr>
+
+		<tr class="financesH2">
+			<td><a href="" onClick="DisplayFinances('2010');">Current Season</a></td>
+		</tr>
+
+		<tr>
+			<td>
+			<form name="finances">
+				<select id="selectyear" onchange="FinancesByYear(this.form);">
+					<option value="blank">Select Year</option>
+					<option value="2007">2007</option>
+					<option value="2006">2006</option>
+					<option value="2005">2005</option>
+					<option value="2004">2004</option>
+				</select>
+			</form>
+			</td>
+		</tr>
+
+	</table>
+
+	<table class="players">
+	<tr>
+	<th colspan="2">Player Profiles</td>
+	</tr>
+	<tr>
+		<td class="playersText"><a href="" onclick="PageError();">Dave</a></td>
+		<!--<td class="playersText"><a href="Dave.html">Dave</a></td>-->
+		<td rowspan="2" class="playersImg"><img class="players" src="images\davethumb2.jpg"></td>
+	</tr>
+	<tr>
+		<td class="playersEmail"><a href="mailto:dj.bishop@ntlworld.com">Email me</a></td>
+	</tr>
+	<tr>
+		<td class="playersText"><a href="" onclick="PageError();">Jack</a></td>
+		<!--<td class="playersText"><a href="Jack.html">Jack</td>-->
+		<td rowspan="2" class="playersImg"><img class="players" src="images\jackthumb2.jpg"></td>
+	</tr>
+	<tr>
+		<td class="playersEmail"><a href="mailto:jack.fergus1@ntlworld.com">Email me</a></td>
+	</tr>
+	<tr>
+		<td class="playersText"><a href="" onclick="PageError();">Martin</a></td>
+		<!--<td class="playersText"><a href="Martin.html">Martin</td>-->
+		<td rowspan="2" class="playersImg"><img class="players" src="images\martinthumb2.jpg"></td>
+	</tr>
+	<tr>
+		<td class="playersEmail"><a href="mailto:martin.anderson030661@virgin.net">Email me</a></td>
+	</tr>
+	<tr>
+		<td class="playersText"><a href="" onclick="PageError();">Steve</a></td>
+		<!--<td class="playersText"><a href="Steve.html">Steve</td>-->
+		<td rowspan="2" class="playersImg"><img class="players" src="images\stevethumb2.jpg"></td>
+	</tr>
+	<tr>
+		<td class="playersEmail"><a href="mailto:stonespearce@yahoo.co.uk">Email me</a></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="playersEmailAll"><a href="mailto:dj.bishop@ntlworld.com, jack.fergus1@ntlworld.com, martin.anderson030661@virgin.net, stonespearce@yahoo.co.uk">Email all the lads</a></td>
+	</tr>
+	<tr>
+		<td colspan="2" class="playersEmail">We'd love to hear from you</a></td>
+	</tr>
+</td>
+
+<!--
+	<table width="100%" class="players">
+		<tr class="oomHeader">
+			<th>Scores by Course</th>
+		</tr>
+		<tr class="oomDetails">
+			<td>
+				<form name="sc">
+				<select id="selectcourse" onchange="ScoreByCourse(this.form);">
+					<option value="blank">Select Course</option>
+					<script>
+						var courses = new Array();
+						var coursesMaster = new Array();
+						var arrayNumber = 0;
+
+						for (j=1; j<6; j++) {
+
+							if (j == 1) {
+								whichYear = "2004"
+							} else if (j == 2) {
+								whichYear = "2005"
+							} else if (j == 3) {
+								whichYear = "2006"
+							} else if (j == 4) {
+								whichYear = "2007"
+							} else if (j == 5) {
+								whichYear = "2010"
+							}
+	
+							Rounds(whichYear)
+
+							numElements = rounds.length;
+
+							for (i=1; i<numElements; i++) {
+
+								courses[arrayNumber] = rounds[i].course;
+								arrayNumber++;
+							}
+						}
+
+						arrayNumber = 0;
+						numElements = courses.length;
+
+						for (i=1; i<numElements; i++) {
+						//	GolfCourses(courses[i]);
+						//	alert(courses[1]);
+							coursesMaster[arrayNumber] = CourseMasters(courses[i]);
+							arrayNumber++;
+						}
+
+						coursesMaster.sort()
+
+						uniqueCourses = arrayunique(coursesMaster);
+
+						for (i=0; i<uniqueCourses.length; i++) {
+							document.write("<option value='" + uniqueCourses[i] + "'>" + uniqueCourses[i] + "</option>")
+						}
+					</script>
+				</select>
+				</form>
+			</td>
+		</tr>
+	</table>
+-->
+
+	<table class="players">
+		<tr class="financesHeader">
+			<th>Hole Stats</th>
+		</tr>
+
+		<tr>
+			<td>
+			<form name="holestats">
+				<select id="selectyear" onchange="HoleStatsByYear(this.form);">
+					<option value="blank">Select Year</option>
+					<option value="2010">2010</option>
+					<option value="2007">2007</option>
+					<option value="2006">2006</option>
+					<option value="2005">2005</option>
+					<option value="2004">2004</option>
+				</select>
+			</form>
+			</td>
+		</tr>
+
+	</table>
+
+	<table class="players">
+		<tr class="financesHeader">
+			<th>Nearest the Pins</th>
+		</tr>
+
+		<tr>
+			<td><img class="players" src="images\clipart_sports_golf_014.gif"></td>
+		</tr>
+
+		<tr>
+			<td>
+			<form name="ntpstats">
+				<select id="selectyear" onchange="NTPStatsByYear(this.form);">
+					<option value="blank">Select Year</option>
+					<option value="2010">2010</option>
+					<option value="2007">2007</option>
+					<option value="2006">2006</option>
+					<option value="2005">2005</option>
+					<option value="2004">2004</option>
+				</select>
+			</form>
+			</td>
+		</tr>
+
+	</table>
+
+<!--
+	<table width="100%" class="situ">
+		<tr class="situHeader">
+			<th>Situations Vacant</th>
+		</tr>
+		<tr class="situDetails">
+			<td>Fixtures Booking Secretary</td>
+		</tr>
+		<tr class="situDetails">
+			<td>Must be totally impartial</td>
+		</tr>
+		<tr class="situDetails">
+			<td>Salary : £0 (but you may get the occasional backhander from Jack Fergus)</td>
+		</tr>
+		<tr class="situDetails">
+			<td>Email the Chairman to apply</td>
+		</tr>
+	</table>
+-->
+
+</td>
+</tr>
+</tbody>
+
+	<!--div class="content"><img class="martin" alt="Martin" src="..\images\3rdheadpic.jpg" height="200" width="183" -->
+	<!--div class="content"><img class="martin" alt="Martin" dynsrc="..\ThomasShorehamCollege.wmv" height="200" width="183" start="mouseover" -->
+	<!-- object data="ThomasShorehamCollege.wmv" type="video/avi" height="150" width="250"></object-->	
+</body>
+</html>

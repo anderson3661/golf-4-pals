@@ -1,0 +1,25 @@
+.stats.scores-by-hole {
+    width: 80%;
+    padding-bottom: 25px;
+    
+    .endSpacer { width: 2%; }
+
+    table { width: 100%; }
+
+    tr.averages > td { text-align: right; padding: 25px 0 15px 0;}
+    tr.averages > td.label { text-align: left;}
+
+    p.numberOfRounds {
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+    .stats.scores-by-hole {
+        width: 90%;
+    }
+}

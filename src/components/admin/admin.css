@@ -1,0 +1,9 @@
+.stats.scorecard.admin {
+  width: 50%;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent; }
+  .stats.scorecard.admin .admin-inner .header {
+    margin: 0 0 25px 0;
+    border-bottom: none;
+    border-radius: 10px; }

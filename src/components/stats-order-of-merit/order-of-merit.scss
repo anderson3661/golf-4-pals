@@ -1,0 +1,18 @@
+@import '../../sass/_variables';
+
+
+.stats.order-of-merit {
+    table { width: 100%; margin: 0; }
+
+    p.current-year-number-of-majors-played {
+        text-align: right;
+        margin: 0 25px;
+        color: $color-majors-and-non-majors-played;
+    }
+
+}
+
+.container-oom-graph {
+    width: 98%;
+    margin: 6vh auto 1vh auto;
+}

@@ -1,0 +1,36 @@
+@import '../../sass/_variables';
+
+
+.stats.courses-summary {
+    
+    .header { padding: 0; }
+
+    .courseName {width: 15%;}
+    .roundsPlayed {width: 7%;}
+    .majorsPlayed {width: 7%;}
+    .wins {width: 4%;}
+    .winsInMajors {width: 4%;}
+    .bestplayers {width: 20%;}
+    .spacer {width: 5%;}
+    
+    th.endSpacer, td.endSpacer {width: 2%;}
+    
+    text-align: center;
+    tr.summary > td.totalsLabel {text-align: left;}
+
+    tr.course > td { 
+        font-size: 1.0vw;
+        border-bottom: $color-table-row-border-bottom
+    }
+
+    tr:not(.headings):nth-child(even) {background-color: $background-color-table-alternate-rows}          // Colour alternate rows of the table but NOT the headings
+
+    .img-winners {
+        height: 60px;
+        margin: 0 10px 0 0;
+    }
+
+}
+
+
+@media screen and (max-width: 1024px) { .stats-outer .stats.courses-summary { width: 90%; tr.course > td { font-size: 1.0em; } } }

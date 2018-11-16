@@ -1,0 +1,65 @@
+body	{background-color: white;
+	}
+
+.nav	{background-color: aqua;
+	 margin-top: 70px;
+	 width: 200px;
+	 font-family: arial, sans-serif;
+	 font-size: .80em;
+	 float: left;
+	}
+
+li	{list-style-type: disc;
+	 list-style-image: url(images\bullet.gif);
+	 list-style-position: inside;
+	 vertical-align: middle;
+	}
+
+a:hover	{text-decoration: none;
+	 color: red;
+	}
+
+.content	{background-color: transparent;
+	text-align: justify;
+	font-family: arial;
+	margin-top: 30px;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 75%;
+	}
+
+#copyright	{background-color: transparent;
+	font-size: .75em;
+	text-align: center;
+	color: navy;
+	}
+
+p strong	{font-size: 2em;
+	 }
+
+h1.heading	{margin-top: 5px;
+	text-align: center;
+	}
+
+img.martin	{margin-left: 5px;
+	margin-right: 5px;
+	float: right;
+	}
+
+.banner	{text-align: center;
+	clear: both
+	}
+
+table.right {font-size: .90em;
+	font-family: arial;
+	color: blue;
+	}
+
+
+
+
+
+
+
+
+

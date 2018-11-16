@@ -1,0 +1,41 @@
+.container-main-content-player-profiles a, .container-main-content-player-profiles a:link, .container-card a, .container-card a:link {
+  color: yellow;
+  text-decoration: none; }
+
+.container-main-content-player-profiles a:visited, .container-card a:visited {
+  color: yellow; }
+
+.container-main-content-player-profiles a:active, .container-card a:active {
+  color: yellow; }
+
+.container-main-content-player-profiles a:hover, .container-card a:hover {
+  color: red;
+  text-decoration: underline; }
+
+.courseName a, .courseName a:link, .yearOfCompetition a, .yearOfCompetition a:link, .actualScorecard a, .actualScorecard a:link, .details-scorecard a, .details-scorecard a:link, .details-actual-scorecard a, .details-actual-scorecard a:link, .container-player-profile a, .container-player-profile a:link {
+  color: blue;
+  text-decoration: none; }
+
+.courseName a:visited, .yearOfCompetition a:visited, .actualScorecard a:visited, .details-scorecard a:visited, .details-actual-scorecard a:visited, .container-player-profile a:visited {
+  color: blue; }
+
+.courseName a:active, .yearOfCompetition a:active, .actualScorecard a:active, .details-scorecard a:active, .details-actual-scorecard a:active, .container-player-profile a:active {
+  color: blue; }
+
+.courseName a:hover, .yearOfCompetition a:hover, .actualScorecard a:hover, .details-scorecard a:hover, .details-actual-scorecard a:hover, .container-player-profile a:hover {
+  color: red;
+  text-decoration: underline; }
+
+.oom-table-link a, .oom-table-link a:link, .section.section-dark .inner .details .details-scorecard a, .section.section-dark .inner .details .details-scorecard a:link, .section.section-dark .inner .details .details-actual-scorecard a, .section.section-dark .inner .details .details-actual-scorecard a:link {
+  color: white;
+  text-decoration: none; }
+
+.oom-table-link a:visited, .section.section-dark .inner .details .details-scorecard a:visited, .section.section-dark .inner .details .details-actual-scorecard a:visited {
+  color: white; }
+
+.oom-table-link a:active, .section.section-dark .inner .details .details-scorecard a:active, .section.section-dark .inner .details .details-actual-scorecard a:active {
+  color: white; }
+
+.oom-table-link a:hover, .section.section-dark .inner .details .details-scorecard a:hover, .section.section-dark .inner .details .details-actual-scorecard a:hover {
+  color: red;
+  text-decoration: underline; }

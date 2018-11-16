@@ -1,0 +1,183 @@
+@import '../../sass/_mixins';
+@import '../../sass/_variables';
+
+
+.home {
+
+    .img1, .img2, .img3, .img4, .img5, .img6, .img7, .img8 {
+        
+        width: 100%;
+        position: relative;
+        opacity: $opacity-images-home;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        // background-attachment: fixed;       /* Set below using media query to get round ios problem */
+        
+        @include flex($flex-direction: column);
+    }
+
+    .img1 { justify-content: normal; }
+
+    .img1 { background-image: $background-image-home-img1; min-height: 100vh; }    
+    .img2 { background-image: $background-image-home-group1; min-height: 50vh; }
+    .img3 { background-image: $background-image-home-img3; min-height: 75vh; background-position: center 6vh; }     // Set the y-axis otherwise you lose the player's head at the top of the photo
+    .img4 { background-image: $background-image-home-img4; min-height: 75vh; background-position: center 0vh; }     // Set the y-axis otherwise you lose the player's head at the top of the photo
+    .img5 { background-image: $background-image-home-img5; min-height: 75vh; background-position: center 3vh; }     // Set the y-axis otherwise you lose the player's head at the top of the photo
+    .img6 { background-image: $background-image-home-img6; min-height: 75vh; background-position: center 8vh; }     // Set the y-axis otherwise you lose the player's head at the top of the photo
+    .img8 { background-image: $background-image-home-group2; min-height: 100vh; }
+
+    .img-text {
+        background-color: $background-color-course-images-text-overlay;
+        color: $color-course-images-text-overlay;
+        text-align: center;
+        letter-spacing: 0.5em;
+        padding: 1.2em;
+
+        animation-name: fade-in;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+
+        @keyframes fade-in {
+            0% { opacity: 0;}
+            100% { opacity: 1;}
+        }
+
+        &.mainHeader {
+            margin-top: 44vh;
+            margin-bottom: 9vh;
+        }
+
+        span {
+            text-transform: uppercase;
+            font-size: 2.2vw;
+        }
+
+        p {
+            font-size: 1.0em;
+            margin-top: 1.6em;
+        }
+    
+        &.transparent {
+            background-color: transparent;
+        }
+
+        &.inverse {
+            background-color: $background-color-course-images-text-overlay-inverse;
+            color: $color-course-images-text-overlay-inverse;    
+        }
+    }
+    
+    .section {
+        
+        padding: 5vh 10vw;
+
+        h2 {
+            text-align: center;
+            font-size: 1.8em;
+        }
+        
+        p {
+            text-align: left;
+            font-size: 1.4em;
+            line-height: 1.5em;
+        }
+
+        &.section-light {
+            background-color: $background-color-section-light;
+            color: $color-section-light;
+        }
+        
+        &.section-dark {
+            background-color: $background-color-section-dark;
+            color: $color-section-dark;
+        }
+
+        &.playerProfile {
+            @include flex($justify-content: null, $align-items: null);
+
+            .playerProfileImage-container {
+                flex-direction: column;
+                text-align: center;
+                width: 20vw;
+                padding-top: 1vh;
+
+                .playerProfileImage {
+                    width: 10vw;
+                    margin: 0 auto;
+                    background-color: rgba(255,255,255,0.4);
+                    box-shadow: 0px 0px 200px 10px rgba(255,255,255,0.9);
+                    
+                    img {
+                        height: auto;
+                        width: 100%;
+                    }
+                }
+            }
+
+            .playerProfileSummary {
+                flex-basis: 75%;
+            }
+
+            > div > p {
+                margin: 0 0 2.5vh 0;
+            }
+        }
+    }
+
+    .howItWorks {
+        @include flex($justify-content: space-between, $align-items: null);
+
+        table {
+            flex-basis: 40%;
+            margin: 0;
+            font-size: 1.1em;
+            line-height: 1.2;
+
+            td {
+                width: 16%;
+                text-align: center;
+            }
+
+            td:first-child { width: 10%; }
+
+            &.finishingPosition {
+                flex-basis: 45%;
+                td:last-child { width: 3%; }
+            }
+
+            tr:first-child {
+                font-weight: 700;
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 1025px) { .home { .img1, .img2, .img3, .img4, .img5, .img6, .img7, .img8 { background-attachment: fixed } } }
+
+@media screen and (max-width: 1024px) {
+    .home {
+        .img3, .img4, .img5, .img6 { background-position: center top; }     // Lose the vh position (fto see player's head) as not using parallax in this mode
+        .section {
+            p { font-size: 1.2em; }
+            &.playerProfile .playerProfileImage-container { margin-right: 4vw }
+        }
+    }
+}
+
+@media screen and (max-width:568px) {        
+    .home {
+        .pimg1, .pimg2, .pimg3 { background-attachment: scroll; }
+        .section {
+            text-align: center; padding: 2vh 20vw;
+            h2 { font-size: 1.2em; }
+            p { font-size: 1.0em; line-height: 1.1; }
+        }
+        .img-text {
+            padding: 10px;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+    }
+}

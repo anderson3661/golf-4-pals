@@ -1,0 +1,325 @@
+@import '../../sass/_mixins';
+@import '../../sass/_variables';
+
+@import './links.css';
+
+
+.stats-outer {
+
+    width: 100%;
+    // height: calc($height-viewport-info-container + $top-viewport-info-container + 1vh);         // Doesn't work
+    height: calc(87vh + 5vh + 1vh);
+    margin-top: $margin-top-viewport-info-container;
+    display: block;
+    position: relative;
+
+    &::after {
+        content: "";
+        background: $background-image-stats;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        opacity: $opacity-image-stats;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        // z-index: -1;     // Leave this commented out otherwise background image doesn't display
+    }
+
+    .report-and-scorecard {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        // bottom: 0;       // Comment out otherwise stats box extends to bottom of the screen
+        margin: 0 auto;
+        @include flex($justify-content: space-between, $align-items: flex-start);
+        
+        .report {
+            flex-basis: 33%;
+            min-height: 50vh;
+            background-color: $background-color-report;
+            color: $color-report;
+            border-radius: 10px;
+            padding: 2vh 2vw 0px 2vw;
+            line-height: 1.8vw;
+            font-size: 1.1vw;
+            background-image: $background-image-report;
+            background-size: cover;
+            background-position: center;
+    
+            p.roundInfo {
+                font-size: 0.9em;
+                color: $color-report-paragraph;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+    
+            .heading {
+                margin-top: 0;
+                text-align: center;
+            }
+        }
+    }
+}
+
+// Don't move this within stats-outer, otherwise it screws up the Player Profile stats
+.stats {
+
+    width: 75%;
+    z-index: 1;
+    position: absolute;
+    top: $top-viewport-info-container;
+    left: 0;
+    right: 0;
+    // bottom: 0;       // Comment out otherwise stats box extends to bottom of the screen
+    margin: 0 auto;
+    background-color: $background-color-stats;
+    border: 1px solid $color-stats-border;
+    border-radius: 10px;
+
+    &.scorecard {
+        padding-bottom: 0;
+        margin-bottom: 10px;
+    }
+
+    table {
+        width: 100%;
+        margin: 0 auto;
+        border-collapse: collapse;
+
+        &.scorecard {
+            width: 100%;
+        }
+    }
+
+    col.yards {
+        background-color: $background-color-yellow-yards-column;
+    }
+
+    .header {
+        width: 100%;
+        font-size: 1.4vw;
+        font-weight: 700;
+        min-height: 6vh;
+        padding: 1vh 0;
+        background-color: $background-color-stats-header;
+        border-bottom: $border-bottom-stats-header;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        @include flex($justify-content: space-evenly);
+
+        span.major .winnerStar {
+            flex-basis: 15%;
+            font-size: 96px;
+            text-align: center;
+            position: relative;
+        }
+
+        span.major {
+            position: relative;
+
+            .majorText {
+                position: absolute;
+                color: $color-major-text-on-star;
+                font-size: 12px;
+                top: -10px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                @include flex($justify-content: space-evenly);
+            }
+        }
+
+        span.courseName {
+            flex-basis: 55%;
+            text-align: center;
+            justify-content: center;
+        }
+        
+        .selectYearOfCompetition, .selectCourseName, .selectPar, .selectDateOfRound {
+            font-size: 1.0em;
+            margin-left: 25px;
+        }
+        
+        .title {
+            @include flex($justify-content: null);
+        }
+
+        .winners {
+            @include flex($justify-content: null);
+        }
+        
+        &.narrow { 
+            padding: 10px 0;
+            margin-bottom: 0;
+        }
+
+    }
+
+    tr {
+        &.headings {
+            background-color: $background-color-headings;
+
+            > th { padding: 15px 0; }
+        }
+
+        &.headings.main > th { padding: 10px 0 5px 0; vertical-align: top; }
+        &.headings.players > th { padding: 5px 0 10px 0; }
+        
+        &.major { background-color: $background-color-stats-major }
+
+        &.round, &.hole, &.holeRow, &.oomYear { border-bottom: $border-bottom-stats }
+
+        &.hole > td {
+            border: $border-hole;
+            padding: 5px 0;
+        }
+
+        &.totals > td {
+            text-align: center;
+            font-weight: 700;
+            padding: 20px 0 0 0;
+        }
+
+        &.totals.alignCenter > td { text-align: center };
+        &.totals.alignRight > td { text-align: right };
+
+        &.oomYear > td {
+            padding: 10px 0;
+        }
+
+        &.subTotalsRow {
+            background-color: $background-color-in-out-totals;
+
+            > td {
+                font-weight: 600;
+                padding: 5px 0;
+            }
+        }
+
+        &.totalsRow {
+            background-color: $background-color-totals;
+            
+            > td {
+                font-size: 1.1em;
+                font-weight: 600;
+                padding: 10px 0;
+            }
+        }
+
+        &.totalsRow.alignCenter > td { text-align: center };
+        &.totalsRow.alignRight > td { text-align: right };
+
+        &.summary > td {
+            font-weight: 600;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        &.key {
+
+            td {
+                text-align: center;
+                padding: 2vh 0;
+            }
+    
+            span {
+                padding: 5px 10px;
+                margin-left: 20px;
+            }
+    
+        }
+
+    }
+
+    th {
+        
+        color: $color-stats-headings;
+        
+        &.names { width: 3%; }
+        &.spacer { width: 4%; }
+        &.endSpacer { width: 1%; }
+        
+        text-align: center;
+        &.courseName, &.year { text-align: left; }
+        &.names.alignCenter { text-align: center; }
+        &.names.alignRight { text-align: right; }
+        &.namesSubHeading.alignCenter { text-align: center; }
+        &.namesSubHeading.alignRight { text-align: right; }
+
+        &.names { 
+            padding: 5px 0 10px 0;
+            white-space: pre-wrap;        // Allow for player's handicap to appear on 2nd line, with name on the 1st line
+        }
+        
+        &.headings { font-size: 1em; }
+        &.namesSubHeading { font-size: 0.8em; }
+    }
+
+    table.scorecard th.names {
+        font-size: 1em;
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+
+        &.endSpacer { width: 1%; }
+        &.roundNumber { width: 3%; }
+        &.holeNumber { width: 3%; }
+        &.yearOfCompetition { width: 5%; }
+        &.dateOfRound { width: 12%; }
+        &.oom-points { width: 3.5%; }
+
+        &.year, &.courseName { text-align: left; }
+        &.roundNumber, &.holeNumber, &.yearOfCompetition, &.dateOfRound, &.position, &.strokeIndex, &.stableford-score, &.handicap, { text-align: center }
+        &.oom-points, &.ntps, &.totals, &.holeTotals { text-align: right }
+
+        &.year, &.roundNumber, &.holeNumber, &.dateOfRound { color: $color-stats-headings; }
+        &.strokeIndex { color: $color-oom-strokeindex }
+
+        padding: 5px 0;
+        &.position { padding: 0; }
+
+        .winnerStar { color: $color-stats-winnerStar; }
+
+        span.totals-winners {
+            background-color: $background-color-winner-scores-or-points;
+            padding: 5px;
+            border-radius: 50%;
+        }
+    
+    }
+
+    .key-par { background-color: $background-color-key-par; }
+    .key-birdie { background-color: $background-color-key-birdie; }
+    .key-eagle { background-color: $background-color-key-eagle; }
+
+    .img-winners {
+        height: 75px;
+        border-radius: 25%;
+        margin-left: 25px;
+    }
+
+    span.color-key-majors {
+        background-color: $background-color-stats-major;
+        padding: 5px;
+        margin: 0 0 0 25px;
+    }
+
+}
+
+.buttons {
+    margin: 1vh auto;
+    @include flex($align-items: null);
+    
+    Button { margin-left: 2vw; }
+    Button:nth-of-type(1) { margin-left: 0; }
+}
+
+@media screen and (max-width: 1024px) { .stats-outer .stats { width: 90%; .header { font-size: 1.2em; } } }

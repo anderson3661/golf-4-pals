@@ -1,0 +1,108 @@
+@import '../../sass/mixins';
+@import '../../sass/_variables';
+
+
+.stats-outer {
+
+    // &.stats {top: 0;}       // Required for scorecard to line up at the top, and have a margin before the report
+
+    .report-and-scorecard.admin-round-crud {
+        @include flex($flex-direction: column, $justify-content: null, $align-items: null);
+        
+        .stats.scorecard.admin-round-crud {
+
+            border: none;
+            border-radius: 10px;
+            background-color: transparent;
+            position: relative;
+            margin: 0 auto 40px auto;
+
+            .admin-round-crud-inner {
+                width: 100%;
+                background-color: $background-color-admin-course-and-round;
+                border: $border-color-admin-course-and-round;
+                border-radius: 10px;
+
+                .header {
+                    font-size: 1.1vw;
+
+                    span {
+                        font-weight: 700;
+                    }
+            
+                    #dateOfRound {
+                        font-size: 1.2em;
+                        width: 150px;
+                        margin-left: 15px;
+                    }
+                }
+
+                span.handicap {
+                    font-size: 0.7em;
+                }
+
+                .holeNumber {width: 5%}
+                .holeName {width: 26%}
+                .par {width: 7%}
+                .yardage {width: 7%}
+                .strokeIndex {width: 7%}
+                .names {width: 12%}
+
+                .handicaps-input-field {width: 25%}
+                .names-input-field {width: 25%}
+            }
+        }
+
+        .report {
+            width: 75%;
+            height: 30vh;
+            min-height: 30vh;           // Need to set this to override the inherited settings ... set to be the same as height
+            margin: 4vh auto 2vh auto;
+            padding: 2vh 0;
+
+            table {
+                width: 98%;
+            }
+
+            tr.reportHeadingRow > td { padding-bottom: 1.5vh;}
+
+            .label {
+                padding: 0 1vw;
+                font-weight: 700;
+                vertical-align: top;
+                width: 10%;
+            }
+
+            #reportHeading, #reportCommentary {
+                text-align: left;
+                line-height: 1.8vw;
+            }
+
+            // .reportHeading-input-field { width: 65vw; }
+            .reportHeading-input-field { width: 100%; }
+            #reportHeading {
+                font-size: 1.4vw;
+                padding: 0.25vh 0.5vw;
+            }
+
+            // .reportCommentary-input-field { width: 66vw;}
+            .reportCommentary-input-field { width: 100%;}
+            #reportCommentary {
+                font-size: 1.1vw;
+                padding: 0.5vh 0.5vw;
+                height: 17vh;
+            }
+        }
+
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .stats-outer {
+        .report-and-scorecard.admin-round-crud {
+            .stats.scorecard.admin-round-crud { width: 90%; .header span.title { font-size: 1.3em; } }
+            .report { width: 90%; td.label { font-size: 1.4em; } }
+        }
+    }
+}

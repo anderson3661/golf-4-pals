@@ -1,0 +1,29 @@
+.stats.nearest-the-pins {
+    width: 50%;
+    margin-bottom: 150px;
+
+    th.endSpacer, td.endSpacer { width: 3% }
+
+    td {
+        &.dateOfRound { width: 20%; }
+        &.ntps { width: 10%; text-align: center; }
+    }
+}
+
+.stats.nearest-the-pins.all-years {
+    width: 60%;
+
+    @media(max-width:1024px) {
+
+        width: 75%;
+
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+    .stats.nearest-the-pins {
+        width: 70%;
+    }
+}

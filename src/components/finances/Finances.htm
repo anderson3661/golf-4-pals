@@ -1,0 +1,167 @@
+<DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+	<title> </title>
+
+		<link rel="stylesheet" type="text/css" href="finances.css" />
+
+		<script language="JavaScript" src="finances.js"></script>
+		<script language="JavaScript" src="parameters.js"></script>
+
+		<script language="JavaScript" type="text/javascript">
+
+		function FinanceDetails(datePlayed, course, drivers, income, before, during, after) {
+			this.datePlayed = datePlayed;
+			this.course = course;
+			this.drivers = drivers;
+			this.income = income;
+			this.before = before;
+			this.during = during;
+			this.after = after;
+		}
+
+		</script>
+
+		<style type="text/css">
+
+			body	{background: url("images\money.jpg");}
+			table	{background-color: white;}
+
+		</style>
+
+	</head>
+
+	<body>
+
+	<table class="Outer">
+
+		<tr bgcolor="#FF9933">
+			<script LANGUAGE="JavaScript" type="text/javascript">
+				var whichYear = qs();
+				FinanceData(whichYear);
+				document.write("<td class='Header'>Finances - " + whichYear + "</td>");
+			</script>
+		</tr>
+
+		<tr>
+			<td>	
+			<table border="0" width=98% cellpadding="0" cellspacing="0" align="center">
+			<td class="Headings">Date</td>
+			<td class="HeadingsLeft">Course</td>
+			<td class="HeadingsLeft">Drivers</td>
+			<td class="Spacer">&nbsp;</td>
+			<td class="HeadingsRight">Income</td>
+			<td class="Spacer">&nbsp;</td>
+			<td class="HeadingsSmall">Before</td>
+			<td class="HeadingsSmall">During</td>
+			<td class="HeadingsSmall">After</td>
+			<td class="SpacerSmall">&nbsp;</td>
+			<td class="HeadingsRight">Outgoings</td>
+			<td class="Spacer">&nbsp;</td>
+			<td class="HeadingsRight">Balance</td>
+		</tr>
+
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+
+	<script LANGUAGE="JavaScript" type="text/javascript">
+		var outgoings = 0, balance = 0, totalIncome = 0, totalBefore = 0, totalDuring = 0, totalAfter = 0, totalOutgoings = 0, totalBalance = 0, remainder = 0;		
+
+		numElements = finances.length;
+
+		for (i=0; i<numElements; i++) {
+
+			if (i%2 > 0) {
+				document.write("<tr bgcolor='#FFFFCC'>");
+				} else {
+				document.write("<tr>");
+			}
+
+			document.write("<td class='Dates'>" + finances[i].datePlayed + "</td>");
+			document.write("<td class='Course'>" + finances[i].course + "</td>");
+			document.write("<td class='Drivers'>" + finances[i].drivers + "</td>");
+			document.write("<td class='Spacer'>&nbsp;</td>");
+
+			if (finances[i].income == 0) {
+			document.write("<td class='Amounts'>-</td>");
+			} else {
+			document.write("<td class='Amounts'>" + finances[i].income.toFixed(2) + "</td>");
+			}
+			totalIncome += finances[i].income;
+
+			document.write("<td class='Spacer'>&nbsp;</td>");
+
+			if (finances[i].before == 0) {
+			document.write("<td class='AmountsSmall'>-</td>");
+			} else {
+			document.write("<td class='AmountsSmall'>" + finances[i].before.toFixed(2) + "</td>");
+			}
+			totalBefore += finances[i].before;
+
+			if (finances[i].during == 0) {
+			document.write("<td class='AmountsSmall'>-</td>");
+			} else {
+			document.write("<td class='AmountsSmall'>" + finances[i].during.toFixed(2) + "</td>");
+			}
+			totalDuring += finances[i].during;
+
+			if (finances[i].after == 0) {
+			document.write("<td class='AmountsSmall'>-</td>");
+			} else {
+			document.write("<td class='AmountsSmall'>" + finances[i].after.toFixed(2) + "</td>");
+			}
+			totalAfter += finances[i].after;
+
+			document.write("<td class='SpacerSmall'>&nbsp;</td>");
+
+			outgoings = finances[i].before + finances[i].during + finances[i].after;
+			if (outgoings == 0) {
+			document.write("<td class='Amounts'>-</td>");
+			} else {
+			document.write("<td class='Amounts'>" + outgoings.toFixed(2) + "</td>");
+			}
+			
+			document.write("<td class='Spacer'>&nbsp;</td>");
+
+			balance = finances[i].income - outgoings;
+			if (balance == 0) {
+			document.write("<td class='Amounts'>-</td>");
+			} else {
+			document.write("<td class='Amounts'>" + balance.toFixed(2) + "</td>");
+			}
+			document.write("</tr>");
+
+		}
+
+		document.write("<tr>");
+		document.write("<td>&nbsp;</td>");
+		document.write("</tr>");
+
+		document.write("<tr>");
+		document.write("<td colspan='2'>&nbsp;</td>");
+		document.write("<td class='Totals'>Totals</td>");
+		document.write("<td>&nbsp;</td>");
+		document.write("<td class='Totals'>" + totalIncome.toFixed(2) + "</td>");
+		document.write("<td>&nbsp;</td>");
+		document.write("<td class='TotalsSmall'>" + totalBefore.toFixed(2) + "</td>");
+		document.write("<td class='TotalsSmall'>" + totalDuring.toFixed(2) + "</td>");
+		document.write("<td class='TotalsSmall'>" + totalAfter.toFixed(2) + "</td>");
+		document.write("<td class='SpacerSmall'>&nbsp;</td>");
+		totalOutgoings = totalBefore + totalDuring + totalAfter;
+		document.write("<td class='Totals'>" + totalOutgoings.toFixed(2) + "</td>");
+		document.write("<td>&nbsp;</td>");
+		totalBalance = totalIncome - totalOutgoings;
+		document.write("<td class='TotalsBalance'>" + totalBalance.toFixed(2) + "</td>");
+		document.write("</tr>");
+
+	</script>
+		
+	</table>
+	</td>
+	</tr>
+	</table>
+	</body>
+</html>

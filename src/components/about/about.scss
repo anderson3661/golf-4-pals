@@ -1,0 +1,38 @@
+@import '../../sass/mixins';
+@import '../../sass/_variables';
+
+
+.container-main-content-about {
+    width: 90%;
+    margin: 8vh auto 0 auto;
+    @include flex($flex-direction: column, $justify-content: null, $align-items: null);
+
+    .container-about {
+        z-index: 1;
+        display: flex;
+        > div { width: 45%; }
+        margin: 2vh 0;
+    }
+
+    .container-about-inner {
+        margin-bottom: 2.5vh;
+    }
+}
+
+//The main container-card css is in App.scss
+.container-card {
+
+    &.header {
+        width: 25%;
+        text-align: center;
+    }
+
+    ul li {
+        font-size: 1.2vw;
+        padding: 1vh 1vw;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .container-card { &.header { width: 50% } ul li { font-size: 1.2em; } }
+}

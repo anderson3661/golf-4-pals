@@ -1,0 +1,187 @@
+// ***************** General ****************
+$font-family-main: Arial, Helvetica, sans-serif;
+$background-color-main-body: white;
+$line-height-main-body: 1.0;
+
+$height-viewport-info-container: 87vh;
+$margin-top-viewport-info-container: 8vh;
+$top-viewport-info-container: 5vh;
+
+
+$background-container-card: radial-gradient(ellipse at center, rgba(112,131,136,1) 0%, rgba(74,86,97,1) 100%);
+$color-container-card: white;
+$box-shadow-container-card: 0 0 20px rgba(0, 0, 0, 0.5);
+
+
+// **************** Opacity *****************
+// $opacity-main-background-image: 0.7;
+$opacity-images-body-after: 1.0;
+$opacity-images-home: 1.0;
+$opacity-images-story-of-the-season-top-and-bottom: 0.9;
+$opacity-images-story-of-the-season-courses: 0.9;
+$opacity-image-stats: 0.7;
+
+// *************** Navigation ***************
+// $background-color-main-nav: #FFDF43;
+$background-color-main-header: radial-gradient(ellipse at center, rgba(112,131,136,1) 0%, rgba(74,86,97,1) 100%);
+// $background-color-main-nav: #FFDF43;
+$background-color-main-nav: #4C4C4C;
+$background-color-individual-sport: black;
+$background-color-active-link: #FFDF43;
+$background-color-active-sport-link: #FFDF43;
+$color-main-header: gold;
+$color-main-nav: white;
+$color-individual-sport: white;
+$color-main-nav-border-bottom: gray;
+$color-nav-border-right: white;
+$max-width-main-nav: 100%;
+$font-size-main-nav: 2.5rem;
+
+
+// ***************** Golf Images *****************
+$background-image-home-img3: url("../../assets/images/players/daveputting1.jpg");
+$background-image-home-img4: url("../../assets/images/players/jackputting1.jpg");
+$background-image-home-img5: url("../../assets/images/players/martinputting1.jpg");
+$background-image-home-img6: url("../../assets/images/players/steveputting1.jpg");
+$background-image-home-group1: url("../../assets/images/players/Group.jpg");
+$background-image-home-group2: url("../../assets/images/players/GroupEastBrighton.jpg");
+
+$background-image-player-img3a: url("../../assets/images/players/daveputting3.jpg");
+$background-image-player-img3b: url("../../assets/images/players/jackputting3.jpg");
+$background-image-player-img3c: url("../../assets/images/players/martinputting3.jpg");
+$background-image-player-img3d: url("../../assets/images/players/steveputting3.jpg");
+
+$background-image-home-img1: url("../../assets/images/courses/Cranleigh3.jpg");
+$background-image-sots-img1: url("../../assets/images/courses/Cottesmore3.jpg");
+$background-image-sots-img2: url("../../assets/images/courses/Cottesmore1.jpg");
+
+$background-image-scroll-help: url("../../assets/images/miscellaneous/golfball.png");
+$background-image-scroll-to-top-of-page: url("../../assets/images/miscellaneous/flagInHole.png");
+
+$background-image-stats: url('../../assets/images/courses/Cottesmore1.jpg');
+
+$background-image-report: url('../../assets/images/miscellaneous/old-paper.jpg');
+
+
+// ***************** Golf Stats *****************
+$background-color-stats: white;
+$background-color-stats-header: orange;
+$font-size-stats-header: 1.6vw;
+$background-color-stats-major: rgb(240, 243, 240);
+$border-bottom-stats-header: 1px solid black;
+$border-bottom-stats: 1px solid lightgray;
+$color-stats-winnerStar: goldenrod;
+$color-stats-headings: darkblue;
+$color-stats-border: gray;
+$background-color-winner-scores-or-points: goldenrod;
+
+
+// ***************** Golf Report and Scorecard *****************
+$background-color-yellow-yards-column: yellow;
+$background-color-headings: #e2e2e2;
+$background-color-in-out-totals: #e2e2e2;
+$background-color-totals: #99CCFF;
+$background-color-key-par: #FFFF99;
+$background-color-key-birdie: #99FF00;
+$background-color-key-eagle: #FF3300;
+$border-hole: 1px solid lightgray;
+$background-color-report: rgba(255, 250, 250, 0.85);
+$color-report: black;
+$color-report-paragraph: slategray;
+$color-major-text-on-star: white;
+$color-oom-strokeindex: red;
+
+
+// ***************** Golf Order of Merit *****************
+$color-majors-and-non-majors-played: rgb(129, 127, 127);
+
+
+// ********** Golf Home AND Story of the Season **********
+$background-color-section-light: #f4f4f4;
+$color-section-light: #666;
+$background-color-section-dark: #282e34;
+$color-section-dark: #ddd;
+$background-color-course-images-text-overlay: rgba(17, 17, 17, 0.8);
+$color-course-images-text-overlay: white;
+$background-color-course-images-text-overlay-inverse: rgba(250, 248, 248, 0.7);
+$color-course-images-text-overlay-inverse: black;
+$border-color-scroll-help: #fff;
+
+
+// *************** Golf Story of the Season ***************
+$background-color-select-year-of-competition: white;
+$color-round-summary-light-background: rgb(107, 106, 106);
+$color-round-summary-dark-background: white;
+$color-round-summary-course-dark-background: black;
+$background-color-oom-section: black;
+$border-round-summary-separator: 1px solid lightgray;
+$border-oom-tables: 3px solid lightgray;
+$color-oom-section: white;
+
+
+// ***************** Golf Player Profiles *****************
+
+
+// ************** Golf Admin Course & Round ***************
+$background-color-admin-course-and-round: white;
+$border-color-admin-course-and-round: 1px solid lightgray;
+
+
+// ********************** Golf Help ***********************
+$background-help-form: radial-gradient(ellipse at center, rgb(255, 255, 255) 0%, rgb(203, 203, 204) 100%);
+$color-help-form: black;
+$background-color-accordian: white;
+$border-accordian: 1px solid darkgray;                  // or 1px solid #e0e0e0;
+$background-color-accordian-title: #296e75;             // or #00b3b4;
+$color-accordian-title: white;
+$border-accordian-title: 1px solid #2b7981;             // or 1px solid #379AA4;
+$box-shadow-accordian-title: 0 1px 0 rgba(255,255,255,0.5) inset, 0 -1px 0 rgba(255,255,255,0.1) inset, 0 4px 0 #276c74, 0 4px 2px rgba(0,0,0,0.5);      // or #338A94 instead of #276c74
+$background-color-accordian-title-hover: #338A94;       // or #0bbfc0;
+$border-accordian-title-arrow:  2px solid white;
+
+
+// ********************* Golf Contact *********************
+$background-contact-form: radial-gradient(ellipse at center, rgb(255, 255, 255) 0%, rgb(203, 203, 204) 100%);
+$color-contact-form: black;
+$color-contact-form-invalid-message: red;
+
+
+// ************** Golf About This Application *************
+$background-about-this-application: radial-gradient(ellipse at center, rgba(112,131,136,1) 0%, rgba(74,86,97,1) 100%);
+$color-about-this-application: white;
+$box-shadow-about-this-application: 0 0 20px rgba(0, 0, 0, 0.5);
+
+
+// ****************** Golf Miscellaneous ******************
+$background-color-table-alternate-rows: rgb(243, 243, 243);
+$color-table-row-border-bottom: 1px solid lightgray;
+
+
+// ********************** Golf Links **********************
+$color-hyperlink-light-background-link: rgb(0%,0%,100%);
+$color-hyperlink-light-background-visited: rgb(0%,0%,100%);
+$color-hyperlink-light-background-active: rgb(0%,0%,100%);
+$color-hyperlink-light-background-hover: rgb(100%,0%,0%);
+
+$color-hyperlink-dark-background-link: white;
+$color-hyperlink-dark-background-visited: white;
+$color-hyperlink-dark-background-active: white;
+$color-hyperlink-dark-background-hover: rgb(100%,0%,0%);
+
+$color-hyperlink-container-dark-background-link: yellow;
+$color-hyperlink-container-dark-background-visited: yellow;
+$color-hyperlink-container-dark-background-active: yellow;
+$color-hyperlink-container-dark-background-hover: rgb(100%,0%,0%);
+
+
+// ************************ Footer ************************
+$background-color-main-footer: #4C4C4C;
+$color-main-footer: white;
+
+
+// ********************** Main Content ********************
+$width-main-content: 1024px;
+
+
+// ************************ Admin *************************
+$background-color-admin-teams-header: #d5d7da;

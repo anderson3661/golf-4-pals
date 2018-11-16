@@ -1,0 +1,313 @@
+.container-sots-and-oom {
+  /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+  /* Safari */
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  height: 87vh;
+  margin-top: 8vh; }
+  .container-sots-and-oom .container-sots {
+    height: 87vh;
+    flex-basis: 75%;
+    background-repeat: no-repeat;
+    background-size: cover; }
+    .container-sots-and-oom .container-sots .img-text {
+      background-color: rgba(17, 17, 17, 0.8);
+      color: white;
+      padding: 2vh 2vw;
+      text-transform: uppercase;
+      font-size: 2vw;
+      letter-spacing: 0.8vw;
+      animation-name: fade-in;
+      animation-duration: 1s;
+      animation-timing-function: ease-in; }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+      .container-sots-and-oom .container-sots .img-text.mainHeader {
+        margin-top: 20vh;
+        margin-bottom: 10vh;
+        display: flex; }
+        .container-sots-and-oom .container-sots .img-text.mainHeader span {
+          margin-right: 3vw;
+          /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+          /* Safari */
+          display: -webkit-flex;
+          -webkit-flex-direction: row;
+          -webkit-align-items: center;
+          display: flex;
+          flex-direction: row;
+          align-items: center; }
+      .container-sots-and-oom .container-sots .img-text.transparent {
+        background-color: transparent; }
+      .container-sots-and-oom .container-sots .img-text .selectYearOfCompetition {
+        background-color: white;
+        padding: 1vh 2vw; }
+    .container-sots-and-oom .container-sots .section {
+      text-align: center;
+      padding: 4vh 3vw 4vh 0; }
+      .container-sots-and-oom .container-sots .section.section-light {
+        background-color: #f4f4f4;
+        color: #666; }
+      .container-sots-and-oom .container-sots .section.section-dark {
+        background-color: #282e34;
+        color: #ddd; }
+        .container-sots-and-oom .container-sots .section.section-dark .details .details-round, .container-sots-and-oom .container-sots .section.section-dark .details .details-date {
+          color: white; }
+        .container-sots-and-oom .container-sots .section.section-dark .details .details-course {
+          color: black; }
+      .container-sots-and-oom .container-sots .section .inner {
+        width: 100%;
+        margin: 0 auto;
+        display: flex; }
+        .container-sots-and-oom .container-sots .section .inner .details {
+          flex-basis: 12vw;
+          /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+          /* Safari */
+          display: -webkit-flex;
+          -webkit-flex-direction: column;
+          -webkit-justify-content: center;
+          -webkit-align-items: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          border-right: 1px solid lightgray;
+          font-size: 1.0vw; }
+          .container-sots-and-oom .container-sots .section .inner .details p {
+            text-align: left;
+            line-height: 2vh;
+            padding: 0;
+            margin: 0; }
+          .container-sots-and-oom .container-sots .section .inner .details .details-round {
+            color: #6b6a6a; }
+          .container-sots-and-oom .container-sots .section .inner .details .details-course {
+            position: absolute;
+            top: 0;
+            font-size: 1.3vw;
+            font-weight: 700;
+            width: 8vw;
+            height: 10vw;
+            margin: 0 1vw;
+            text-align: center;
+            /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+            /* Safari */
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+            -webkit-justify-content: center;
+            -webkit-align-items: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center; }
+          .container-sots-and-oom .container-sots .section .inner .details .details-date {
+            font-weight: 600;
+            color: #6b6a6a;
+            margin-bottom: 3vh; }
+          .container-sots-and-oom .container-sots .section .inner .details .container-golfball {
+            position: relative; }
+            .container-sots-and-oom .container-sots .section .inner .details .container-golfball .golfball {
+              width: 10vw;
+              height: 10vw; }
+          .container-sots-and-oom .container-sots .section .inner .details .details-actual-scorecard {
+            margin-top: 1vh; }
+        .container-sots-and-oom .container-sots .section .inner .round-summary {
+          flex-basis: 63vw;
+          margin: 0 0 0 3vw; }
+          .container-sots-and-oom .container-sots .section .inner .round-summary h2 {
+            text-align: left;
+            font-size: 1.5vw; }
+          .container-sots-and-oom .container-sots .section .inner .round-summary p {
+            text-align: left;
+            font-size: 1.1vw;
+            line-height: 1.3;
+            padding: 0;
+            margin: 0 0 1.5vh 0; }
+    .container-sots-and-oom .container-sots .img-main1, .container-sots-and-oom .container-sots .img-main2 {
+      width: 100%;
+      position: relative;
+      opacity: 0.9;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+      /* Safari */
+      display: -webkit-flex;
+      -webkit-flex-direction: row;
+      -webkit-justify-content: center;
+      -webkit-align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center; }
+    .container-sots-and-oom .container-sots .img-main1 {
+      /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+      /* Safari */
+      display: -webkit-flex;
+      -webkit-flex-direction: column;
+      -webkit-align-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+    .container-sots-and-oom .container-sots .img-main1 {
+      background-image: url("../../assets/images/courses/Cottesmore3.jpg");
+      min-height: 87vh; }
+    .container-sots-and-oom .container-sots .img-main2 {
+      background-image: url("../../assets/images/courses/Cottesmore1.jpg");
+      min-height: 87vh; }
+    .container-sots-and-oom .container-sots .courseImages {
+      width: 100%;
+      position: relative;
+      opacity: 0.9;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+      /* Safari */
+      display: -webkit-flex;
+      -webkit-flex-direction: row;
+      -webkit-justify-content: center;
+      -webkit-align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center; }
+    .container-sots-and-oom .container-sots .goToTopOfPage {
+      position: fixed;
+      top: 87vh;
+      left: 70vw; }
+      .container-sots-and-oom .container-sots .goToTopOfPage button.buttonScrollToTopOfPage {
+        background: none;
+        border: none;
+        outline: 0;
+        cursor: pointer;
+        padding: 0;
+        height: 4vw;
+        width: 4vw;
+        background-image: url("../../assets/images/miscellaneous/flagInHole.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+        /* Safari */
+        display: -webkit-flex;
+        -webkit-flex-direction: row;
+        -webkit-justify-content: center;
+        -webkit-align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center; }
+      .container-sots-and-oom .container-sots .goToTopOfPage img {
+        height: 4vw; }
+      .container-sots-and-oom .container-sots .goToTopOfPage span {
+        position: fixed;
+        top: 87.2vh;
+        left: 71.4vw;
+        font-size: 0.9vw;
+        font-weight: 700; }
+      .container-sots-and-oom .container-sots .goToTopOfPage.visible {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1s linear;
+        animation-name: scroll-help-fade-in;
+        animation-duration: 1s;
+        animation-timing-function: ease-in; }
+      .container-sots-and-oom .container-sots .goToTopOfPage.hidden {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 1s, opacity 1s linear; }
+  .container-sots-and-oom .oom-position {
+    position: fixed;
+    height: 87vh;
+    flex-basis: 25%;
+    top: 8vh;
+    left: 75%;
+    background-color: black;
+    color: white;
+    /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+    /* Safari */
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; }
+    .container-sots-and-oom .oom-position > div {
+      margin: 0 1.5vw; }
+    .container-sots-and-oom .oom-position.currentSeason {
+      padding: 0 2vw; }
+    .container-sots-and-oom .oom-position .scrollHelp {
+      font-size: 0.9vw;
+      text-align: center;
+      margin-bottom: 1vh; }
+    .container-sots-and-oom .oom-position .oom-table-header {
+      border: 3px solid lightgray;
+      padding-bottom: 1vh; }
+      .container-sots-and-oom .oom-position .oom-table-header > h2 {
+        text-align: center;
+        font-size: 1.3vw;
+        padding: 1vh 0;
+        margin: 0 0 1vh 0;
+        background-color: orange;
+        white-space: pre-wrap; }
+      .container-sots-and-oom .oom-position .oom-table-header > table {
+        width: 100%; }
+    .container-sots-and-oom .oom-position tr.headings > th {
+      text-align: center;
+      font-size: 1.0vw; }
+    .container-sots-and-oom .oom-position tr.totals {
+      font-size: 1.1vw;
+      font-weight: 700;
+      height: 5.5vh; }
+      .container-sots-and-oom .oom-position tr.totals > td {
+        text-align: center;
+        padding: 1vh 0; }
+      .container-sots-and-oom .oom-position tr.totals > td.row-heading {
+        text-align: left;
+        padding-left: 0.5vw;
+        font-size: 1.0vw;
+        width: 30%; }
+    .container-sots-and-oom .oom-position .totals-winners {
+      background-color: goldenrod;
+      padding: 0.5vw;
+      border-radius: 50%; }
+    .container-sots-and-oom .oom-position .img-winners {
+      margin-top: 1vh;
+      /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+      /* Safari */
+      display: -webkit-flex;
+      -webkit-flex-direction: row;
+      -webkit-justify-content: space-evenly;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly; }
+      .container-sots-and-oom .oom-position .img-winners > img {
+        height: 12vh; }
+    .container-sots-and-oom .oom-position .oom-table-link {
+      text-align: center;
+      margin-top: 1vh; }
+
+@media screen and (min-width: 1025px) {
+  .container-sots-and-oom .container-sots .img-main1, .container-sots-and-oom .container-sots .img-main2, .container-sots-and-oom .container-sots .courseImages {
+    background-attachment: fixed; } }
+
+@media screen and (max-width: 1024px) {
+  .container-sots-and-oom .container-sots .section .inner .details p {
+    font-size: 1.2em; }
+  .container-sots-and-oom .container-sots .section .inner .details .container-golfball p.details-course {
+    font-size: 1.4em; }
+  .container-sots-and-oom .container-sots .section .inner .round-summary p {
+    font-size: 1.0em; }
+  .container-sots-and-oom .container-sots .section .inner .round-summary h2.heading {
+    font-size: 1.4em; }
+  .container-sots-and-oom .oom-position .scrollHelp {
+    font-size: 0.8em; }
+  .container-sots-and-oom .oom-position .oom-table-header h2 {
+    font-size: 1.0em; }
+  .container-sots-and-oom .oom-position .oom-table-header tr.totals > td {
+    font-size: 1.1em; } }

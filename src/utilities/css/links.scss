@@ -1,0 +1,23 @@
+@import '../../sass/_variables';
+
+
+.container-main-content-player-profiles, .container-card {
+    a, a:link	{color: $color-hyperlink-container-dark-background-link; text-decoration: none;}
+    a:visited	{color: $color-hyperlink-container-dark-background-visited;}
+    a:active	{color: $color-hyperlink-container-dark-background-active;}
+    a:hover		{color: $color-hyperlink-container-dark-background-hover; text-decoration: underline;}
+}
+
+.courseName, .yearOfCompetition, .actualScorecard, .details-scorecard, .details-actual-scorecard, .container-player-profile {
+    a, a:link	{color: $color-hyperlink-light-background-link; text-decoration: none;}
+    a:visited	{color: $color-hyperlink-light-background-visited;}
+    a:active	{color: $color-hyperlink-light-background-active;}
+    a:hover		{color: $color-hyperlink-light-background-hover; text-decoration: underline;}
+}
+
+.oom-table-link, .section.section-dark .inner .details .details-scorecard, .section.section-dark .inner .details .details-actual-scorecard {
+    a, a:link	{color: $color-hyperlink-dark-background-link; text-decoration: none;}
+    a:visited	{color: $color-hyperlink-dark-background-visited;}
+    a:active	{color: $color-hyperlink-dark-background-active;}
+    a:hover		{color: $color-hyperlink-dark-background-hover; text-decoration: underline;}
+}

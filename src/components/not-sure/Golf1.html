@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Golf Society Home</title>
+<h1>Golf Society Home</h1>
+</head>
+<body>
+<hr>
+<p>Welcome to the Golf Society Web Site</p>
+<p>Here are the players :-</p>
+<ul>
+	<li><a HREF="Dave.html">Dave Bishop</a>
+	<li><a HREF="Jack.html">Jack Fergus</a>
+	<li><a HREF="Martin.html">Martin Anderson</a>
+	<li><a HREF="Steve.html">Steve Pearce</a>
+</ul>
+<hr>
+<table>
+<tr>
+	<td> <img border=0 src="images/DSC00159.JPG" alt="Dave" height=100 width=75>
+	<td> <img border=0 src="images/DSC00161.JPG" alt="Jack" height=100 width=75>
+	<td> <img border=0 src="images/DSC00165.JPG" alt="Martin" height=100 width=75>
+	<td> <img border=0 src="images/DSC00160.JPG" alt="Steve" height=100 width=75>
+</tr>
+<tr>
+	<td> Dave
+	<td> Jack
+	<td> Martin
+	<td> Steve
+</tr>
+</table>
+<script LANGUAGE="JavaScript">
+msg = "This is an example of a scrolling message ";
+msg += "that appears in the body of the page. ";
+msg = "......." + msg;
+pos = 0;
+function ScrollMessage() {
+   var newtext = msg.substring(pos, msg.length) + msg.substring(0, pos);
+   var td = document.getElementById("scroll");
+   td.firstChild.nodeValue = newtext;
+   pos++;
+   if (pos > msg.length) pos = 0;
+   window.setTimeout("ScrollMessage()",150);
+}
+</script>
+<body onLoad="ScrollMessage();">
+<p>Latest News</p>
+<table width="90%" border>
+<tr>
+<td ID="scroll" width="50%"> Here is the latest news </td>
+</tr>
+</table>
+</body>
+</html>

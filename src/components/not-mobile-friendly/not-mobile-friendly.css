@@ -1,0 +1,32 @@
+.message {
+  display: none;
+  position: fixed;
+  height: 87vh;
+  width: 100vw;
+  margin-top: 8vh;
+  font-size: 2vw;
+  font-weight: 900;
+  text-align: center;
+  background-color: black;
+  color: white;
+  z-index: 99999; }
+
+@media only screen and (max-width: 1023px) {
+  .message {
+    /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+    /* Safari */
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    height: 91vh;
+    margin-top: 4vh; } }
+
+@media only screen and (max-width: 450px) {
+  .message {
+    font-size: 1.2em; } }

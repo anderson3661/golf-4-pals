@@ -1,0 +1,184 @@
+<html>
+<head>
+
+	<style type="text/css">
+
+		body		{background-color: #FFFFCC;}
+
+		table.oom {	width: 200px;
+				background-color: #99CCFF;
+				border-color: navy;
+				border-style: solid;
+				border-weight: 0;
+				border-width: thin;
+				text-indent: 7px;
+				font-size: 0.9em;
+				color: black;}
+
+		tr.oomHeader	{text-align: center;
+				text-indent: 0px;
+				font-size: 1.0em}
+
+		tr.oomDetails	{text-align: center;
+				text-indent: 0px;
+				font-size: 0.8em}
+
+		td.Header	{color: black;
+				font-weight: bold;
+				text-align: center;
+				font-size: 1.5em;}
+
+		td.Name	{background-color: yellow;
+				color: black;
+				text-align: center;
+				font-size: 1.3em;}
+
+		td.score	{background-color: white;
+				color: black;
+				text-align: right;
+				padding-right: 20px;}
+
+		td.Total	{background-color: orange;
+				color: black;
+				font-weight: bold;
+				text-align: center;
+				font-size: 1.3em;}
+
+		td.scoreTotal	{background-color: white;
+				color: black;
+				font-weight: bold;
+				text-align: right;
+				font-size: 1.3em;
+				padding-right: 20px;}
+
+
+		td.playersImg	{width: 30%;
+				text-align: center;
+				color: blue;
+				font-size: 1.4em;}
+
+		img.Players	{width: 50px;
+				height: 50px;}
+
+		#table	{color: blue;
+				text-align: center;
+				font-size: 0.8em;}
+
+
+	</style>
+
+	<script language="JavaScript" type="text/javascript">
+
+		function ScoreList(score1, score2, score3, score4, score5) {
+			this.score = new Array(4);
+			this.score[0] = score1;
+			this.score[1] = score2;
+			this.score[2] = score3;
+			this.score[3] = score4;
+			this.score[4] = score5;
+		}
+
+		function TeamList(team1, team2, team3, team4, team5) {
+			this.team = new Array(4);
+			this.team[0] = team1;
+			this.team[1] = team2;
+			this.team[2] = team3;
+			this.team[3] = team4;
+			this.team[4] = team5;
+		}
+
+		function DisplayPic(name) {
+			pic=new Image(100,100);
+			pic.src="images\davethumb2.jpg";
+			document.write("<img src='" + pic + "' border='0' width='100' height='100'>");
+		}
+
+	</script>
+
+
+		<title>Football Competition 2006/2007</title>
+
+</head>
+
+<body>
+
+<table width=80%>
+	<tr>
+		<td colspan="3" class="Header">Football Competition 2006/2007</td>
+	</tr>
+
+	<tr>
+		<td>
+		<table width="100%">
+		<script LANGUAGE="JavaScript" type="text/javascript">
+			var person, scoreTotal;
+			person = "";
+
+			scores = new Array(4);
+			scores[0] = new ScoreList(1,5,6,9,20);
+			scores[1] = new ScoreList(2,15,17,19,11);
+			scores[2] = new ScoreList(4,13,12,14,18);
+			scores[3] = new ScoreList(3,10,7,16,8);
+
+			teams = new Array(4);
+			teams[0] = new TeamList("Man Utd", "Tottenham", "Everton", "Portsmouth", "Watford");
+			teams[1] = new TeamList("Chelsea", "West Ham", "Wigan", "Charlton", "Aston Villa");
+			teams[2] = new TeamList("Arsenal", "Newcastle", "Middlesbro", "Man City", "Sheff Utd");
+			teams[3] = new TeamList("Liverpool", "Blackburn", "Bolton", "Fulham", "Reading");
+
+			for (j=0; j<4; j++) {
+
+				scoreTotal = 0;
+
+				document.write("<td>");
+				document.write("<table class='oom' border='1' cellpadding='5px'>");
+
+					document.write("<tr>");
+					if (j==0) {
+					person = "Dave";
+					} else if (j==1) {
+					person = "Jack";
+					} else if (j==2) {
+					person = "Martin";
+					} else {
+					person = "Steve";
+					}
+
+					document.write("<td colspan='2' class='playersImg'>" + person + "&nbsp;&nbsp;<img class='players' src='images\\" + person.toLowerCase() + "thumb2.jpg'></td>");
+
+					document.write("</tr>");
+
+				for (i=0; i<5; i++) {
+					document.write("<tr class='oomHeader'>");
+					document.write("<td width='10%'>" + teams[j].team[i] + "</td>");
+					document.write("<td class='score' width='5%'>" + scores[j].score[i] + "</td>");
+					document.write("</tr>");
+					scoreTotal += scores[j].score[i];
+				}
+
+				document.write("<tr>");
+				document.write("<td class = 'Total' width='10%'>" + "Total" + "</td>");
+				document.write("<td class='scoreTotal' width='5%'>" + scoreTotal + "</td>");
+				document.write("</tr>");
+
+				document.write("</table>");
+				document.write("</td>");
+				document.write("<td width='5%'>&nbsp;</td>");
+
+			}
+
+		</script>
+
+		</table>
+
+		</td>
+
+	</tr>
+
+</table>
+
+<p></p>
+<a id="table" target="_blank" href="http://news.bbc.co.uk/sport1/hi/football/eng_prem/default.stm">Premiership Table (BBC Sport)</a>
+
+</body>
+</html>

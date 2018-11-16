@@ -1,0 +1,32 @@
+@import '../../sass/_mixins';
+@import '../../sass/_variables';
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 5.5vh;
+    color: $color-main-footer;
+    background-color: $background-color-main-footer;
+    text-align: right;
+    @include flex($justify-content: space-around);
+
+    ul {
+        @include flex($justify-content: space-between, $align-items: null);
+        flex-basis: 30%;
+
+        li {
+            border-right: none;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    footer {
+        ul {
+            flex-basis: 40%;
+        }
+    }
+}

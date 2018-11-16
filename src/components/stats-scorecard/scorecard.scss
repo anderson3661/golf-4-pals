@@ -1,0 +1,25 @@
+@import '../../sass/_variables';
+
+
+.report-and-scorecard.oom {
+        width: 95%;
+        top: 4vh;
+}
+
+.stats.scorecard.oom {
+    position: relative;
+    top: 0;
+    width: 60%;
+    margin: 0;
+    
+    .holeNumber {width: 10%}
+    .par {width: 7%}
+    .yardage {width: 7%}
+    .strokeIndex {width: 7%}
+    .names {width: 12%}
+
+    .actualScorecard {
+        text-align: left;
+        padding-left: 1vw;
+    }
+}

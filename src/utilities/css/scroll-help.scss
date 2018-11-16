@@ -1,0 +1,81 @@
+@import '../../sass/_mixins';
+@import '../../sass/_variables';
+
+
+.scroll-help {
+
+    .image {
+        height: 9vw;
+        width: 9vw;
+        margin-bottom: 3vh;
+        background-image: $background-image-scroll-help;
+        background-repeat: no-repeat;
+        background-size: cover;
+        @include flex();
+    }
+
+    img {
+        height: 15vh;
+    }
+
+    span {
+        width: 80%;
+        font-size: 1vw;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    .indicator {
+        position: relative;
+        width: 3vw;
+        height: 3vw;
+        margin: 0 auto;
+        background-color: transparent;
+        transform: rotate(45deg);
+    }
+
+    .indicator span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        border: none;
+        border-right: 3px solid $border-color-scroll-help;
+        border-bottom: 3px solid $border-color-scroll-help;
+        animation: animate 1s linear infinite;
+    }
+
+    .indicator span:nth-child(1) { top: -30px; left: -30px; animation-delay: 0s; }
+    .indicator span:nth-child(2) { top: -15px; left: -15px; animation-delay: 0.2s; }
+    .indicator span:nth-child(3) { top: 0px; left: 0px; animation-delay: 0.4s; }
+    .indicator span:nth-child(4) { top: 15px; left: 15px; animation-delay: 0.6s; }
+    .indicator span:nth-child(5) { top: 30px; left: 30px; animation-delay: 0.8s; }
+
+    @keyframes animate {
+        0% { border-color: $border-color-scroll-help; transform: translate(0,0);}
+        20% { border-color: $border-color-scroll-help; transform: translate(0,0);}
+        20.1%, 100% { border-color: transparent;}
+    }
+
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1s linear;
+        animation-name: scroll-help-fade-in;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+    }
+
+    &.hidden {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 1s, opacity 1s linear;
+    }
+
+    @keyframes scroll-help-fade-in {
+        0% { opacity: 0;}
+        100% { opacity: 1;}
+    }
+}

@@ -1,0 +1,59 @@
+@import '../../sass/_mixins';
+@import '../../sass/_variables';
+
+
+.container-main-content-player-profiles {
+    margin: 8vh auto 0 auto;
+    @include flex($align-items: null);
+    
+    //The main container-card css is in App.scss
+    .container-card {
+        flex-basis: 20%;
+        @include flex($flex-direction: column, $justify-content: null, $align-items: null);
+        padding: 1vh 1vw;
+        margin: 0 2vw;
+
+        h2 {
+            font-size: 1.7vw;
+            margin: 1vh auto 2vh;
+        }
+
+        img.thumbnail {
+            height: 25vh;
+            border-radius: 50%;
+            margin: 0 auto 3vh;
+        }
+
+        table {
+            font-size: 1.2vw;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        tr > td:nth-of-type(2n) {
+            text-align: right;
+        }
+
+        tr > td.spacer {
+            padding: 1vh 0;
+        }
+
+        p.playerProfile {
+            text-align: center;
+            font-size: 1.4vw;
+            margin: 4vh 0 1vh;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+    .container-main-content-player-profiles {
+
+        .container-card-player-profiles {
+            font-size: 0.8em;
+        }
+
+    }
+}

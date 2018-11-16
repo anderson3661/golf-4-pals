@@ -1,0 +1,46 @@
+@import '../../sass/_variables';
+
+
+.stats-outer {
+
+    // &.stats {top: 4vh;}       // Required for scorecard to line up at the top, and have a margin before the report
+
+    .stats.scorecard.admin-course-crud {
+
+        width: 60%;
+        border: none;
+        border-radius: 10px;
+        background-color: transparent;
+
+        .admin-course-crud-inner {
+            background-color: $background-color-admin-course-and-round;
+            border: $border-color-admin-course-and-round;
+            border-radius: 10px;
+
+            .header {
+                #courseName, #courseVariation {margin-left: 1vw;}
+
+                > span { font-size: 1.2vw; }
+            }
+
+            .holeNumber {width: 10%}
+            .holeName {width: 30%}
+            .par {width: 20%}
+            .yardage {width: 20%}
+            .strokeIndex {width: 20%}
+
+            .holeName-input-field {width: 90%}
+            .par-input-field {width: 50%}
+            .yardage-input-field {width: 50%}
+            .strokeIndex-input-field {width: 50%}
+
+            #courseName, #courseVariation {
+                font-size: 1.2vw;
+                padding: 5px 0;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1024px) { .stats-outer .stats.scorecard.admin-course-crud { width: 75%; .header span.title { font-size: 1.0em; } } }

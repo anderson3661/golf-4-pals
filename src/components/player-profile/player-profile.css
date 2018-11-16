@@ -1,0 +1,173 @@
+.container-img-and-profile {
+  /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+  /* Safari */
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  position: relative;
+  margin-top: 8vh; }
+  .container-img-and-profile .img {
+    width: 20vw;
+    position: fixed;
+    top: 8.5vh;
+    left: 0;
+    height: 86vh;
+    opacity: 0.8;
+    background-image: url("../../assets/images/players/martinputting3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+    /* Safari */
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+  .container-img-and-profile .img-text {
+    width: 90%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.5vw;
+    letter-spacing: 0.25vw;
+    padding: 1.5vw 0;
+    line-height: 4vh; }
+    .container-img-and-profile .img-text.inverse {
+      background-color: rgba(250, 248, 248, 0.7);
+      color: black; }
+    .container-img-and-profile .img-text.transparent {
+      background-color: rgba(44, 44, 44, 0.788);
+      color: white; }
+  .container-img-and-profile .container-player-profile {
+    flex-basis: 76%;
+    /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+    /* Safari */
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 0 100px 0;
+    margin-left: 22vw; }
+    .container-img-and-profile .container-player-profile .container-card {
+      width: 95%;
+      text-align: left;
+      background: radial-gradient(ellipse at center, #708388 0%, #4a5661 100%);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      padding-bottom: 3vh; }
+      .container-img-and-profile .container-player-profile .container-card .heading {
+        font-size: 1.7vw; }
+        .container-img-and-profile .container-player-profile .container-card .heading h2 {
+          text-align: center; }
+      .container-img-and-profile .container-player-profile .container-card .oomHistory, .container-img-and-profile .container-player-profile .container-card .wins, .container-img-and-profile .container-player-profile .container-card .holeScoreType, .container-img-and-profile .container-player-profile .container-card .bestRounds {
+        top: 0;
+        background-color: white;
+        color: black;
+        font-size: 1.0vw;
+        padding: 1vh 0 2vh 0;
+        margin: 1vh auto;
+        border-radius: 10px; }
+      .container-img-and-profile .container-player-profile .container-card .oomHistory {
+        width: 60%; }
+        .container-img-and-profile .container-player-profile .container-card .oomHistory th, .container-img-and-profile .container-player-profile .container-card .oomHistory td {
+          text-align: center; }
+        .container-img-and-profile .container-player-profile .container-card .oomHistory .yearOfCompetition {
+          width: 20%; }
+        .container-img-and-profile .container-player-profile .container-card .oomHistory .position {
+          width: 20%; }
+        .container-img-and-profile .container-player-profile .container-card .oomHistory .names {
+          width: 10%; }
+        .container-img-and-profile .container-player-profile .container-card .oomHistory .spacer {
+          width: 3%; }
+        .container-img-and-profile .container-player-profile .container-card .oomHistory .endSpacer {
+          width: 3%; }
+        .container-img-and-profile .container-player-profile .container-card .oomHistory td.yearOfCompetition {
+          white-space: pre-wrap; }
+          .container-img-and-profile .container-player-profile .container-card .oomHistory td.yearOfCompetition span {
+            font-size: 0.8em; }
+      .container-img-and-profile .container-player-profile .container-card .wins {
+        width: 100%; }
+        .container-img-and-profile .container-player-profile .container-card .wins .yearOfCompetition {
+          width: 8%; }
+        .container-img-and-profile .container-player-profile .container-card .wins tr:not(.headings):nth-child(even) {
+          background: #fafafa; }
+      .container-img-and-profile .container-player-profile .container-card .holeScoreType {
+        width: 90%; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType .yearOfCompetition {
+          width: 15%;
+          text-align: center; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType .roundNumber {
+          width: 5%;
+          text-align: center; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType .dateOfRound {
+          width: 10%;
+          text-align: center; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType .courseName {
+          width: 20%; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType .holeNumber {
+          width: 6%; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType .yardage {
+          width: 6%; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType .par {
+          width: 6%; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType .spacer {
+          width: 3%; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType tr.headings > th, .container-img-and-profile .container-player-profile .container-card .holeScoreType tr > td {
+          text-align: center; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType tr.headings > th.courseName, .container-img-and-profile .container-player-profile .container-card .holeScoreType tr > td.courseName {
+          text-align: left; }
+        .container-img-and-profile .container-player-profile .container-card .holeScoreType tr:not(.headings):nth-child(even) {
+          background: #fafafa; }
+      .container-img-and-profile .container-player-profile .container-card .bestRounds {
+        width: 100%;
+        margin-bottom: 3vh; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds h2 {
+          text-align: left;
+          margin: 5px 2%; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds .bestOfType {
+          width: 15%;
+          text-align: left; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds .yearOfCompetition {
+          width: 10%;
+          text-align: center; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds .roundNumber {
+          width: 5%;
+          text-align: center; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds .dateOfRound {
+          width: 10%;
+          text-align: center; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds .courseName {
+          width: 16%;
+          text-align: left; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds .headings {
+          width: 9%; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds .spacer {
+          width: 1%; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds .endSpacer {
+          width: 2%; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds tr.headings > th, .container-img-and-profile .container-player-profile .container-card .bestRounds tr > td {
+          text-align: center; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds tr.headings > th.courseName {
+          text-align: left; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds tr {
+          line-height: 1.5em; }
+          .container-img-and-profile .container-player-profile .container-card .bestRounds tr > td {
+            padding: 2px 0; }
+        .container-img-and-profile .container-player-profile .container-card .bestRounds tr.rowBorder {
+          border-bottom: 1px solid lightgray;
+          line-height: 1.5em; }
+      .container-img-and-profile .container-player-profile .container-card .winsSummary {
+        text-align: center;
+        font-size: 1.3em;
+        font-weight: 700;
+        margin-bottom: 0; }
+        .container-img-and-profile .container-player-profile .container-card .winsSummary span {
+          margin-left: 10px; }
+    .container-img-and-profile .container-player-profile .stats {
+      position: relative; }
+      .container-img-and-profile .container-player-profile .stats tr.major {
+        background-color: white; }

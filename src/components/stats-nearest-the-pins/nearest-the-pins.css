@@ -1,0 +1,20 @@
+.stats.nearest-the-pins {
+  width: 50%;
+  margin-bottom: 150px; }
+  .stats.nearest-the-pins th.endSpacer, .stats.nearest-the-pins td.endSpacer {
+    width: 3%; }
+  .stats.nearest-the-pins td.dateOfRound {
+    width: 20%; }
+  .stats.nearest-the-pins td.ntps {
+    width: 10%;
+    text-align: center; }
+
+.stats.nearest-the-pins.all-years {
+  width: 60%; }
+  @media (max-width: 1024px) {
+    .stats.nearest-the-pins.all-years {
+      width: 75%; } }
+
+@media only screen and (max-width: 1024px) {
+  .stats.nearest-the-pins {
+    width: 70%; } }

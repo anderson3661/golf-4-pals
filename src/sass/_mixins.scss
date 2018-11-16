@@ -1,0 +1,29 @@
+@mixin flex($flex-direction: row, $justify-content: center, $align-items: center) {
+    /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+
+    /* Safari */
+    display: -webkit-flex;
+    -webkit-flex-direction: $flex-direction;
+    -webkit-justify-content: $justify-content;
+    -webkit-align-items: $align-items;
+
+    display: flex;
+    flex-direction: $flex-direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+@mixin score($color-score, $background-color-score) {
+    color: $color-score;
+    background-color: $background-color-score;
+    flex-basis: $width-fixture-row-team-score;
+    padding: 5px;
+}
+
+@mixin table-column($width, $fontWeight, $textAlign, $paddingLeft, $paddingRight) {
+    width: $width;
+    font-weight: $fontWeight;
+    text-align: $textAlign;
+    padding-left: $paddingLeft;
+    padding-right: $paddingRight;
+}

@@ -1,0 +1,13 @@
+.active-link::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #FFDF43; }
+
+.active-sport-link::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #FFDF43; }

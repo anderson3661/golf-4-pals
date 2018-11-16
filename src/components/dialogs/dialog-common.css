@@ -1,0 +1,9 @@
+.dialog .dialog-title {
+  font-size: 24px; }
+
+.dialog .dialog-para {
+  font-size: 24px;
+  margin: 30px 50px; }
+
+.dialog .dialog-buttons {
+  margin: 0 auto 25px; }

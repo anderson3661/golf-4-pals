@@ -1,0 +1,157 @@
+@import '../../sass/_mixins';
+@import '../../sass/_variables';
+
+nav {
+
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 99;
+
+    
+    .main-heading {
+        color: $color-main-header;
+        font-size: $font-size-main-nav;
+        font-weight: bold;
+        margin: 0;
+        padding: 1vh 0;
+        background: $background-color-main-header;
+        text-align: left;
+        text-transform: uppercase;
+        border-bottom: 1px solid $color-main-nav-border-bottom;
+        @include flex($justify-content: space-around, $align-items: null);
+        z-index: 2;
+    }
+    
+    .login-section {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .loggedInAs {
+        font-size: 12px;
+        font-weight: normal;
+        text-transform: initial;
+        margin-top: 5px;
+        color: white;
+    }
+    
+    .login-buttons {
+        line-height: 0;
+        @include flex($align-items: null);
+    }
+
+    .login-buttons button {
+        background-color: slategray;
+        color: #fff;
+        margin: 0 10px 0 0;
+    }
+
+    .login-buttons button:hover {
+        background-color: lighten(slategray, 10%);
+    }
+
+    .main-nav {
+        color: $color-main-nav;
+        background-color: $background-color-main-nav;
+        max-width: $max-width-main-nav;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .link-disabled {
+        color: darkgray;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        min-height: 3vh;
+
+        li {
+            display: inline-block;
+            padding: 0.5vh 1vw;
+            border-right: 1px solid $color-nav-border-right;
+        }
+
+        li:hover { cursor: pointer; }
+        li:hover.link-disabled { cursor: default; }
+        li:first-child { padding-left: 0; }
+        li:last-child { border-right: none; }
+
+        // li a:hover::after, .nav-child .nav-child-content a:hover::after {
+        li::after, li a:hover::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: $background-color-main-nav;
+        }
+
+        li a.nav-link:hover, .nav-child-content a:hover {
+            text-decoration: none;
+
+            &::after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 3px;
+                background-color: $background-color-active-link;
+            }
+        }
+       
+        .nav-child-content {
+            display: none;
+            position: absolute;
+            // background-color: rgba(0, 0, 0, 0.8);
+            background-color: $background-color-main-nav;
+            box-shadow: 0px 0.8vw 1.6vw 0px rgba(0,0,0,.2);
+            margin-top: 0.9vh;
+            padding: 0 2.5vw;
+            margin-left: -2.5vw;
+            text-align: left;
+        }
+        
+        .nav-child-content a {
+            display: block;
+            padding: 1vh 0;
+            min-height: 2.5vh;
+        }
+
+        .nav-child:hover .nav-child-content {
+            display: block;
+        }
+    }
+
+    a:link {
+        color: white;
+        text-decoration: none;
+    }
+    
+    a:active {
+        color: yellow;
+    }
+    
+    a:visited {    
+        color: white;
+    }
+
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+    nav .main-heading {
+        font-size: 2vw;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    nav .main-heading {
+        font-size: 1em;
+    }
+
+}

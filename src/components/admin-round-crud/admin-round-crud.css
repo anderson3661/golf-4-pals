@@ -1,0 +1,83 @@
+.stats-outer .report-and-scorecard.admin-round-crud {
+  /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+  /* Safari */
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+  display: flex;
+  flex-direction: column; }
+  .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud {
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    position: relative;
+    margin: 0 auto 40px auto; }
+    .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner {
+      width: 100%;
+      background-color: white;
+      border: 1px solid lightgray;
+      border-radius: 10px; }
+      .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .header {
+        font-size: 1.1vw; }
+        .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .header span {
+          font-weight: 700; }
+        .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .header #dateOfRound {
+          font-size: 1.2em;
+          width: 150px;
+          margin-left: 15px; }
+      .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner span.handicap {
+        font-size: 0.7em; }
+      .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .holeNumber {
+        width: 5%; }
+      .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .holeName {
+        width: 26%; }
+      .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .par {
+        width: 7%; }
+      .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .yardage {
+        width: 7%; }
+      .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .strokeIndex {
+        width: 7%; }
+      .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .names {
+        width: 12%; }
+      .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .handicaps-input-field {
+        width: 25%; }
+      .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .admin-round-crud-inner .names-input-field {
+        width: 25%; }
+  .stats-outer .report-and-scorecard.admin-round-crud .report {
+    width: 75%;
+    height: 30vh;
+    min-height: 30vh;
+    margin: 4vh auto 2vh auto;
+    padding: 2vh 0; }
+    .stats-outer .report-and-scorecard.admin-round-crud .report table {
+      width: 98%; }
+    .stats-outer .report-and-scorecard.admin-round-crud .report tr.reportHeadingRow > td {
+      padding-bottom: 1.5vh; }
+    .stats-outer .report-and-scorecard.admin-round-crud .report .label {
+      padding: 0 1vw;
+      font-weight: 700;
+      vertical-align: top;
+      width: 10%; }
+    .stats-outer .report-and-scorecard.admin-round-crud .report #reportHeading, .stats-outer .report-and-scorecard.admin-round-crud .report #reportCommentary {
+      text-align: left;
+      line-height: 1.8vw; }
+    .stats-outer .report-and-scorecard.admin-round-crud .report .reportHeading-input-field {
+      width: 100%; }
+    .stats-outer .report-and-scorecard.admin-round-crud .report #reportHeading {
+      font-size: 1.4vw;
+      padding: 0.25vh 0.5vw; }
+    .stats-outer .report-and-scorecard.admin-round-crud .report .reportCommentary-input-field {
+      width: 100%; }
+    .stats-outer .report-and-scorecard.admin-round-crud .report #reportCommentary {
+      font-size: 1.1vw;
+      padding: 0.5vh 0.5vw;
+      height: 17vh; }
+
+@media screen and (max-width: 1024px) {
+  .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud {
+    width: 90%; }
+    .stats-outer .report-and-scorecard.admin-round-crud .stats.scorecard.admin-round-crud .header span.title {
+      font-size: 1.3em; }
+  .stats-outer .report-and-scorecard.admin-round-crud .report {
+    width: 90%; }
+    .stats-outer .report-and-scorecard.admin-round-crud .report td.label {
+      font-size: 1.4em; } }

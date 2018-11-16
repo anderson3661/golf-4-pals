@@ -1,0 +1,176 @@
+.home .img1, .home .img2, .home .img3, .home .img4, .home .img5, .home .img6, .home .img7, .home .img8 {
+  width: 100%;
+  position: relative;
+  opacity: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+  /* Safari */
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.home .img1 {
+  justify-content: normal; }
+
+.home .img1 {
+  background-image: url("../../assets/images/courses/Cranleigh3.jpg");
+  min-height: 100vh; }
+
+.home .img2 {
+  background-image: url("../../assets/images/players/Group.jpg");
+  min-height: 50vh; }
+
+.home .img3 {
+  background-image: url("../../assets/images/players/daveputting1.jpg");
+  min-height: 75vh;
+  background-position: center 6vh; }
+
+.home .img4 {
+  background-image: url("../../assets/images/players/jackputting1.jpg");
+  min-height: 75vh;
+  background-position: center 0vh; }
+
+.home .img5 {
+  background-image: url("../../assets/images/players/martinputting1.jpg");
+  min-height: 75vh;
+  background-position: center 3vh; }
+
+.home .img6 {
+  background-image: url("../../assets/images/players/steveputting1.jpg");
+  min-height: 75vh;
+  background-position: center 8vh; }
+
+.home .img8 {
+  background-image: url("../../assets/images/players/GroupEastBrighton.jpg");
+  min-height: 100vh; }
+
+.home .img-text {
+  background-color: rgba(17, 17, 17, 0.8);
+  color: white;
+  text-align: center;
+  letter-spacing: 0.5em;
+  padding: 1.2em;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-timing-function: ease-in; }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+  .home .img-text.mainHeader {
+    margin-top: 44vh;
+    margin-bottom: 9vh; }
+  .home .img-text span {
+    text-transform: uppercase;
+    font-size: 2.2vw; }
+  .home .img-text p {
+    font-size: 1.0em;
+    margin-top: 1.6em; }
+  .home .img-text.transparent {
+    background-color: transparent; }
+  .home .img-text.inverse {
+    background-color: rgba(250, 248, 248, 0.7);
+    color: black; }
+
+.home .section {
+  padding: 5vh 10vw; }
+  .home .section h2 {
+    text-align: center;
+    font-size: 1.8em; }
+  .home .section p {
+    text-align: left;
+    font-size: 1.4em;
+    line-height: 1.5em; }
+  .home .section.section-light {
+    background-color: #f4f4f4;
+    color: #666; }
+  .home .section.section-dark {
+    background-color: #282e34;
+    color: #ddd; }
+  .home .section.playerProfile {
+    /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+    /* Safari */
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+    display: flex;
+    flex-direction: row; }
+    .home .section.playerProfile .playerProfileImage-container {
+      flex-direction: column;
+      text-align: center;
+      width: 20vw;
+      padding-top: 1vh; }
+      .home .section.playerProfile .playerProfileImage-container .playerProfileImage {
+        width: 10vw;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0px 0px 200px 10px rgba(255, 255, 255, 0.9); }
+        .home .section.playerProfile .playerProfileImage-container .playerProfileImage img {
+          height: auto;
+          width: 100%; }
+    .home .section.playerProfile .playerProfileSummary {
+      flex-basis: 75%; }
+    .home .section.playerProfile > div > p {
+      margin: 0 0 2.5vh 0; }
+
+.home .howItWorks {
+  /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+  /* Safari */
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+  .home .howItWorks table {
+    flex-basis: 40%;
+    margin: 0;
+    font-size: 1.1em;
+    line-height: 1.2; }
+    .home .howItWorks table td {
+      width: 16%;
+      text-align: center; }
+    .home .howItWorks table td:first-child {
+      width: 10%; }
+    .home .howItWorks table.finishingPosition {
+      flex-basis: 45%; }
+      .home .howItWorks table.finishingPosition td:last-child {
+        width: 3%; }
+    .home .howItWorks table tr:first-child {
+      font-weight: 700; }
+
+@media screen and (min-width: 1025px) {
+  .home .img1, .home .img2, .home .img3, .home .img4, .home .img5, .home .img6, .home .img7, .home .img8 {
+    background-attachment: fixed; } }
+
+@media screen and (max-width: 1024px) {
+  .home .img3, .home .img4, .home .img5, .home .img6 {
+    background-position: center top; }
+  .home .section p {
+    font-size: 1.2em; }
+  .home .section.playerProfile .playerProfileImage-container {
+    margin-right: 4vw; } }
+
+@media screen and (max-width: 568px) {
+  .home .pimg1, .home .pimg2, .home .pimg3 {
+    background-attachment: scroll; }
+  .home .section {
+    text-align: center;
+    padding: 2vh 20vw; }
+    .home .section h2 {
+      font-size: 1.2em; }
+    .home .section p {
+      font-size: 1.0em;
+      line-height: 1.1; }
+  .home .img-text {
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 2px; } }

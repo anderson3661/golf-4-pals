@@ -1,0 +1,330 @@
+@import '../../sass/_mixins';
+@import '../../sass/_variables';
+
+
+.container-sots-and-oom {
+    @include flex($justify-content: null, $align-items: null);
+    height: $height-viewport-info-container;
+    margin-top: $margin-top-viewport-info-container;
+
+    .container-sots {
+        height: $height-viewport-info-container;
+        flex-basis: 75%;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        //Don't put this inside .img-main1 otherwise the course titles don't display correctly
+        .img-text {
+            background-color: $background-color-course-images-text-overlay;
+            color: $color-course-images-text-overlay;
+            padding: 2vh 2vw;
+            text-transform: uppercase;
+            font-size: 2vw;
+            letter-spacing: 0.8vw;
+            
+            animation-name: fade-in;
+            animation-duration: 1s;
+            animation-timing-function: ease-in;
+            
+            @keyframes fade-in {
+                0% { opacity: 0;}
+                100% { opacity: 1;}
+            }
+            
+            &.mainHeader {
+                margin-top: 20vh;
+                margin-bottom: 10vh;
+                display: flex;
+
+                span {
+                    margin-right: 3vw;
+                    @include flex($justify-content: null);
+                }
+            }
+            
+            &.transparent {
+                background-color: transparent;
+            }
+
+            .selectYearOfCompetition {
+                background-color: $background-color-select-year-of-competition;
+                padding: 1vh 2vw;
+            }
+        }
+            
+        .section {
+            text-align: center;
+            padding: 4vh 3vw 4vh 0;
+            
+            &.section-light {
+                background-color: $background-color-section-light;
+                color: $color-section-light;
+            }
+
+            &.section-dark {
+                background-color: $background-color-section-dark;
+                color: $color-section-dark;
+
+                .details {
+                    .details-round, .details-date { color: $color-round-summary-dark-background; }
+                    .details-course { color: $color-round-summary-course-dark-background; }
+                }
+            }
+
+            .inner {
+                width: 100%;
+                margin: 0 auto;
+                display: flex;
+
+                .details {
+                    flex-basis: 12vw;
+                    @include flex($flex-direction: column);
+                    position: relative;
+                    border-right: $border-round-summary-separator;
+                    font-size: 1.0vw;
+
+                    p {
+                        text-align: left;
+                        line-height: 2vh;
+                        padding: 0;
+                        margin: 0;
+                    }
+        
+                    .details-round {
+                        color: $color-round-summary-light-background;
+                    }
+        
+                    .details-course {
+                        position: absolute;
+                        top: 0;
+                        font-size: 1.3vw;
+                        font-weight: 700;
+                        width: 8vw;
+                        height: 10vw;               // Is the same height and width as the golf ball so that the course is centered
+                        margin: 0 1vw;
+                        text-align: center;
+                        @include flex();
+                    }
+        
+                    .details-date {
+                        font-weight: 600;
+                        color: $color-round-summary-light-background;
+                        margin-bottom: 3vh;
+                    }
+                            
+                    .container-golfball {
+                        position: relative;
+
+                        .golfball {
+                            width: 10vw;
+                            height: 10vw;
+                        }
+                    }
+                    
+                    .details-actual-scorecard {
+                        margin-top: 1vh;
+                    }
+                }
+
+                .round-summary {
+                    flex-basis: 63vw;
+                    margin: 0 0 0 3vw;
+
+                    h2 {
+                        text-align: left;
+                        font-size: 1.5vw;
+                    }
+        
+                    p {
+                        text-align: left;
+                        font-size: 1.1vw;
+                        line-height: 1.3;
+                        padding: 0;
+                        margin: 0 0 1.5vh 0;
+                    }
+                }
+            
+            }
+        }
+
+        .img-main1, .img-main2 {
+            width: 100%;
+            position: relative;
+            opacity: $opacity-images-story-of-the-season-top-and-bottom;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            // background-attachment: fixed;       /* Set below using media query to get round ios problem */
+            @include flex();
+        }
+
+        .img-main1 { @include flex($flex-direction: column, $justify-content: null); }
+            
+        .img-main1 { background-image: $background-image-sots-img1; min-height: $height-viewport-info-container; }
+        .img-main2 { background-image: $background-image-sots-img2; min-height: $height-viewport-info-container; }
+        
+        .courseImages {
+            width: 100%;
+            position: relative;
+            opacity: $opacity-images-story-of-the-season-courses;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            // background-attachment: fixed;       /* Set below using media query to get round ios problem */
+            @include flex();
+        }
+
+        .goToTopOfPage {
+            position: fixed;
+            top: 87vh;
+            left: 70vw;
+
+            button.buttonScrollToTopOfPage {
+                background: none;
+                border: none;
+                outline: 0;
+                cursor: pointer;
+                padding: 0;
+
+                height: 4vw;
+                width: 4vw;
+                background-image: $background-image-scroll-to-top-of-page;
+                background-repeat: no-repeat;
+                background-size: cover;
+                @include flex();
+            }
+
+            img {
+                height: 4vw;
+            }
+
+            span {
+                position: fixed;
+                top: 87.2vh;
+                left: 71.4vw;
+                font-size: 0.9vw;
+                font-weight: 700;
+            }
+
+            &.visible {
+                visibility: visible;
+                opacity: 1;
+                transition: opacity 1s linear;
+                animation-name: scroll-help-fade-in;
+                animation-duration: 1s;
+                animation-timing-function: ease-in;
+            }
+        
+            &.hidden {
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0s 1s, opacity 1s linear;
+            }
+        }
+    }
+
+    .oom-position {
+        position: fixed;
+        height: $height-viewport-info-container;
+        flex-basis: 25%;
+        // width: 21.5vw;
+        top: $margin-top-viewport-info-container;
+        left: 75%;
+        // padding: 0 1.5vw;    
+        background-color: $background-color-oom-section;
+        color: $color-oom-section;
+        @include flex($flex-direction: column, $justify-content: space-evenly, $align-items: null);
+        
+        > div {
+            margin: 0 1.5vw;    
+        }
+
+        &.currentSeason {
+            padding: 0 2vw;
+        }
+
+        .scrollHelp {
+            font-size: 0.9vw;
+            text-align: center;
+            margin-bottom: 1vh;
+        }
+
+        .oom-table-header {
+            border: $border-oom-tables;
+            padding-bottom: 1vh;
+
+            > h2 {
+                text-align: center;
+                font-size: 1.3vw;
+                padding: 1vh 0;
+                margin: 0 0 1vh 0;
+                background-color: $background-color-stats-header;
+                white-space: pre-wrap;      // Allow for display of number of rounds played in current season to be displayed on 2nd line of table header
+            }
+
+            > table {
+                width: 100%;
+            }
+        }
+
+        tr.headings {
+            > th {
+                text-align: center;
+                font-size: 1.0vw;
+            }
+        }
+
+        tr.totals {
+            font-size: 1.1vw;
+            font-weight: 700;
+            height: 5.5vh;
+            > td { text-align: center; padding: 1vh 0;}
+            > td.row-heading { text-align: left; padding-left: 0.5vw; font-size: 1.0vw; width: 30%}
+        }
+
+        .totals-winners {
+            background-color: $background-color-winner-scores-or-points;
+            padding: 0.5vw;
+            border-radius: 50%;
+        }
+
+        .img-winners {
+            margin-top: 1vh;
+            @include flex($justify-content: space-evenly, $align-items: null);
+            
+            > img {
+                height: 12vh;
+            }
+        }
+
+        .oom-table-link {
+            text-align: center;
+            margin-top: 1vh;
+        }
+    }
+}
+
+
+@media screen and (min-width: 1025px) { .container-sots-and-oom .container-sots { .img-main1, .img-main2, .courseImages { background-attachment: fixed } } }
+
+@media screen and (max-width: 1024px) {
+    .container-sots-and-oom {
+        .container-sots .section .inner {
+            .details {
+                p { font-size: 1.2em; }
+                .container-golfball p.details-course { font-size: 1.4em; }
+            }
+            .round-summary {
+                p { font-size: 1.0em; }
+                h2.heading { font-size: 1.4em; }
+            }
+        }
+        .oom-position {
+            .scrollHelp { font-size: 0.8em; }
+            .oom-table-header {
+                h2 { font-size: 1.0em; }
+                tr.totals > td { font-size: 1.1em; }
+            }
+        }
+    }
+}
