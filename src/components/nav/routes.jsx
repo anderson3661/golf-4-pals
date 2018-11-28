@@ -20,9 +20,9 @@ import PlayerProfile from '../player-profile/player-profile';
 import AdminCourseCRUD from '../admin-course-crud/admin-course-crud';
 import AdminRoundCRUD from '../admin-round-crud/admin-round-crud';
 import Admin from '../admin/admin';
-import Help from '../help';
-import Contact from '../contact';
-import About from '../about';
+import Help from '../help/help';
+import Contact from '../contact/contact';
+import About from '../about/about';
 // import Test from '../test/test';
 
 

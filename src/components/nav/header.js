@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import {APP_TITLE} from '../../utilities/constants';
 
-import './header.css';
-import './common.css';
+import './header.scss';
+import './common.scss';
 
 
 const Header = () => {

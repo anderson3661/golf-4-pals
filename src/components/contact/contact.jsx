@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 
 import { APP_TITLE, MAIL_TO } from '../../utilities/constants';
 
-import "./contact.css";
+import "./contact.scss";
 
 const USER_DEFAULT_REQUIRED = 'Minimum 1 character required';
 const USER_NAME_REQUIRED = 'Minimum 1 character required';
@@ -13,6 +13,7 @@ const USER_NAME_REQUIRED = 'Minimum 1 character required';
 const USER_COMMENTS_REQUIRED = 'Minimum 1 character required';
 
 // const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 
 class Contact extends Component {
 

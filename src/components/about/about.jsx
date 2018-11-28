@@ -2,7 +2,8 @@ import React from "react";
 
 import {HOSTING_SITE} from '../../utilities/constants';
 
-import "./about.css";
+import "./about.scss";
+
 
 const About = () => {
     return (

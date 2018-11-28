@@ -4,7 +4,8 @@ import Button from "@material-ui/core/Button";
 import Dialog from '@material-ui/core/Dialog';
 // import DialogTitle from '@material-ui/core/DialogTitle';
 
-import './dialog-common.css';
+import './dialog-common.scss';
+
 
 class ConfirmationYesNo extends React.Component {
 

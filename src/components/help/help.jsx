@@ -1,5 +1,7 @@
 import React from 'react';
-import './help.css';
+
+import './help.scss';
+
 
 const Help = () => {
 

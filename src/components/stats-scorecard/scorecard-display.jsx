@@ -7,7 +7,8 @@ import * as helpers from '../../utilities/helper-functions/helpers';
 
 import WinnerStar from '@material-ui/icons/Star';
 
-import './scorecard.css';
+import './scorecard.scss';
+
 
 const ScorecardDisplay = (props) => {
 

@@ -7,10 +7,10 @@ import { createRound, updateRound, deleteRound } from '../../redux/actions';
 import {TESTING_MODE, PLAYERS_ARRAY, HOLES, EMPTY_TOTALS, HANDICAP_ELEMENT, STATS_MIN_VIEWPOINT_HEIGHT} from '../../utilities/constants';
 import * as helpers from '../../utilities/helper-functions/helpers';
 import * as helpersScorecard from '../../utilities/helper-functions/helpers-scorecard';
-import FieldInput from '../../utilities/helper-functions/admin-crud-field-input';
 import DisplayTotals from '../../utilities/helper-functions/admin-crud-display-totals';
 import Button from "@material-ui/core/Button";
 
+import AdminFieldInput from '../../utilities/helper-functions/admin-field-input';
 import SelectCourse from '../../utilities/helper-functions/select-course';
 import SelectDateOfRound from '../../utilities/helper-functions/select-date-of-round';
 import ConfirmationDialog from '../dialogs/confirmationDialog';
@@ -19,8 +19,8 @@ import ConfirmYesNo from '../dialogs/confirmYesNo';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-import '../stats-scorecard/scorecard.css';
-import './admin-round-crud.css';
+import '../stats-scorecard/scorecard.scss';
+import './admin-round-crud.scss';
 
 const EMPTY_STATE = {
     dialogSaveIsOpen: false,
@@ -43,6 +43,7 @@ const EMPTY_STATE = {
     steve: new Array(20).fill("")
 }
 
+
 class AdminRoundCRUD extends Component {
 
     constructor(props) {
@@ -56,6 +57,7 @@ class AdminRoundCRUD extends Component {
             height: STATS_MIN_VIEWPOINT_HEIGHT
         };
 
+        this.handleChangeIsMajor = this.handleChangeIsMajor.bind(this);
         this.handleSave = this.handleSave.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handlePopulate = this.handlePopulate.bind(this);
@@ -130,6 +132,7 @@ class AdminRoundCRUD extends Component {
     };
     
     handleChangePlayersScores = (element, elementNumber, newValue) => {
+        debugger;
         this.setState(prevState => ({[element]: this.getNewArray(prevState, element, elementNumber, newValue)}));
     };
 
@@ -423,12 +426,10 @@ class AdminRoundCRUD extends Component {
                                 </span>
                                 {isCreate &&
                                     <span className="title">Date Of Round:
-                                        <FieldInput
-                                            type="text"
+                                        <AdminFieldInput
                                             name="dateOfRound"
-                                            isNumeric={false}
                                             value={dateOfRound}
-                                            updateArray={this.handleChangeDateOfRound}
+                                            onChangeInputFieldValue={this.handleChangeDateOfRound}
                                         />
                                     </span>
                                 }
@@ -449,7 +450,7 @@ class AdminRoundCRUD extends Component {
                                             control={
                                                 <Checkbox
                                                     checked={isMajor}
-                                                    onChange={this.handleChangeIsMajor.bind(this)}
+                                                    onChange={this.handleChangeIsMajor}
                                                     value={isMajor.toString()}
                                                 />
                                             }
@@ -489,12 +490,10 @@ class AdminRoundCRUD extends Component {
                                                     :
                                                         <Fragment>
                                                             <span className="handicap">Handicap&nbsp;</span>
-                                                            <FieldInput
-                                                                type="text"
+                                                            <AdminFieldInput
                                                                 name="handicaps"
-                                                                isNumeric={true}
                                                                 value={this.state[player][HANDICAP_ELEMENT]}
-                                                                updateArray={this.handleChangePlayersScores.bind(this, player, HANDICAP_ELEMENT)}
+                                                                onChangeInputFieldValue={this.handleChangePlayersScores.bind(this, player, HANDICAP_ELEMENT)}
                                                             />
                                                         </Fragment>
                                                     }
@@ -551,13 +550,10 @@ class AdminRoundCRUD extends Component {
                                                             :
 
                                                                 <td key={playerNumber} className={classNameForScoreOnHole}>
-                                                                    <FieldInput
-                                                                        type="text"
+                                                                    <AdminFieldInput
                                                                         name="names"
-                                                                        holeNumber={holeNumber}
-                                                                        isNumeric={true}
                                                                         value={this.state[player][holeNumber + 1]}
-                                                                        updateArray={this.handleChangePlayersScores.bind(this, player, holeNumber + 1)}
+                                                                        onChangeInputFieldValue={this.handleChangePlayersScores.bind(this, player, holeNumber + 1)}
                                                                     />
                                                                     {this.state[player][holeNumber + 1] !== 0 && (" - " + playersPoints[player][holeNumber - 1])}
                                                                 </td>
@@ -616,12 +612,10 @@ class AdminRoundCRUD extends Component {
                                 <tr className="reportHeadingRow">
                                     <td className="label">Heading:</td>
                                     <td>
-                                        <FieldInput
-                                            type="text"
+                                        <AdminFieldInput
                                             name="reportHeading"
-                                            isNumeric={false}
                                             value={reportHeading}
-                                            updateReportHeading={this.handleChangeReportHeading}
+                                            onChangeInputFieldValue={this.handleChangeReportHeading}
                                         />
                                     </td>
                                 </tr>
@@ -629,13 +623,11 @@ class AdminRoundCRUD extends Component {
                                 <tr>
                                     <td className="label">Report:</td>
                                     <td>
-                                        <FieldInput
-                                            type="text"
+                                        <AdminFieldInput
                                             name="reportCommentary"
-                                            isNumeric={false}
-                                            multiline={true}
                                             value={reportCommentary}
-                                            updateReportCommentary={this.handleChangeReportCommentary}
+                                            multiline={true}
+                                            onChangeInputFieldValue={this.handleChangeReportCommentary}
                                         />
                                     </td>
                                 </tr>

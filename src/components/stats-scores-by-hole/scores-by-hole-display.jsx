@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {PLAYERS_ARRAY, SCORE_TYPES} from '../../utilities/constants';
 import * as helpers from '../../utilities/helper-functions/helpers';
 
-import './scores-by-hole.css';
+import './scores-by-hole.scss';
 
 
 const isBest = (playerNumber, scoresByHoleTotals, nameOfTotalsArray, lowestFirst=false) => {

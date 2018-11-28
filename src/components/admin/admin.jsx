@@ -11,8 +11,9 @@ import ConfirmationYesNo from '../dialogs/confirmYesNo';
 
 import Button from "@material-ui/core/Button";
 
-import '../stats-scorecard/scorecard.css';
-import './admin.css';
+import '../stats-scorecard/scorecard.scss';
+import './admin.scss';
+
 
 class Admin extends Component {
 

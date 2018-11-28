@@ -4,7 +4,8 @@ import Chart from "react-apexcharts";
 
 import {PLAYERS_ARRAY, OOM_ROUNDS} from '../../utilities/constants';
 
-import "./order-of-merit.css";
+import "./order-of-merit.scss";
+
 
 class OrderOfMeritChart extends React.Component {
     

@@ -44,27 +44,18 @@ const styles = theme => ({
   },
 });
 
+
 class FieldInput extends Component {
 
     constructor(props) {
         super(props);
 
-        this.handleChangeReportHeading = this.handleChangeReportHeading.bind(this);
-        this.handleChangeReportCommentary = this.handleChangeReportCommentary.bind(this);
-        this.handleChangeCourseName = this.handleChangeCourseName.bind(this);
-        this.handleChangeCourseVariation = this.handleChangeCourseVariation.bind(this);
+        this.handleChangeField = this.handleChangeField.bind(this);
     }
 
     classes = this.props.classes;
 
-    handleChangeReportHeading = event => { this.props.updateReportHeading(event.target.value); };
-    handleChangeReportCommentary = event => { this.props.updateReportCommentary(event.target.value); };
-    handleChangeCourseName = event => { this.props.updateCourseName(event.target.value); };
-    handleChangeCourseVariation = event => { this.props.updateCourseVariation(event.target.value); };
-
-    handleChangeArray = event => {
-        this.props.updateArray(event.target.value);
-    };
+    handleChangeField = event => { this.props.updateField(event.target.value); };
 
     render() {
 
@@ -76,11 +67,7 @@ class FieldInput extends Component {
                 multiline={this.props.multiline}
                 rows="5"
                 id={this.props.name}
-                onChange={this.props.name === "reportHeading" ? this.handleChangeReportHeading :
-                          this.props.name === "reportCommentary" ? this.handleChangeReportCommentary :
-                          this.props.name === "courseName" ? this.handleChangeCourseName :
-                          this.props.name === "courseVariation" ? this.handleChangeCourseVariation :
-                          this.handleChangeArray}
+                onChange={this.handleChangeField}
                 InputProps={{
                     disableUnderline: true,
                     classes: {

@@ -12,8 +12,8 @@ import SelectYearOfCompetition from '../../utilities/helper-functions/select-yea
 import OrderOfMeritTable from './order-of-merit-table';
 import ScrollToTopOfPage from './scroll-to-top-of-page';
 
-import "../../utilities/css/scroll-help.css";
-import './story-of-the-season.css';
+import "../../utilities/css/scroll-help.scss";
+import './story-of-the-season.scss';
 
 const SELECTED_YEAR = 'selectedYearStoryOfTheSeason';
 

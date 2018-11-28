@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './not-mobile-friendly.css';
+import './not-mobile-friendly.scss';
 
 
 class NotMobileFriendly extends Component {

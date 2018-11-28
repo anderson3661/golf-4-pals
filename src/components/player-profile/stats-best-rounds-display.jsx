@@ -6,7 +6,8 @@ import * as helpers from '../../utilities/helper-functions/helpers';
 
 import WinnerStar from '@material-ui/icons/Star';
 
-import "./player-profile.css";
+import "./player-profile.scss";
+
 
 const BestRoundsDisplay = (props) => {
     

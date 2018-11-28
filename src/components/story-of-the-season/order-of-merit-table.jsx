@@ -5,7 +5,8 @@ import { NavLink } from 'react-router-dom';
 import {PLAYERS_ARRAY} from '../../utilities/constants';
 import * as helpers from '../../utilities/helper-functions/helpers';
 
-import './story-of-the-season.css';
+import './story-of-the-season.scss';
+
 
 const OrderOfMeritTable = (props) => {
 

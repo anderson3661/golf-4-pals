@@ -14,6 +14,7 @@ const SCORE_PAR = "P";
 const SCORE_OTHER = "^";
 const NEAREST_THE_PIN = "NTP";
    
+
 class Scorecard extends Component {
 
     state = { height: STATS_MIN_VIEWPOINT_HEIGHT };

@@ -6,7 +6,7 @@ import * as helpers from '../../utilities/helper-functions/helpers';
 
 import WinnerStar from '@material-ui/icons/Star';
 
-import './order-of-merit.css';
+import './order-of-merit.scss';
 
 // import IconButton from '@material-ui/core/IconButton';
 // import Badge from '@material-ui/core/Badge';
@@ -18,6 +18,7 @@ import './order-of-merit.css';
 //        <ShoppingCartIcon />
 //    </Badge>
 // </IconButton>
+
 
 const OrderOfMeritRound = (props) => {
 

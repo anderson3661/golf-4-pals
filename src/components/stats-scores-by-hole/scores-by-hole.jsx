@@ -16,6 +16,7 @@ const SELECTED_COURSE = 'selectedCourseScoresByHole';
 const SELECTED_YEAR = 'selectedYearScoresByHole';
 const SELECTED_PAR = 'selectedParScoresByHole';
 
+
 class ScoresByHole extends Component {
 
     state = { height: STATS_MIN_VIEWPOINT_HEIGHT };

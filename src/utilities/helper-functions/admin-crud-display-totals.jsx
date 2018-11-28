@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import * as helpersScorecard from './helpers-scorecard';
 
+
 const DisplayTotals = (props) => {
 
     const {holesType, includePlayersPointsTotals, playersPoints, className, rowTitle, state} = props;

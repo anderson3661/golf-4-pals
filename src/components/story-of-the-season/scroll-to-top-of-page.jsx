@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class ScrollToTopOfPage extends React.Component {
 
     state = { intervalId: 0 }

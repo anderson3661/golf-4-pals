@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import {PLAYERS_ARRAY} from '../../utilities/constants';            //Used for looping purposes only
 import * as helpers from '../../utilities/helper-functions/helpers';
 
-import './order-of-merit.css';
+import './order-of-merit.scss';
+
 
 const OrderOfMeritHeader = (props) => {
 

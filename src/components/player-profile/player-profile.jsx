@@ -11,7 +11,7 @@ import Wins from './stats-wins';
 import HoleScoreType from './stats-hole-score-type';
 import BestRounds from './stats-best-rounds';
 
-import "./player-profile.css";
+import "./player-profile.scss";
 
 
 class PlayerProfile extends Component {

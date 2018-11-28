@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import {PLAYERS_ARRAY} from '../../utilities/constants';            //Used for looping purposes only
 import * as helpers from '../../utilities/helper-functions/helpers';
 
-import './nearest-the-pins.css';
+import './nearest-the-pins.scss';
 
 
 const NearestThePinsDisplay = (props) => {

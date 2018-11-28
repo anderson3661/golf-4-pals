@@ -5,7 +5,8 @@ import { NavLink } from 'react-router-dom';
 import {PLAYERS_ARRAY} from '../../utilities/constants';            //Used for looping purposes only
 import * as helpers from '../../utilities/helper-functions/helpers';
 
-import './courses-summary.css';
+import './courses-summary.scss';
+
 
 const CoursesSummaryDisplay = (props) => {
 

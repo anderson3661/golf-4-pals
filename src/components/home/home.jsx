@@ -4,8 +4,9 @@ import {APP_TITLE, VISIBILITY_VISIBLE, VISIBILITY_HIDDEN} from '../../utilities/
 import * as helpers from '../../utilities/helper-functions/helpers';
 import images from '../../utilities/data/images';
 
-import "../../utilities/css/scroll-help.css";
-import "./home.css";
+import "../../utilities/css/scroll-help.scss";
+import "./home.scss";
+
 
 class Home extends Component {
 

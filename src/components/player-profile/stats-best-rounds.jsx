@@ -7,7 +7,7 @@ import * as helpersScorecard from '../../utilities/helper-functions/helpers-scor
 
 import BestRoundsDisplay from "./stats-best-rounds-display";
 
-import "./player-profile.css";
+import "./player-profile.scss";
 
 const ROW_LABELS_POINTS = ["Best Round (points)", "Best Front 9 (points)", "Best Back 9 (points)"];
 const ROW_LABELS_TO_PAR = ["Best Round (to par)", "Best Front 9 (to par)", "Best Back 9 (to par)"];

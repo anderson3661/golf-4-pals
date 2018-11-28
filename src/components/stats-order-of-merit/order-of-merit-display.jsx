@@ -6,8 +6,8 @@ import {PLAYERS_ARRAY} from '../../utilities/constants';
 import OrderOfMeritHeader from './order-of-merit-header';
 import OrderOfMeritRound from './order-of-merit-round';
 
-import './order-of-merit.css';
-import '../../utilities/css/stats.css';
+import './order-of-merit.scss';
+import '../../utilities/css/stats.scss';
 
 
 const OrderOfMeritDisplay = (props) => {

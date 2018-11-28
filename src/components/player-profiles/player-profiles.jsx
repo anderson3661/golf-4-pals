@@ -6,8 +6,9 @@ import { NavLink } from 'react-router-dom';
 import {PLAYERS_ARRAY, PLAYERS_FULL_NAMES_ARRAY, EAGLE, BIRDIE, HANDICAP_ELEMENT, STABLEFORD_SCORES_ELEMENT} from '../../utilities/constants';
 import * as helpers from '../../utilities/helper-functions/helpers';
 
-import "../../utilities/css/stats.css";
-import "./player-profiles.css";
+import "../../utilities/css/stats.scss";
+import "./player-profiles.scss";
+
 
 const PlayerProfiles = (props) => {
 

@@ -8,9 +8,10 @@ import ScoresByCourseDisplay from './scores-by-course-display';
 import * as helpers from '../../utilities/helper-functions/helpers';
 import SelectCourse from '../../utilities/helper-functions/select-course';
 
-import './scores-by-course.css';
+import './scores-by-course.scss';
 
 const SELECTED_COURSE = 'selectedCourseScoresByCourse';
+
 
 class ScoresByCourse extends Component {
 

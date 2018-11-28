@@ -7,6 +7,7 @@ import * as helpers from '../../utilities/helper-functions/helpers';
 
 import WinnerStar from '@material-ui/icons/Star';
 
+
 const ScoresByCourseDisplay = (props) => {
 
     const {numberOfWinsTotals, scoresByCourse} = props;

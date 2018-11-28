@@ -9,9 +9,10 @@ import NotMobileFriendly from './components/not-mobile-friendly/not-mobile-frien
 import Routes from './components/nav/routes';
 import { appLoadInitialData } from './redux/actions';
 
-import './App.css';
+import './App.scss';
 // import './utilities/css/nav.css';
 // import './utilities/css/stats.css';
+
 
 class App extends Component {
 

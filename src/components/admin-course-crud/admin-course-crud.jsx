@@ -6,16 +6,16 @@ import { createCourse, updateCourse, deleteCourse } from '../../redux/actions';
 
 import {TESTING_MODE, HOLES, MAX_LENGTHS, STATS_MIN_VIEWPOINT_HEIGHT} from '../../utilities/constants';
 import * as helpers from '../../utilities/helper-functions/helpers';
-import FieldInput from '../../utilities/helper-functions/admin-crud-field-input';
 import DisplayTotals from '../../utilities/helper-functions/admin-crud-display-totals';
 import Button from "@material-ui/core/Button";
 
+import AdminFieldInput from '../../utilities/helper-functions/admin-field-input';
 import SelectCourse from '../../utilities/helper-functions/select-course';
 import ConfirmationDialog from '../dialogs/confirmationDialog';
 import ConfirmYesNo from '../dialogs/confirmYesNo';
 
-import '../stats-scorecard/scorecard.css';
-import './admin-course-crud.css';
+import '../stats-scorecard/scorecard.scss';
+import './admin-course-crud.scss';
 
 const EMPTY_STATE = {
     dialogSaveIsOpen: false,
@@ -23,12 +23,14 @@ const EMPTY_STATE = {
     dialogDeleteYesSelected: false,
     dialogDeleteConfirmIsOpen: false,
     courseName: "",
+    courseNameInput: "",
     courseVariation: "",
     holeNames: new Array(18).fill(""),
     pars: new Array(18).fill(""),
     yardages: new Array(18).fill(""),
     strokeIndexes: new Array(18).fill("")
 }
+
 
 class AdminCourseCRUD extends Component {
 
@@ -43,13 +45,14 @@ class AdminCourseCRUD extends Component {
             height: STATS_MIN_VIEWPOINT_HEIGHT
         };
 
+        this.handleChangeCourseName = this.handleChangeCourseName.bind(this);
+
         this.handleSave = this.handleSave.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handlePopulate = this.handlePopulate.bind(this);
         this.handleDialogCloseSave = this.handleDialogCloseSave.bind(this);
         this.handleDialogYesNoCloseDelete = this.handleDialogYesNoCloseDelete.bind(this);
         this.handleDialogConfirmCloseDelete = this.handleDialogConfirmCloseDelete.bind(this);
-        // this.handleChangeCourseName = this.handleChangeCourseName.bind(this);
     }
 
     haveChangesBeenMade = () => {
@@ -118,8 +121,6 @@ class AdminCourseCRUD extends Component {
     };
 
     handleSave = (e) => {
-        console.log(this.state);
-
         // e.preventDefault();
 
         if (this.validateAdminCourseCRUD()) return;
@@ -341,20 +342,18 @@ class AdminCourseCRUD extends Component {
                             <header className="header narrow">
 
                                 <span className="title">Course Name:
-                                    <FieldInput
-                                        type="text"
+                                    <AdminFieldInput
                                         name="courseName"
-                                        value={this.state.courseName}
-                                        updateCourseName={this.handleChangeCourseName.bind(this)}
+                                        value={courseName}
+                                        onChangeInputFieldValue={this.handleChangeCourseName}
                                     />
                                 </span>
 
                                 <span className="title">Course Variation:
-                                    <FieldInput
-                                        type="text"
+                                    <AdminFieldInput
                                         name="courseVariation"
-                                        value={this.state.courseVariation}
-                                        updateCourseVariation={this.handleChangeCourseVariation.bind(this, courseName)}
+                                        value={courseVariation}
+                                        onChangeInputFieldValue={this.handleChangeCourseVariation.bind(this, courseName)}
                                     />
                                 </span>
 
@@ -369,7 +368,7 @@ class AdminCourseCRUD extends Component {
                                         selectCourseName={true}
                                         courseName={courseName}
                                         fieldValue={courseName}
-                                        updateCourse={this.handleChangeCourseName.bind(this)}
+                                        updateCourse={this.handleChangeCourseName}
                                     />
                                 </span>
                                 <span className="title">Course Variation:
@@ -429,47 +428,34 @@ class AdminCourseCRUD extends Component {
                                                     <Fragment>
 
                                                         <td className="holeName">
-                                                            <FieldInput
-                                                                className="holeName-input-field"
-                                                                type="text"
+                                                            <AdminFieldInput
                                                                 name="holeName"
-                                                                holeNumber={holeNumber}
-                                                                isNumeric={false}
                                                                 value={this.state.holeNames[holeNumber-1]}
-                                                                updateArray={this.handleChangeArray.bind(this, "holeNames", holeNumber)}
+                                                                onChangeInputFieldValue={this.handleChangeArray.bind(this, "holeNames", holeNumber)}
                                                             />
                                                         </td>
 
                                                         <td className="par">
-                                                            <FieldInput
-                                                                type="text"
+                                                            <AdminFieldInput
                                                                 name="par"
-                                                                holeNumber={holeNumber}
-                                                                isNumeric={true}
                                                                 value={this.state.pars[holeNumber-1]}
-                                                                updateArray={this.handleChangeArray.bind(this, "pars", holeNumber)}
+                                                                onChangeInputFieldValue={this.handleChangeArray.bind(this, "pars", holeNumber)}
                                                             />
                                                         </td>
 
                                                         <td className="yardage">
-                                                            <FieldInput
-                                                                type="text"
+                                                            <AdminFieldInput
                                                                 name="yardage"
-                                                                holeNumber={holeNumber}
-                                                                isNumeric={true}
                                                                 value={this.state.yardages[holeNumber-1]}
-                                                                updateArray={this.handleChangeArray.bind(this, "yardages", holeNumber)}
+                                                                onChangeInputFieldValue={this.handleChangeArray.bind(this, "yardages", holeNumber)}
                                                             />
                                                         </td>
 
                                                         <td className="strokeIndex">
-                                                            <FieldInput
-                                                                type="text"
+                                                            <AdminFieldInput
                                                                 name="strokeIndex"
-                                                                holeNumber={holeNumber}
-                                                                isNumeric={true}
                                                                 value={this.state.strokeIndexes[holeNumber-1]}
-                                                                updateArray={this.handleChangeArray.bind(this, "strokeIndexes", holeNumber)}
+                                                                onChangeInputFieldValue={this.handleChangeArray.bind(this, "strokeIndexes", holeNumber)}
                                                             />
                                                         </td>
 
