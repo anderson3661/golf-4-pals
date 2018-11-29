@@ -32,26 +32,20 @@ class StoryOfTheSeason extends Component {
             goToTopVisibility: VISIBILITY_HIDDEN,
             intervalId: 0
         }
-        this.handleScroll = this.handleScroll.bind(this);
-
-        // Get random images for the course of each round.  Do it in the constructor and on change of year, so that the images are not re-calculated on each render
-        this.getRandomImagesForRounds();
     }
-
-    handleChange = yearOfCompetition => {
-        this.getRandomImagesForRounds(yearOfCompetition);
-        this.props.dispatch(updateSelectedYear({[SELECTED_YEAR]: yearOfCompetition}));
-    };
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+
+        // Get random images for the course of each round.  Do it in componentDidMount and on change of year, so that the images are not re-calculated on each render
+        this.getRandomImagesForRounds();
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
 
-    handleScroll(e) {
+    handleScroll= (e) => {
         let numberOfRoundsForSelectedYearOfCompetition = this.getRoundsForSelectedYearOfCompetition().length;
 
         for (let i = 1; i <= numberOfRoundsForSelectedYearOfCompetition; i++) {
@@ -102,6 +96,12 @@ class StoryOfTheSeason extends Component {
             minHeight: `${minimumHeight}vh`,
         }
     }
+
+    handleChange = yearOfCompetition => {
+        this.getRandomImagesForRounds(yearOfCompetition);
+        this.props.dispatch(updateSelectedYear({[SELECTED_YEAR]: yearOfCompetition}));
+    };
+
 
     render() {
         let oom;

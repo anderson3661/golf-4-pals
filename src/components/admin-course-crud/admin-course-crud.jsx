@@ -44,15 +44,6 @@ class AdminCourseCRUD extends Component {
             isDelete: props.isDelete,
             height: STATS_MIN_VIEWPOINT_HEIGHT
         };
-
-        this.handleChangeCourseName = this.handleChangeCourseName.bind(this);
-
-        this.handleSave = this.handleSave.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
-        this.handlePopulate = this.handlePopulate.bind(this);
-        this.handleDialogCloseSave = this.handleDialogCloseSave.bind(this);
-        this.handleDialogYesNoCloseDelete = this.handleDialogYesNoCloseDelete.bind(this);
-        this.handleDialogConfirmCloseDelete = this.handleDialogConfirmCloseDelete.bind(this);
     }
 
     haveChangesBeenMade = () => {
@@ -90,6 +81,8 @@ class AdminCourseCRUD extends Component {
     };
 
     handleChangeCourseVariation = (courseName, courseVariation) => {
+        debugger;
+        console.log(this);
         this.props.isCreate && this.setState({ courseVariation: courseVariation });
         (this.props.isUpdate || this.props.isDelete) && this.updateAfterCourseSelection(courseName, courseVariation);
     };

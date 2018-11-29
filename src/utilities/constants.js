@@ -1,4 +1,4 @@
-export const TESTING_MODE = false;
+export const TESTING_MODE = true;
 
 export const HOSTING_SITE = "https://console.firebase.google.com/u/0/project/golf-4pals/hosting/main";
 export const APP_TITLE = "The 4 South of England Golfing Pals";

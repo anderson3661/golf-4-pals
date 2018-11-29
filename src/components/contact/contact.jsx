@@ -33,11 +33,7 @@ class Contact extends Component {
             },
             submitAttempted: false
         }
-
-        console.log(this.state);
     }
-
-    // handleChangeContactFields = (field) => (e) => {
 
     handleChange = e => {
         const {name, value} = e.target;
@@ -118,7 +114,6 @@ class Contact extends Component {
 
     render() {
 
-        // const {formFields: {userName, userEmailAddress, userComments}, formErrors, submitAttempted} = this.state;
         const {formFields: {userName, userComments}, formErrors, submitAttempted} = this.state;
 
         return (

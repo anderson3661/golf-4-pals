@@ -15,7 +15,6 @@ class Home extends Component {
         this.state = {
             visibility: VISIBILITY_VISIBLE
         }
-        this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentDidMount() {
@@ -27,7 +26,7 @@ class Home extends Component {
         window.removeEventListener('scroll', this.handleScroll);
     }
     
-    handleScroll(e) {
+    handleScroll = (e) => {
 
         let visibility = (window.pageYOffset < 200) ? VISIBILITY_VISIBLE : VISIBILITY_HIDDEN;
 

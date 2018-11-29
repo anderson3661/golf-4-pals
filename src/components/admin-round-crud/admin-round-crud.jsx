@@ -56,15 +56,6 @@ class AdminRoundCRUD extends Component {
             isDelete: props.isDelete,
             height: STATS_MIN_VIEWPOINT_HEIGHT
         };
-
-        this.handleChangeIsMajor = this.handleChangeIsMajor.bind(this);
-        this.handleSave = this.handleSave.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
-        this.handlePopulate = this.handlePopulate.bind(this);
-        this.handlePopulateRounds = this.handlePopulateRounds.bind(this);
-        this.handleDialogCloseSave = this.handleDialogCloseSave.bind(this);
-        this.handleDialogYesNoCloseDelete = this.handleDialogYesNoCloseDelete.bind(this);
-        this.handleDialogConfirmCloseDelete = this.handleDialogConfirmCloseDelete.bind(this);
     }
 
     haveChangesBeenMade = () => {
@@ -243,7 +234,7 @@ class AdminRoundCRUD extends Component {
         }
     }
 
-    handleChangeIsMajor(e) {
+    handleChangeIsMajor = (e) => {
         this.setState({isMajor: e.target.checked})
     }
 
