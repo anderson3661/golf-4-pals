@@ -185,7 +185,7 @@ class StoryOfTheSeason extends Component {
                                                         <p className="details-course">{correctCourseName}</p>
                                                     </div>
                                                     <p className="details-date">{helpers.formatDate(round.dateOfRound)}</p>
-                                                    <p className="details-scorecard"><NavLink to={`/scorecard/${round.yearOfCompetition}/${roundNumber + 1}`}>Scorecard</NavLink></p>
+                                                    <p className="details-scorecard"><NavLink to={`/scorecard/${yearOfCompetition}/${roundNumber + 1}`}>Scorecard</NavLink></p>
                                                     <p className="details-actual-scorecard"><a href = {helpers.getActualScorecard(yearOfCompetition, roundNumber + 1)} target = "_blank" rel="noopener noreferrer">Actual Scorecard</a></p>
                                                 </div>
                                                 <div className="round-summary">
