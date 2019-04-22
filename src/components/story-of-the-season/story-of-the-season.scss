@@ -9,7 +9,7 @@
 
     .container-sots {
         height: $height-viewport-info-container;
-        flex-basis: 75%;
+        @include flex-basis(75%);
         background-repeat: no-repeat;
         background-size: cover;
 
@@ -34,7 +34,7 @@
             &.mainHeader {
                 margin-top: 20vh;
                 margin-bottom: 10vh;
-                display: flex;
+                @include flex($justify-content: null, $align-items: null);
 
                 span {
                     margin-right: 3vw;
@@ -74,10 +74,10 @@
             .inner {
                 width: 100%;
                 margin: 0 auto;
-                display: flex;
+                @include flex($justify-content: null, $align-items: null);
 
                 .details {
-                    flex-basis: 12vw;
+                    @include flex-basis(12vw);
                     @include flex($flex-direction: column);
                     position: relative;
                     border-right: $border-round-summary-separator;
@@ -127,7 +127,7 @@
                 }
 
                 .round-summary {
-                    flex-basis: 63vw;
+                    @include flex-basis(63vw);
                     margin: 0 0 0 3vw;
 
                     h2 {
@@ -226,7 +226,7 @@
     .oom-position {
         position: fixed;
         height: $height-viewport-info-container;
-        flex-basis: 25%;
+        @include flex-basis(25%);
         // width: 21.5vw;
         top: $margin-top-viewport-info-container;
         left: 75%;

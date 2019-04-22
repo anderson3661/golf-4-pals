@@ -39,7 +39,7 @@
         @include flex($justify-content: space-between, $align-items: flex-start);
         
         .report {
-            flex-basis: 33%;
+            @include flex-basis(33%);
             min-height: 50vh;
             background-color: $background-color-report;
             color: $color-report;
@@ -114,7 +114,7 @@
         @include flex($justify-content: space-evenly);
 
         span.major .winnerStar {
-            flex-basis: 15%;
+            @include flex-basis(15%);
             font-size: 96px;
             text-align: center;
             position: relative;
@@ -136,7 +136,7 @@
         }
 
         span.courseName {
-            flex-basis: 55%;
+            @include flex-basis(55%);
             text-align: center;
             justify-content: center;
         }

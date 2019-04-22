@@ -64,7 +64,7 @@ const ScoresByCourseDisplay = (props) => {
                                 <td className="yearOfCompetition">{round.yearOfCompetition}</td>
                                 <td className="dateOfRound">{round.dateOfRound}</td>
                                 <td></td>
-                                <td className="courseName"><NavLink to={`/scorecard/${round.yearOfCompetition}/${round.roundNumber}`}>{ round.courseName }</NavLink></td>
+                                <td className="courseName"><NavLink to={`/scorecard/${round.yearOfCompetition}/${round.roundNumber + 1}`}>{ round.courseName }</NavLink></td>
                                 <td></td>
                                 {round.oomPoints.map((x, i) => <td key={i} className="oom-points">{helpers.allowDashForZero(x)}</td>)}
                                 <td></td>

@@ -8,7 +8,7 @@
     
     //The main container-card css is in App.scss
     .container-card {
-        flex-basis: 20%;
+        @include flex-basis(20%);
         @include flex($flex-direction: column, $justify-content: null, $align-items: null);
         padding: 1vh 1vw;
         margin: 0 2vw;
@@ -19,7 +19,8 @@
         }
 
         img.thumbnail {
-            height: 25vh;
+            // height: 25vh;
+            max-width: 200px;
             border-radius: 50%;
             margin: 0 auto 3vh;
         }

@@ -61,12 +61,13 @@ class Scorecard extends Component {
     
     render() {
 
-        let {courses, allRounds, allReports} = this.props.appData;       //* Don't forget to change when ALL round reports written (or when testing)
+        let {courses, allRounds, allReports} = this.props.appData;          //* Don't forget to change when ALL round reports written (or when testing)
         // let {courses, allRounds} = this.props.appData;                   //* Don't forget to change when ALL round reports written (or when testing)
         let {yearOfCompetition, roundNumber} = this.props.match.params;
 
         yearOfCompetition = parseInt(yearOfCompetition, 10);
         roundNumber = parseInt(roundNumber, 10);
+        debugger;
 
         let roundsForYearOfCompetition = helpers.getRoundsForYearOfCompetition(allRounds, yearOfCompetition).roundsForYearOfCompetition;
 

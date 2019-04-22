@@ -116,7 +116,7 @@
             }
 
             .playerProfileSummary {
-                flex-basis: 75%;
+                @include flex-basis(75%);
             }
 
             > div > p {
@@ -129,7 +129,7 @@
         @include flex($justify-content: space-between, $align-items: null);
 
         table {
-            flex-basis: 40%;
+            @include flex-basis(40%);
             margin: 0;
             font-size: 1.1em;
             line-height: 1.2;
@@ -142,7 +142,7 @@
             td:first-child { width: 10%; }
 
             &.finishingPosition {
-                flex-basis: 45%;
+                @include flex-basis(45%);
                 td:last-child { width: 3%; }
             }
 

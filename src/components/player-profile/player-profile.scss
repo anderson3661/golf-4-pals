@@ -43,7 +43,7 @@
     }
 
     .container-player-profile {
-        flex-basis: 76%;
+        @include flex-basis(76%);
         @include flex($flex-direction: column, $justify-content: null, $align-items: null);
         margin: $top-viewport-info-container 0 100px 0;
         margin-left: 22vw;

@@ -9,7 +9,7 @@
 
     .container-about {
         z-index: 1;
-        display: flex;
+        @include flex($justify-content: null, $align-items: null);
         > div { width: 45%; }
         margin: 2vh 0;
     }

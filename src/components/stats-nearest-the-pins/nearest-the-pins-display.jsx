@@ -42,7 +42,7 @@ const NearestThePinsDisplay = (props) => {
                                     {yearOfCompetition === "All Years" && (round.roundNumber === 1 ? <td className="year">{round.yearOfCompetition}</td> : <td></td>)}
                                     <td className="roundNumber">{round.roundNumber}</td>
                                     <td className="dateOfRound">{round.dateOfRound}</td>
-                                    <td className="courseName"><NavLink to={`/scorecard/${yearOfCompetition}/${round.roundNumber}`}>{ round.courseName }</NavLink></td>
+                                    <td className="courseName"><NavLink to={`/scorecard/${round.yearOfCompetition}/${round.roundNumber}`}>{ round.courseName }</NavLink></td>
                                     {round.ntps.map((x, i) => <td key={i} className="ntps">{helpers.allowDashForZero(x)}</td>)}
                                     <td className="endSpacer"></td>
                                 </tr>

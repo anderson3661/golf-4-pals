@@ -1,18 +1,3 @@
-@mixin flex($flex-direction: row, $justify-content: center, $align-items: center) {
-    /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
-
-    /* Safari */
-    display: -webkit-flex;
-    -webkit-flex-direction: $flex-direction;
-    -webkit-justify-content: $justify-content;
-    -webkit-align-items: $align-items;
-
-    display: flex;
-    flex-direction: $flex-direction;
-    justify-content: $justify-content;
-    align-items: $align-items;
-}
-
 @mixin score($color-score, $background-color-score) {
     color: $color-score;
     background-color: $background-color-score;
@@ -26,4 +11,122 @@
     text-align: $textAlign;
     padding-left: $paddingLeft;
     padding-right: $paddingRight;
+}
+
+@mixin flex($flex-direction: row, $justify-content: center, $align-items: center) {
+    /* When calling the function use for example $justify-content: null to not use this property, otherwise it will use the default */
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+
+    @if $flex-direction == row-reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: horizontal;
+        -moz-box-direction: reverse;
+        -moz-box-orient: horizontal;
+    } @else if $flex-direction == column {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        -moz-box-direction: normal;
+        -moz-box-orient: vertical;
+    } @else if $flex-direction == column-reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: vertical;
+        -moz-box-direction: reverse;
+        -moz-box-orient: vertical;
+    } @else {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+        -moz-box-direction: normal;
+        -moz-box-orient: horizontal;
+    }
+    -webkit-flex-direction: $flex-direction;
+    -ms-flex-direction: $flex-direction;
+    flex-direction: $flex-direction;
+
+
+    @if $justify-content == flex-start {
+        -webkit-box-pack: start;
+        -moz-box-pack: start;
+        -ms-flex-pack: start;
+    } @else if $justify-content == flex-end {
+        -webkit-box-pack: end;
+        -moz-box-pack: end;
+        -ms-flex-pack: end;
+    } @else if $justify-content == space-between {
+        -webkit-box-pack: justify;
+        -moz-box-pack: justify;
+        -ms-flex-pack: justify;
+    } @else if $justify-content == space-around {
+        -ms-flex-pack: distribute;    
+    } @else {
+        -webkit-box-pack: $justify-content;
+        -moz-box-pack: $justify-content;
+        -ms-flex-pack: $justify-content;
+    }
+    -webkit-justify-content: $justify-content;
+    justify-content: $justify-content;
+
+    // Required for Edge which has a bug in that it supports '@Support space-evenly', but does nothing with it
+    @supports (-ms-flow-from: thingy) {
+        @if $justify-content == space-evenly {
+            justify-content: space-around;
+        }
+    }
+
+
+    @if $align-items == flex-start {
+        -webkit-box-align: start;
+        -moz-box-align: start;
+        -ms-flex-align: start;
+    } @else if $align-items == flex-end {
+        -webkit-box-align: end;
+        -moz-box-align: end;
+        -ms-flex-align: end;
+    } @else {
+        -webkit-box-align: $align-items;
+        -moz-box-align: $align-items;
+        -ms-flex-align: $align-items;
+    }
+    -webkit-align-items: $align-items;
+    align-items: $align-items;
+}
+
+@mixin flex-wrap($value: nowrap) {
+    /* No Webkit/FF Box fallback. */
+    -webkit-flex-wrap: $value;
+    @if $value == nowrap {
+        -ms-flex-wrap: none;
+    } @else {
+        -ms-flex-wrap: $value;
+    }
+    flex-wrap: $value;
+}
+
+@mixin flex-basis($value: auto) {
+    -webkit-flex-basis: $value;
+    flex-basis: $value;
+}
+
+@mixin flex-flex($fg: 1, $fs: 0, $fb: auto) {
+    // This is the flex property of display: flex (I called the main mixin flex, and as used in multiple places, have kept it named as such)
+
+    // Set a variable to be used by box-flex properties
+    $fg-boxflex: $fg;
+  
+    // Box-Flex only supports a flex-grow value so lets grab the
+    // first item in the list and just return that.
+    @if type-of($fg) == 'list' {
+      $fg-boxflex: nth($fg, 1);
+    }
+  
+    -webkit-box: $fg-boxflex;
+    -moz-box: $fg-boxflex;
+    -webkit-flex: $fg $fs $fb;
+    -ms-flex: $fg $fs $fb;
+    flex: $fg $fs $fb;
 }
